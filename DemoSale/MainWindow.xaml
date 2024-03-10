@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DemoSale"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Background="#FF77C0FF">
+        Title="Avtocentr56" Height="450" Width="800" Background="#FF77C0FF">
     <Frame x:Name="fMain" Margin="15">
         
     </Frame>
