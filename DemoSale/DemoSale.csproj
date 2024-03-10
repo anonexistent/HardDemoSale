@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\C-dvCRpTfHM.jpg" />
+    <None Remove="Resources\card_staff.jpg" />
+    <None Remove="Resources\icons8150.png" />
+    <None Remove="Resources\icons850.png" />
+    <None Remove="Resources\icons860.png" />
+    <None Remove="Resources\info0.jpg" />
+    <None Remove="Resources\info1.jpg" />
+    <None Remove="Resources\info2.jpg" />
+    <None Remove="Resources\info3.jpg" />
+    <None Remove="Resources\info4.jpg" />
+    <None Remove="Resources\kartinki-pshenichnoe-pole-49.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\C-dvCRpTfHM.jpg" />
+    <Resource Include="Resources\card_staff.jpg" />
+    <Resource Include="Resources\icons850.png" />
+    <Resource Include="Resources\icons8150.png" />
+    <Resource Include="Resources\icons860.png" />
+    <Resource Include="Resources\info0.jpg" />
+    <Resource Include="Resources\info1.jpg" />
+    <Resource Include="Resources\info2.jpg" />
+    <Resource Include="Resources\info3.jpg" />
+    <Resource Include="Resources\info4.jpg" />
+    <Resource Include="Resources\kartinki-pshenichnoe-pole-49.jpg" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,131 @@
+﻿<Page x:Class="DemoSale.Page3"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
+      xmlns:local="clr-namespace:DemoSale"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Page3">
+
+    <Grid>
+        <Grid x:Name="g0" Visibility="Collapsed">
+            <Image x:Name="img1" Margin="20" Source="/Resources/card_staff.jpg"/>
+
+        </Grid>
+        
+        <Grid x:Name="g1" Visibility="Collapsed">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <DataGrid x:Name="dg1" Margin="30" FontSize="14"/>
+
+            <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Button x:Name="btnAddNewPhone" Content=" add new " FontSize="16" Margin="5" Click="btnAddNewPhone_Click"/>
+                <Button Content=" remove from " FontSize="16" Margin="5"/>
+                <Button Content=" update current " FontSize="16" Margin="5"/>
+            </StackPanel>
+        </Grid>
+        
+        <Grid x:Name="g2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <ListBox Margin="30 30 40 30" x:Name="lb1" SelectionChanged="lb1_SelectionChanged">
+                <ListBoxItem Margin="3">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/icons8150.png" Margin="0 0 15 0" />
+                        <TextBlock VerticalAlignment="Center" FontSize="16" FontWeight="Bold">position #0</TextBlock>
+                    </StackPanel>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/icons850.png" Margin="0 0 15 0" />
+                        <TextBlock VerticalAlignment="Center" FontSize="16" FontWeight="Bold">position #2</TextBlock>
+                    </StackPanel>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/icons860.png" Margin="0 0 15 0" />
+                        <TextBlock VerticalAlignment="Center" FontSize="16" FontWeight="Bold">position #2</TextBlock>
+                    </StackPanel>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/icons850.png" Margin="0 0 15 0" />
+                        <TextBlock VerticalAlignment="Center" FontSize="16" FontWeight="Bold">position #2</TextBlock>
+                    </StackPanel>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/icons8150.png" Margin="0 0 15 0" />
+                        <TextBlock VerticalAlignment="Center" FontSize="16" FontWeight="Bold">position #2</TextBlock>
+                    </StackPanel>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/icons860.png" Margin="0 0 15 0"/>
+                        <TextBlock VerticalAlignment="Center" FontSize="16" FontWeight="Bold">position #1</TextBlock>
+                    </StackPanel>
+                </ListBoxItem><ListBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/icons860.png" Margin="0 0 15 0" />
+                        <TextBlock VerticalAlignment="Center" FontSize="16" FontWeight="Bold">position #2</TextBlock>
+                    </StackPanel>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/icons850.png" Margin="0 0 15 0" />
+                        <TextBlock VerticalAlignment="Center" FontSize="16" FontWeight="Bold">position #2</TextBlock>
+                    </StackPanel>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/icons8150.png" Margin="0 0 15 0" />
+                        <TextBlock VerticalAlignment="Center" FontSize="16" FontWeight="Bold">position #2</TextBlock>
+                    </StackPanel>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/icons860.png" Margin="0 0 15 0"/>
+                        <TextBlock VerticalAlignment="Center" FontSize="16" FontWeight="Bold">position #1</TextBlock>
+                    </StackPanel>
+                </ListBoxItem><ListBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/icons860.png" Margin="0 0 15 0" />
+                        <TextBlock VerticalAlignment="Center" FontSize="16" FontWeight="Bold">position #2</TextBlock>
+                    </StackPanel>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/icons850.png" Margin="0 0 15 0" />
+                        <TextBlock VerticalAlignment="Center" FontSize="16" FontWeight="Bold">position #2</TextBlock>
+                    </StackPanel>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/icons8150.png" Margin="0 0 15 0" />
+                        <TextBlock VerticalAlignment="Center" FontSize="16" FontWeight="Bold">position #2</TextBlock>
+                    </StackPanel>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/icons860.png" Margin="0 0 15 0"/>
+                        <TextBlock VerticalAlignment="Center" FontSize="16" FontWeight="Bold">position #1</TextBlock>
+                    </StackPanel>
+                </ListBoxItem>
+            </ListBox>
+
+            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                <TextBlock x:Name="tb2" Text="select the position to display the information" FontSize="20"/>
+                <Image x:Name="imgSection1"/>
+            </StackPanel>
+
+        </Grid>
+    </Grid>
+</Page>
