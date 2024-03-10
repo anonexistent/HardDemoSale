@@ -22,6 +22,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="MaterialDesignColors" Version="3.0.0" />
+    <PackageReference Include="MaterialDesignThemes" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Resources\C-dvCRpTfHM.jpg" />
     <Resource Include="Resources\card_staff.jpg" />
     <Resource Include="Resources\icons850.png" />
