@@ -16,13 +16,21 @@ using System.Windows.Shapes;
 namespace DemoSale
 {
     /// <summary>
-    /// Логика взаимодействия для Page4demo.xaml
+    /// Логика взаимодействия для Page1.xaml
     /// </summary>
-    public partial class Page4demo : Page
+    public partial class LoginPage : Page
     {
-        public Page4demo()
+        public LoginPage()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ((Window)FrameClass.mainFrame.Parent).Height = 800;
+            ((Window)FrameClass.mainFrame.Parent).Width = 1200;
+
+            FrameClass.mainFrame.Navigate(new MainPage());
         }
     }
 }

@@ -12,7 +12,7 @@ namespace DemoSale
             InitializeComponent();
 
             FrameClass.mainFrame = fMain;
-            FrameClass.mainFrame.Navigate(new Page1());
+            FrameClass.mainFrame.Navigate(new LoginPage());
         }
     }
 }

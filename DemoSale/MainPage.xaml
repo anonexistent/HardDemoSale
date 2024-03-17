@@ -1,4 +1,4 @@
-﻿<Page x:Class="DemoSale.Page2"
+﻿<Page x:Class="DemoSale.MainPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -11,12 +11,12 @@
     <Grid>
         <StackPanel VerticalAlignment="Center">
             <StackPanel HorizontalAlignment="Center">
-                <Button Content="staff" FontSize="18" Margin="5" Click="Button_Click"/>
-                <Button Content="store" FontSize="18" Margin="5" Click="Button_Click_1"/>
-                <Button Content="vehicle park" FontSize="18" Margin="5" Click="Button_Click_2"/>
-                <Button Content="  admin panel  " FontSize="18" Margin="5" IsEnabled="False"/>
+                <Button Content="Гарантийный учет" FontSize="18" Margin="5" Click="Button_Click"/>
+                <Button Content="Отчет по продажам" FontSize="18" Margin="5" Click="Button_Click_1"/>
+                <Button Content="Отчет ООО ТПК" FontSize="18" Margin="5" Click="Button_Click_2"/>
+                <Button Content="ПКТ техника" FontSize="18" Margin="5" Click="Button_Click_3"/>
             </StackPanel>
         </StackPanel>
-        
+
     </Grid>
 </Page>

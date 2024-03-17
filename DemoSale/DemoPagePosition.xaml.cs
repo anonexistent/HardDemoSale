@@ -20,13 +20,13 @@ namespace DemoSale
     /// <summary>
     /// Логика взаимодействия для Page3.xaml
     /// </summary>
-    public partial class Page3 : Page
+    public partial class DemoPagePosition : Page
     {
         record Phone(string Title, string Company, long Price);
 
         List<string> forRandomImage;
 
-        public Page3(byte windowCode)
+        public DemoPagePosition(byte windowCode)
         {
             InitializeComponent();
 
@@ -71,7 +71,7 @@ namespace DemoSale
 
         private void btnAddNewPhone_Click(object sender, RoutedEventArgs e)
         {
-            FrameClass.mainFrame.Navigate(new Page4demo());
+            FrameClass.mainFrame.Navigate(new DemoPageForm());
         }
 
         private void lb1_SelectionChanged(object sender, SelectionChangedEventArgs e)

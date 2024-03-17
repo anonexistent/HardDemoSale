@@ -16,21 +16,13 @@ using System.Windows.Shapes;
 namespace DemoSale
 {
     /// <summary>
-    /// Логика взаимодействия для Page1.xaml
+    /// Логика взаимодействия для WarrantyRecordPage.xaml
     /// </summary>
-    public partial class Page1 : Page
+    public partial class WarrantyRecordPage : Page
     {
-        public Page1()
+        public WarrantyRecordPage()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            ((Window)FrameClass.mainFrame.Parent).Height = 800;
-            ((Window)FrameClass.mainFrame.Parent).Width = 1200;
-
-            FrameClass.mainFrame.Navigate(new Page2());
         }
     }
 }
