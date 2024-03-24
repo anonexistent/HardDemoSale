@@ -15,6 +15,7 @@
                 <Button IsEnabled="False" Content="Отчет по продажам" FontSize="18" Margin="5" Click="Button_Click_1"/>
                 <Button IsEnabled="False" Content="Отчет ООО ТПК" FontSize="18" Margin="5" Click="Button_Click_2"/>
                 <Button IsEnabled="False" Content="ПКТ техника" FontSize="18" Margin="5" Click="Button_Click_3"/>
+                <Button IsEnabled="False" Content="Всеобщее информирование" FontSize="18" Margin="5" Click="Button_Click_4"/>
             </StackPanel>
         </StackPanel>
 

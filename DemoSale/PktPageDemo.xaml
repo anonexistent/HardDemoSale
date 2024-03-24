@@ -1,0 +1,94 @@
+﻿<Page x:Class="DemoSale.PktPageDemo"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DemoSale"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PktPageDemo">
+    <ScrollViewer>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <StackPanel x:Name="spLabels" Style="{StaticResource ResourceKey=FirstStackPanelStyle}">
+
+                <TextBlock Text="Месяцо формления сделки, оплаты"/>
+                <TextBlock Text="Дата отгрузки"/>
+                <TextBlock Text="Дата поступления"/>
+                <TextBlock Text="Контрагент"/>
+                <TextBlock Text="Гр."/>
+                <TextBlock Text="Район"/>
+                <TextBlock Text="Менеджер"/>
+                <TextBlock Text="Вид техники"/>
+                <TextBlock Text="Наименование техники"/>
+                <TextBlock Text="Кол-во"/>
+                <TextBlock Text="Поставщик"/>
+                <TextBlock Text="Закуп"/>
+                <TextBlock Text="Оплата поставщику"/>
+                <TextBlock Text="Долг Поставщику"/>
+                <TextBlock Text="Срок оплаты"/>
+                <TextBlock Text="Спецификация, Д/с"/>
+                <TextBlock Text="Цена отдела продаж"/>
+                <TextBlock Text="Реализация"/>
+                <TextBlock Text="Поступление денежных средств"/>
+                <TextBlock Text="Долг Контрагента"/>
+                <TextBlock Text="Срок оплаты"/>
+                <TextBlock Text="Способ оплаты"/>
+                <TextBlock Text="Маржинальная прибыль"/>
+                <TextBlock Text="Транспортстороний без НДС"/>
+                <TextBlock Text="Транспортстороний с НДС"/>
+                <TextBlock Text="Погрузо-разгрузочные работы"/>
+                <TextBlock Text="КВ"/>
+                <TextBlock Text="Прочие"/>
+                <TextBlock Text="Видыдоп. работ"/>
+                <TextBlock Text="Срок поставки"/>
+                <TextBlock Text="К начислению"/>
+
+
+            </StackPanel>
+
+            <StackPanel x:Name="spTbs" Grid.Column="1" Style="{StaticResource FirstStackPanelStyle}">
+                <TextBox/>
+                <DatePicker/>
+                <TextBox/>
+                <TextBox/>
+                <TextBox/>
+                <TextBox/>
+                <TextBox/>
+                <TextBox/>
+                <TextBox/>
+                <TextBox/>
+                <TextBox/>
+                <TextBox/>
+                <TextBox/>
+                <TextBox/>
+                <TextBox/>
+                <TextBox/>
+                <TextBox/>
+                <TextBox/>
+                <TextBox/>
+                <TextBox/>
+                <TextBox/>
+                <TextBox/>
+                <TextBox/>
+                <TextBox/>
+                <TextBox/>
+                <TextBox/>
+                <TextBox/>
+                <TextBox/>
+                <TextBox/>
+            </StackPanel>
+
+        </Grid>
+    </ScrollViewer>
+
+</Page>
