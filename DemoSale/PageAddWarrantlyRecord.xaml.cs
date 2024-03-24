@@ -1,5 +1,4 @@
-﻿using DemoSale.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,24 +16,27 @@ using System.Windows.Shapes;
 namespace DemoSale
 {
     /// <summary>
-    /// Логика взаимодействия для Page1.xaml
+    /// Логика взаимодействия для PageAddWarrantlyRecord.xaml
     /// </summary>
-    public partial class LoginPage : Page
+    public partial class PageAddWarrantlyRecord : Page
     {
-        public LoginPage()
+        public PageAddWarrantlyRecord()
         {
             InitializeComponent();
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ((Window)FrameClass.mainFrame.Parent).Height = 800;
-            ((Window)FrameClass.mainFrame.Parent).Width = 1200;
+            var a = new MyClass(int.Parse( tb1.Text), tb2.Text, tb3.DisplayDate, tb4.Text);
+            WarrantyRecordPage.ooooooooooo.Add(a);
 
-            FrameClass.role = User.users[$"{tbLogin.Text}"];
+            ((Window)FrameClass.addFrame.Parent).Close();
+        }
 
-            FrameClass.mainFrame.Navigate(new MainPage());
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            ((Window)FrameClass.addFrame.Parent).Close();
+
         }
     }
 }

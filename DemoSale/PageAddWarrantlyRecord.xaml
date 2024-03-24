@@ -1,0 +1,44 @@
+﻿<Page x:Class="DemoSale.PageAddWarrantlyRecord"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DemoSale"
+      mc:Ignorable="d" 
+      d:DesignHeight="350" d:DesignWidth="600"
+      Title="PageAddWarrantlyRecord">
+
+    <Grid Background="Azure">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock HorizontalAlignment="Center" Margin="15" FontSize="24" Text='Добавление записи для " "' Grid.ColumnSpan="3"/>
+
+        <StackPanel Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="30">
+            <TextBlock Text="Номер:" FontSize="24"/>
+            <TextBlock Text="Опсиание:" FontSize="24" Margin="0 5 0 5"/>
+            <TextBlock Text="Дата:" FontSize="24"/>
+            <TextBlock Text="Дополниельно:" FontSize="24" Margin="0 5 0 5"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" VerticalAlignment="Center">
+            <TextBox x:Name="tb1"/>
+            <TextBox x:Name="tb2" Margin="0 5 0 5"/>
+            <DatePicker x:Name="tb3"/>
+            <TextBox x:Name="tb4" Margin="0 5 0 5"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" HorizontalAlignment="Center">
+            <Button Content="Добавить" Margin="25" FontSize="18" Click="Button_Click" Foreground="Black" Background="Aqua"/>
+            <Button Content="Отмена" Margin="25" FontSize="18" Click="Button_Click_1" Foreground="Black" Background="Aquamarine"/>
+        </StackPanel>
+
+    </Grid>
+</Page>

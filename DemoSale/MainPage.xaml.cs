@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System;
+using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace DemoSale
@@ -8,9 +10,46 @@ namespace DemoSale
     /// </summary>
     public partial class MainPage : Page
     {
+        UIElementCollection btns;
         public MainPage()
         {
             InitializeComponent();
+            Init();
+        }
+
+        private void Init()
+        {
+            btns = spMain.Children;
+
+            switch (FrameClass.role)
+            {
+                case 0:
+                    MakeVisibleSection("");
+                    break;
+
+                case 1:
+                    MakeVisibleSection("учет");
+                    break; 
+
+                case 2:
+
+                    break;
+
+                case 3:
+                    MakeVisibleSection("по");
+                    break;
+            }
+        }
+
+        void MakeVisibleSection(string name)
+        {
+            foreach (Button child in btns)
+            {
+                if (child.Content.ToString().ToLower().Contains(name))
+                {
+                    child.IsEnabled = true;
+                }
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -18,13 +57,13 @@ namespace DemoSale
             ////staff
             //FrameClass.mainFrame.Navigate(new DemoPagePosition(0));
 
-
+            FrameClass.mainFrame.Navigate(new WarrantyRecordPage());
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             ////store
-            FrameClass.mainFrame.Navigate(new DemoPagePosition(1));
+            //FrameClass.mainFrame.Navigate(new DemoPagePosition(1));
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
