@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Syncfusion.Windows.Shared;
 
 namespace DemoSale
 {
@@ -23,6 +24,11 @@ namespace DemoSale
         public PktPageDemo()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            FrameClass.mainFrame.Navigate(new PktPageDemoMain());
         }
     }
 }

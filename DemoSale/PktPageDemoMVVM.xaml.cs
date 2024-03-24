@@ -23,7 +23,7 @@ namespace DemoSale
     record TestClass(string propName, string propValue);
     public partial class PktPageDemoMVVM : Page
     {
-        List<TestClass> TextDescriptionCollection;
+        List<TestClass> textDescriptionCollection;
         public PktPageDemoMVVM()
         {
             InitializeComponent();
@@ -33,13 +33,18 @@ namespace DemoSale
 
         private void Init()
         {
-            TextDescriptionCollection = new List<TestClass>();
+            textDescriptionCollection = new List<TestClass>();
             var temp = typeof(DemoPkt).GetProperties().Select(x => x.Name).ToList();
             for (int i = 0; i < temp.Count-1; i++) 
             {
-                TextDescriptionCollection.Add(new TestClass(temp[i], string.Empty));
+                textDescriptionCollection.Add(new TestClass(temp[i], string.Empty));
             }
-            DataContext = this;
+            this.DataContext = this;
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            FrameClass.mainFrame.Navigate(new MainPage());
         }
     }
 }

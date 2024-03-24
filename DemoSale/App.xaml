@@ -14,30 +14,43 @@
             </ResourceDictionary.MergedDictionaries>
 
 
-            <Style TargetType="StackPanel" x:Key="FirstStackPanelStyle">
+            <Style x:Key="FirstStackPanelStyle">
                 <Style.Resources>
                     <Style TargetType="Button">
-                        <Setter Property="Background" Value="Green" />
+                        <Setter Property="Background" Value="BurlyWood" />
                     </Style>
                     <Style TargetType="TextBlock">
-                        
+                        <Setter Property="Height" Value="30"/>
                         <Setter Property="FontSize" Value="22" />
                         <Setter Property="TextAlignment" Value="Right" />
                         <Setter Property="Margin" Value="3" />
                     </Style>
                     <Style TargetType="TextBox">
-                        <Setter Property="MinHeight" Value="20"/>
+                        <Setter Property="Height" Value="30"/>
                         <Setter Property="FontSize" Value="22" />
                         <Setter Property="TextAlignment" Value="Justify" />
                         <Setter Property="Margin" Value="3" />
                     </Style>
+                    <Style TargetType="ComboBox">
+                        <Setter Property="Height" Value="30"/>
+                        <Setter Property="FontSize" Value="22" />
+                        <Setter Property="Margin" Value="3" />
+                    </Style>
                     <Style TargetType="DatePicker">
-                        <Setter Property="MinHeight" Value="20"/>
+                        <Setter Property="Height" Value="30"/>
                         <Setter Property="FontSize" Value="22" />
                         <!--<Setter Property="TextAlignment" Value="Justify" />-->
                         <Setter Property="Margin" Value="3" />
                     </Style>
+                    <Style TargetType="Separator">
+                        <Setter Property="Margin" Value="5 0 5 0"/>
+                    </Style>
                 </Style.Resources>
+            </Style>
+            <Style x:Key="SecondStackPanelStyle" TargetType="Control">
+                <Setter Property="Height" Value="30"/>
+                <Setter Property="FontSize" Value="22" />
+                <Setter Property="Margin" Value="3" />
             </Style>
         </ResourceDictionary>
     </Application.Resources>

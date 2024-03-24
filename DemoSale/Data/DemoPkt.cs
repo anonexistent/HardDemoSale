@@ -6,7 +6,7 @@ namespace DemoSale.Data
     {
 		//  !!!temp class!!!
 
-		private byte _monthDeal;
+		private int _monthDeal;
 		private DateOnly _dateShipment;
         private DateOnly _dateEntry;
 		private string _seller;
@@ -14,7 +14,7 @@ namespace DemoSale.Data
 		private string _manager;
 		private string _positionType;
 		private string _positionName;
-		private byte _count;
+		private int _count;
 		private string _dealer;
 		//	закуп
 		private double _purchaseMoney;
@@ -42,8 +42,8 @@ namespace DemoSale.Data
 		private DateOnly _deliveryDate;
 		private double _forCalculation;
 
-        public DemoPkt(byte monthDeal, DateOnly dateShipment, DateOnly dateEntry, string seller, 
-            string region, string manager, string positionType, string positionName, byte count, 
+        public DemoPkt(int monthDeal, DateOnly dateShipment, DateOnly dateEntry, string seller, 
+            string region, string manager, string positionType, string positionName, int count, 
             string dealer, double purchaseMoney, double paidMoney, double deptMoney, DateOnly paymentTerm, 
             string specification, double salesDepartmentMoney, double realization, double arrivedMoney, 
             double realizationDept, DateOnly paymentTermRealization, string paymentMethod, 
@@ -209,7 +209,7 @@ namespace DemoSale.Data
         }
 
 
-        public byte count
+        public int count
         {
             get { return _count; }
             set
@@ -262,7 +262,7 @@ namespace DemoSale.Data
             set { _dateShipment = value; }
         }
 
-        public byte monthDeal
+        public int monthDeal
         {
             get { return _monthDeal; }
             set
