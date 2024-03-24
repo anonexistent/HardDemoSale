@@ -23,8 +23,13 @@ namespace DemoSale
     /// <summary>
     /// Логика взаимодействия для PktPageDemoMain.xaml
     /// </summary>
+    
+    record ShortlyInfo(string value1, string value2, string laue3, string value4);
     public partial class PktPageDemoMain : Page
     {
+        List<DemoPkt> a = new List<DemoPkt>();
+        List<ShortlyInfo> b = new List<ShortlyInfo>();
+
         public PktPageDemoMain()
         {
             InitializeComponent();
@@ -58,9 +63,28 @@ namespace DemoSale
             string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "testData.json");
             string s = new StreamReader(path).ReadToEnd();
 
-            List<DemoPkt> a = JsonConvert.DeserializeObject<List<DemoPkt>>(s);
+            a = JsonConvert.DeserializeObject<List<DemoPkt>>(s);
 
             dgMain.ItemsSource = a;
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            if ((bool)((CheckBox)sender).IsChecked)
+            {
+                foreach (DemoPkt item in a)
+                {
+                    ShortlyInfo temp = new ShortlyInfo(item.positionType, item.positionName, item.deptMoney.ToString(), item.realization.ToString());
+                    b.Add(temp);
+                }
+
+                dgMain.ItemsSource = b;
+            }
+            else
+            {
+                dgMain.ItemsSource = a;
+            }
+
         }
     }
 }

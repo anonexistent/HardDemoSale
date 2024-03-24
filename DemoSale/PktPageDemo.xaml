@@ -84,13 +84,17 @@
                     <TextBox>новый...</TextBox>
                 </ComboBox>
                 <TextBox HorizontalAlignment="Center" Padding="20 0 20 0"/>
-                <TextBox/>
-                <Separator Foreground="Black"/>
+                <ComboBox>
+                    <ComboBoxItem IsSelected="True">dealer0</ComboBoxItem>
+                    <ComboBoxItem>dealer1</ComboBoxItem>
+                    <ComboBoxItem>dealer2</ComboBoxItem>
+                    <ComboBoxItem>dealer3</ComboBoxItem>
+                </ComboBox>                <Separator Foreground="Black"/>
 
                 <syncfusion:CurrencyTextBox Value="0.00" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
                 <syncfusion:CurrencyTextBox Value="0.00" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
                 <syncfusion:CurrencyTextBox Value="0.00" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
-                <TextBox/>
+                <DatePicker/>
                 <ComboBox>
                     <ComboBoxItem Content="spec0"/>
                     <ComboBoxItem Content="spec1" IsSelected="True"/>

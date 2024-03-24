@@ -40,5 +40,7 @@
             </DataGrid.Effect>
         </DataGrid>
 
+        <CheckBox Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="15" Content="Кратко" Checked="CheckBox_Checked"/>
+
     </Grid>
 </Page>
