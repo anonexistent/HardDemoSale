@@ -54,7 +54,7 @@ namespace DemoSale
         {
             if (currentPosition.dealer.Contains("Татарстан"))
             {
-                MessageBox.Show("tatar is detected!!!!!!!!!");
+                //MessageBox.Show("tatar is detected!!!!!!!!!");
                 TatarstanAnnualReport temp = new() { id = -1, count = currentPosition.count, dateShipment = currentPosition.dateShipment,
                 paymentMethod = currentPosition.paymentMethod, phone = "н/д", positionName = currentPosition.positionName,
                 realization = currentPosition.realization, region = currentPosition.region, seller = currentPosition.seller, 
@@ -64,6 +64,7 @@ namespace DemoSale
 
             MessageBox.Show("Запись создана");
             PktPageDemoMain.a.Add(currentPosition);
+            PktPageDemoMain.UpdateJson();
             FrameClass.mainFrame.GoBack();
         }
     }

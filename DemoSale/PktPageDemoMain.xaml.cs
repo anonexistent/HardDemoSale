@@ -32,7 +32,7 @@ namespace DemoSale
         public static ObservableCollection<DemoPkt> a
         {
             get { return _a; }
-            set { _a = value; }
+            set { _a = value; UpdateJson(); }
         }
 
         List<ShortlyInfo> b = new List<ShortlyInfo>();
@@ -59,18 +59,20 @@ namespace DemoSale
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            //var schema = JsonSchema.FromType<List<DemoPkt>>();
-            //var schemaJson = schema.ToJson();
+            var schema = JsonSchema.FromType<List<DemoPkt>>();
+            var schemaJson = schema.ToJson();
 
-            //FileStream temp = new FileStream("schema.json", FileMode.OpenOrCreate);
-            //StreamWriter tempWriter = new StreamWriter(temp);
-            //tempWriter.Write(schemaJson);
-            //tempWriter.Close();
+            FileStream temp = new FileStream("schema.json", FileMode.OpenOrCreate);
+            StreamWriter tempWriter = new StreamWriter(temp);
+            tempWriter.Write(schemaJson);
+            tempWriter.Close();
 
-            //string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "testData.json");
-            //string s = new StreamReader(path).ReadToEnd();
+            string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "testData.json");
+            var reader = new StreamReader(path);
+            string s = reader.ReadToEnd();
+            reader.Close();
 
-            //a = JsonConvert.DeserializeObject<List<DemoPkt>>(s);
+            a = JsonConvert.DeserializeObject<ObservableCollection<DemoPkt>>(s);
 
             dgMain.ItemsSource = a;
 
@@ -97,20 +99,30 @@ namespace DemoSale
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            var schema = JsonSchema.FromType<List<DemoPkt>>();
-            var schemaJson = schema.ToJson();
+            //var schema = JsonSchema.FromType<List<DemoPkt>>();
+            //var schemaJson = schema.ToJson();
+            //
+            //FileStream temp = new FileStream("schema.json", FileMode.OpenOrCreate);
+            //StreamWriter tempWriter = new StreamWriter(temp);
+            //tempWriter.Write(schemaJson);
+            //tempWriter.Close();
+            //
+            //string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "testData.json");
+            //string s = new StreamReader(path).ReadToEnd();
+            //
+            //a = JsonConvert.DeserializeObject<ObservableCollection<DemoPkt>>(s);
 
-            FileStream temp = new FileStream("schema.json", FileMode.OpenOrCreate);
-            StreamWriter tempWriter = new StreamWriter(temp);
-            tempWriter.Write(schemaJson);
-            tempWriter.Close();
+            //dgMain.ItemsSource = a;
+        }
 
+        public static void UpdateJson()
+        {
             string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "testData.json");
-            string s = new StreamReader(path).ReadToEnd();
+            string newJson = JsonConvert.SerializeObject(a, Formatting.Indented);
+            var x = new StreamWriter(path);
+            x.Write(newJson);
+            x.Close();
 
-            a = JsonConvert.DeserializeObject<ObservableCollection<DemoPkt>>(s);
-
-            dgMain.ItemsSource = a;
         }
     }
 }
