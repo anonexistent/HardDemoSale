@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DemoSale.Data;
+using DemoSale.DataBaseCore;
 using Syncfusion.Windows.Shared;
 
 namespace DemoSale
@@ -22,6 +23,7 @@ namespace DemoSale
     /// </summary>
     public partial class PktPageDemo : Page
     {
+        public ApplicationContext db;
         public DemoPkt currentPosition = new();
 
         public PktPageDemo()
@@ -50,7 +52,19 @@ namespace DemoSale
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            if (currentPosition.dealer.Contains("Татарстан"))
+            {
+                MessageBox.Show("tatar is detected!!!!!!!!!");
+                TatarstanAnnualReport temp = new() { id = -1, count = currentPosition.count, dateShipment = currentPosition.dateShipment,
+                paymentMethod = currentPosition.paymentMethod, phone = "н/д", positionName = currentPosition.positionName,
+                realization = currentPosition.realization, region = currentPosition.region, seller = currentPosition.seller, 
+                    sellerAgent = currentPosition.sellerAgent};
+                TatarstanReportPage.b.Add(temp);
+            }
 
+            MessageBox.Show("Запись создана");
+            PktPageDemoMain.a.Add(currentPosition);
+            FrameClass.mainFrame.GoBack();
         }
     }
 }

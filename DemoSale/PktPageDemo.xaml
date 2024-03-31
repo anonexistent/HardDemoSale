@@ -86,8 +86,9 @@
                     <TextBox>новый...</TextBox>-->
                 </ComboBox>
                 <TextBox HorizontalAlignment="Center" Padding="20 0 20 0"/>
-                
-                <ComboBox x:Name="cbDealer">
+
+                <ComboBox x:Name="cbDealer" Text="{Binding dealer, Mode=TwoWay}" ItemsSource="{Binding db.Dealer, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:PktPageDemo}}}" >
+                    
                 </ComboBox>                
                 
                 <Separator Foreground="Black"/>
@@ -125,7 +126,7 @@
                 <Button Content="Добавить" FontSize="26" Margin="25" Click="Button_Click"/>
             </StackPanel>
 
-            <Button Content="↩" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10" Background="Black" Foreground="White" Click="Button_Click_2"/>
+            <Button Content="↩" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20" Margin="50" Background="Black" Foreground="White" Click="Button_Click_2"/>
                         
         </Grid>
     </ScrollViewer>

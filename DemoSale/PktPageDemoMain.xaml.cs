@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using NJsonSchema;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -27,7 +28,13 @@ namespace DemoSale
     record ShortlyInfo(string value1, string value2, string laue3, string value4);
     public partial class PktPageDemoMain : Page
     {
-        List<DemoPkt> a = new List<DemoPkt>();
+        private static ObservableCollection<DemoPkt> _a;
+        public static ObservableCollection<DemoPkt> a
+        {
+            get { return _a; }
+            set { _a = value; }
+        }
+
         List<ShortlyInfo> b = new List<ShortlyInfo>();
 
         public PktPageDemoMain()
@@ -52,20 +59,21 @@ namespace DemoSale
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            var schema = JsonSchema.FromType<List<DemoPkt>>();
-            var schemaJson = schema.ToJson();
+            //var schema = JsonSchema.FromType<List<DemoPkt>>();
+            //var schemaJson = schema.ToJson();
 
-            FileStream temp = new FileStream("schema.json", FileMode.OpenOrCreate);
-            StreamWriter tempWriter = new StreamWriter(temp);
-            tempWriter.Write(schemaJson);
-            tempWriter.Close();
+            //FileStream temp = new FileStream("schema.json", FileMode.OpenOrCreate);
+            //StreamWriter tempWriter = new StreamWriter(temp);
+            //tempWriter.Write(schemaJson);
+            //tempWriter.Close();
 
-            string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "testData.json");
-            string s = new StreamReader(path).ReadToEnd();
+            //string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "testData.json");
+            //string s = new StreamReader(path).ReadToEnd();
 
-            a = JsonConvert.DeserializeObject<List<DemoPkt>>(s);
+            //a = JsonConvert.DeserializeObject<List<DemoPkt>>(s);
 
             dgMain.ItemsSource = a;
+
         }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
@@ -85,6 +93,24 @@ namespace DemoSale
                 dgMain.ItemsSource = a;
             }
 
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            var schema = JsonSchema.FromType<List<DemoPkt>>();
+            var schemaJson = schema.ToJson();
+
+            FileStream temp = new FileStream("schema.json", FileMode.OpenOrCreate);
+            StreamWriter tempWriter = new StreamWriter(temp);
+            tempWriter.Write(schemaJson);
+            tempWriter.Close();
+
+            string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "testData.json");
+            string s = new StreamReader(path).ReadToEnd();
+
+            a = JsonConvert.DeserializeObject<ObservableCollection<DemoPkt>>(s);
+
+            //dgMain.ItemsSource = a;
         }
     }
 }

@@ -16,7 +16,9 @@ namespace DemoSale.Data
         //  дата поступления
         private DateOnly _dateEntry = new DateOnly(2020, 1, 1);
 		private string _seller = "н/д";
-		private string _region = "н/д";
+        private string _sellerAgent;
+
+        private string _region = "н/д";
 		private string _manager = "н/д";
 		private string _positionType = "н/д";
 		private string _positionName = "н/д";
@@ -56,7 +58,7 @@ namespace DemoSale.Data
             
         }
 
-        public DemoPkt(int monthDeal, DateOnly dateShipment, DateOnly dateEntry, string seller,
+        public DemoPkt(int monthDeal, DateOnly dateShipment, DateOnly dateEntry, string seller, string sellerAgent,
             string region, string manager, string positionType, string positionName, int count,
             string dealer, double purchaseMoney, double paidMoney, double deptMoney, DateOnly paymentTerm,
             string specification, double salesDepartmentMoney, double realization, double arrivedMoney,
@@ -68,6 +70,7 @@ namespace DemoSale.Data
             this.dateShipment = dateShipment;
             this.dateEntry = dateEntry;
             this.seller = seller;
+            this.sellerAgent = sellerAgent;
             this.region = region;
             this.manager = manager;
             this.positionType = positionType;
@@ -258,6 +261,11 @@ namespace DemoSale.Data
         {
             get { return _region; }
             set { _region = value; }
+        }
+        public string sellerAgent
+        {
+            get { return _sellerAgent; }
+            set { _sellerAgent = value; }
         }
 
         public string seller

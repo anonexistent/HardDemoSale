@@ -9,7 +9,7 @@
       Title="PktPageDemoMVVM">
 
     <Grid>
-        <Button Content="↩" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10" Background="Black" Foreground="White" Click="Button_Click_2"/>
+        <Button Content="↩" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20" Margin="10" Background="Black" Foreground="White" Click="Button_Click_2"/>
 
 
         <ItemsControl ItemsSource="{Binding textDescriptionCollection}">

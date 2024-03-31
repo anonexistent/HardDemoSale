@@ -11,6 +11,7 @@ namespace DemoSale.DataBaseCore
     public class ApplicationContext : DbContext
     {
         public DbSet<Dealer> Dealer { get; set; }
+        public DbSet<PositionType> PositionType { get; set; }
 
         public ApplicationContext()
         {

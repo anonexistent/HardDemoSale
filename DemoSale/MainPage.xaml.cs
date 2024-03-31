@@ -70,6 +70,7 @@ namespace DemoSale
         {
             ////vehicle
             //FrameClass.mainFrame.Navigate(new DemoPagePosition(2));
+            FrameClass.mainFrame.Navigate(new TatarstanReportPage());
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
