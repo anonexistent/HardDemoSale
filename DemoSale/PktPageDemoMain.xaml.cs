@@ -110,7 +110,7 @@ namespace DemoSale
 
             a = JsonConvert.DeserializeObject<ObservableCollection<DemoPkt>>(s);
 
-            //dgMain.ItemsSource = a;
+            dgMain.ItemsSource = a;
         }
     }
 }
