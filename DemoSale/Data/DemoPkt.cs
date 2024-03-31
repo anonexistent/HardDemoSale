@@ -1,35 +1,42 @@
-﻿using System;
+﻿using Syncfusion.Windows.Shared;
+using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 
 namespace DemoSale.Data
 {
-    internal class DemoPkt
+    public class DemoPkt
     {
 		//  !!!temp class!!!
 
 		private int _monthDeal;
-		private DateOnly _dateShipment;
-        private DateOnly _dateEntry;
-		private string _seller;
-		private string _region;
-		private string _manager;
-		private string _positionType;
-		private string _positionName;
+        //  дата отгрузки
+        private DateOnly _dateShipment = new DateOnly(2020,1,1);
+        //  дата поступления
+        private DateOnly _dateEntry = new DateOnly(2020, 1, 1);
+		private string _seller = "н/д";
+		private string _region = "н/д";
+		private string _manager = "н/д";
+		private string _positionType = "н/д";
+		private string _positionName = "н/д";
 		private int _count;
-		private string _dealer;
+        //  поставщик
+		private string _dealer = "н/д";
 		//	закуп
 		private double _purchaseMoney;
 		//	оплачено
 		private double _paidMoney;
 		//	долг
 		private double _deptMoney;
-		private DateOnly _paymentTerm;
-		private string _specification;
+		private DateOnly _paymentTerm = new DateOnly(2020, 1, 1);
+		private string _specification = "н/д";
 		private double _salesDepartmentMoney;
 		private double _realization;
 		private double _arrivedMoney;
 		private double _realizationDept;
-		private DateOnly _paymentTermRealization;
-		private string _paymentMethod;
+		private DateOnly _paymentTermRealization = new DateOnly(2020, 1, 1);
+		private string _paymentMethod = "н/д";
 		private double _marginalProfit;
 		private double _transportOther;
 		private double _transportOtherNds;
@@ -38,16 +45,23 @@ namespace DemoSale.Data
 		private double _kvMoney;
 		//	прочие
 		private double _otherMoney;
-		private string _dopPositionDescription;
-		private DateOnly _deliveryDate;
+		private string _dopPositionDescription = "н/д";
+		private DateOnly _deliveryDate = new DateOnly(2020, 1, 1);
 		private double _forCalculation;
 
-        public DemoPkt(int monthDeal, DateOnly dateShipment, DateOnly dateEntry, string seller, 
-            string region, string manager, string positionType, string positionName, int count, 
-            string dealer, double purchaseMoney, double paidMoney, double deptMoney, DateOnly paymentTerm, 
-            string specification, double salesDepartmentMoney, double realization, double arrivedMoney, 
-            double realizationDept, DateOnly paymentTermRealization, string paymentMethod, 
-            double marginalProfit, double transportOther, double transportOtherNds, double loadingUnloading, 
+        #region ctors
+
+        public DemoPkt()
+        {
+            
+        }
+
+        public DemoPkt(int monthDeal, DateOnly dateShipment, DateOnly dateEntry, string seller,
+            string region, string manager, string positionType, string positionName, int count,
+            string dealer, double purchaseMoney, double paidMoney, double deptMoney, DateOnly paymentTerm,
+            string specification, double salesDepartmentMoney, double realization, double arrivedMoney,
+            double realizationDept, DateOnly paymentTermRealization, string paymentMethod,
+            double marginalProfit, double transportOther, double transportOtherNds, double loadingUnloading,
             double kvMoney, double otherMoney, string dopPositionDescription, DateOnly deliveryDate, double forCalculation)
         {
             this.monthDeal = monthDeal;
@@ -81,6 +95,8 @@ namespace DemoSale.Data
             this.deliveryDate = deliveryDate;
             this.forCalculation = forCalculation;
         }
+
+        #endregion
 
         #region auto props
 
@@ -273,6 +289,7 @@ namespace DemoSale.Data
         }
 
         #endregion
-                
+        
+
     }
 }

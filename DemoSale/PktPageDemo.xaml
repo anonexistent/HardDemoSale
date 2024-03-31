@@ -61,35 +61,36 @@
 
             </StackPanel>
 
-            <StackPanel x:Name="spTbs" Grid.Column="1" Style="{StaticResource FirstStackPanelStyle}">
-                <TextBox HorizontalAlignment="Center" Padding="20 0 20 0"/>
-                <DatePicker/>
-                <DatePicker/>
-                <TextBox/>
-                <TextBox/>
-                <TextBox/>
-                <TextBox/>
+            <StackPanel x:Name="spTbs" Grid.Column="1" Style="{StaticResource FirstStackPanelStyle}" 
+                        DataContext="{Binding currentPosition, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:PktPageDemo}}}">
+                <TextBox HorizontalAlignment="Center" Padding="20 0 20 0" Text="{Binding Path=monthDeal}"/>
+                <DatePicker Text="{Binding Path=dateShipment}"/>
+                <DatePicker Text="{Binding Path=dateEntry}"/>
+                <TextBox Text="{Binding Path=seller}"/>
+                <TextBox Text="" IsEnabled="False"/>
+                <TextBox Text="{Binding Path=region}"/>
+                <TextBox Text="{Binding Path=manager}"/>
                 <Separator Foreground="Black"/>
                 <ComboBox>
+
                     <ComboBoxItem Content="element0"/>
                     <ComboBoxItem Content="element1" IsSelected="True"/>
                     <ComboBoxItem Content="element2"/>
                     <ComboBoxItem Content="element3"/>
                 </ComboBox>
-                <ComboBox>
-                    <ComboBoxItem>element0</ComboBoxItem>
+                <ComboBox IsEditable="True">
+                    <!--<ComboBoxItem>element0</ComboBoxItem>
                     <ComboBoxItem>element1</ComboBoxItem>
                     <ComboBoxItem>element2</ComboBoxItem>
                     <ComboBoxItem>element3</ComboBoxItem>
-                    <TextBox>новый...</TextBox>
+                    <TextBox>новый...</TextBox>-->
                 </ComboBox>
                 <TextBox HorizontalAlignment="Center" Padding="20 0 20 0"/>
-                <ComboBox>
-                    <ComboBoxItem IsSelected="True">dealer0</ComboBoxItem>
-                    <ComboBoxItem>dealer1</ComboBoxItem>
-                    <ComboBoxItem>dealer2</ComboBoxItem>
-                    <ComboBoxItem>dealer3</ComboBoxItem>
-                </ComboBox>                <Separator Foreground="Black"/>
+                
+                <ComboBox x:Name="cbDealer">
+                </ComboBox>                
+                
+                <Separator Foreground="Black"/>
 
                 <syncfusion:CurrencyTextBox Value="0.00" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
                 <syncfusion:CurrencyTextBox Value="0.00" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
@@ -121,7 +122,7 @@
                 <DatePicker/>
                 <syncfusion:CurrencyTextBox Value="0.00" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
 
-                <Button Content="Добавить" FontSize="26" Margin="25"/>
+                <Button Content="Добавить" FontSize="26" Margin="25" Click="Button_Click"/>
             </StackPanel>
 
             <Button Content="↩" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10" Background="Black" Foreground="White" Click="Button_Click_2"/>

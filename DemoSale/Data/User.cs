@@ -23,7 +23,7 @@ namespace DemoSale.Data
 
 		private static void UpdateUsers()
 		{
-			users = new Dictionary<string, int>() { { "service_manager", 1 },{ "main", 0 },{ "accountant", 3 },{ "department_head", 2 } };
+			users = new Dictionary<string, int>() { { "Менеджер сервиса", 1 },{ "Директор", 0 },{ "Бухгалтер", 3 },{ "Начальник отдела", 2 } };
 
         }
     }

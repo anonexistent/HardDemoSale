@@ -73,14 +73,15 @@ namespace DemoSale
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
-        {
+        {            
+            //FrameClass.mainFrame.Navigate(new PktPageDemoMVVM());
+            FrameClass.mainFrame.Navigate(new PktPageDemoMain());
 
         }
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
-            FrameClass.mainFrame.Navigate(new PktPageDemoMain());
-            //FrameClass.mainFrame.Navigate(new PktPageDemoMVVM());
+            
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)

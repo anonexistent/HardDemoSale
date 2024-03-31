@@ -1,4 +1,5 @@
 ﻿using DemoSale.Data;
+using DemoSale.DataBaseCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +22,19 @@ namespace DemoSale
     /// </summary>
     public partial class LoginPage : Page
     {
+        ApplicationContext db = new();
+
         public LoginPage()
         {
             InitializeComponent();
+
+            //MessageBox.Show(db.Dealer.ToList().Count.ToString());
+
+            InitApplication();
+        }
+
+        private void InitApplication()
+        {
 
         }
 

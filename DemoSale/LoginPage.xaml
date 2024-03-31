@@ -6,11 +6,19 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:DemoSale"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="500"
-      Title="Page1">
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Login page">
 
     <Grid>
-        <Image x:Name="img1" Source="/Resources/kartinki-pshenichnoe-pole-49.jpg" Stretch="Fill">
+        <Image x:Name="img1" Stretch="Fill" Source="/Resources/Clouds.jpg" RenderTransformOrigin="0.5,0.5">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
             <Image.Effect>
                 <BlurEffect KernelType="Gaussian" Radius="10" />
             </Image.Effect>
@@ -18,11 +26,17 @@
 
         <StackPanel Margin="5" VerticalAlignment="Center">
             <StackPanel Margin="15">
-                <TextBlock Text="Логин:" Foreground="White" FontSize="20" FontWeight="Black" Margin="5"/>
-                <TextBox x:Name="tbLogin"/>
+                <TextBlock Text="Логин:" Foreground="White" FontSize="32" FontWeight="Black" Margin="20 10 10 10"/>
+                <!--<TextBox x:Name="tbLogin"/>-->
+                <ComboBox x:Name="tbLogin" FontSize="22" Margin="5">
+                    <ComboBoxItem Content="Менеджер сервиса"/>
+                    <ComboBoxItem Content="Директор" IsSelected="True"/>
+                    <ComboBoxItem Content="Бухгалтер"/>
+                    <ComboBoxItem Content="Начальник отдела"/>
+                </ComboBox>
                 <!--<TextBlock Text="password:" Foreground="White" FontSize="20" FontWeight="Black" Margin="5"/>
                 <TextBox/>-->
-                <Button Content="войти" HorizontalAlignment="Center" Margin="5" FontSize="18" Click="Button_Click" IsDefault="True"/>
+                <Button Content="войти" HorizontalAlignment="Center" Margin="10 20 10 10" FontSize="26" Click="Button_Click" IsDefault="True"/>
             </StackPanel>
         </StackPanel>
     </Grid>

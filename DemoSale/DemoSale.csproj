@@ -10,6 +10,7 @@
   <ItemGroup>
     <None Remove="Resources\C-dvCRpTfHM.jpg" />
     <None Remove="Resources\card_staff.jpg" />
+    <None Remove="Resources\Clouds.jpg" />
     <None Remove="Resources\favicon.ico" />
     <None Remove="Resources\icons8150.png" />
     <None Remove="Resources\icons850.png" />
@@ -24,6 +25,7 @@
 
   <ItemGroup>
     <PackageReference Include="MahApps.Metro" Version="2.4.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.17" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="NJsonSchema" Version="11.0.0" />
     <PackageReference Include="Syncfusion.Shared.WPF" Version="25.1.35" />
@@ -32,6 +34,7 @@
   <ItemGroup>
     <Resource Include="Resources\C-dvCRpTfHM.jpg" />
     <Resource Include="Resources\card_staff.jpg" />
+    <Resource Include="Resources\Clouds.jpg" />
     <Resource Include="Resources\favicon.ico" />
     <Resource Include="Resources\icons850.png" />
     <Resource Include="Resources\icons8150.png" />
