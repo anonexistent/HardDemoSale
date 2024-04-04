@@ -1,16 +1,18 @@
 ﻿using Syncfusion.Windows.Shared;
 using System;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 namespace DemoSale.Data
 {
-    public class DemoPkt
+    public class Pkt
     {
-		//  !!!temp class!!!
+        [Key]
+        private uint _pktId;
 
-		private int _monthDeal;
+        private int _monthDeal;
         //  дата отгрузки
         private DateOnly _dateShipment = new DateOnly(2020,1,1);
         //  дата поступления
@@ -53,12 +55,12 @@ namespace DemoSale.Data
 
         #region ctors
 
-        public DemoPkt()
+        public Pkt()
         {
             
         }
 
-        public DemoPkt(int monthDeal, DateOnly dateShipment, DateOnly dateEntry, string seller, string sellerAgent,
+        public Pkt(int monthDeal, DateOnly dateShipment, DateOnly dateEntry, string seller, string sellerAgent,
             string region, string manager, string positionType, string positionName, int count,
             string dealer, double purchaseMoney, double paidMoney, double deptMoney, DateOnly paymentTerm,
             string specification, double salesDepartmentMoney, double realization, double arrivedMoney,
@@ -154,6 +156,10 @@ namespace DemoSale.Data
 
         public double marginalProfit
         {
+            set 
+            {
+
+            }
             get { return _realization - _purchaseMoney - transportOther - _transportOtherNds - _loadingUnloading - _kvMoney - _otherMoney; }
         }
 
@@ -206,6 +212,11 @@ namespace DemoSale.Data
 
         public double deptMoney
         {
+            set 
+            { 
+                //if (value == _purchaseMoney - _paidMoney) _deptMoney = _purchaseMoney - _paidMoney;
+                //else _deptMoney=-1;
+            }
             get { return _purchaseMoney - _paidMoney; }
         }
 
@@ -296,8 +307,13 @@ namespace DemoSale.Data
             }
         }
 
+        public uint pktId
+        {
+            get { return _pktId; }
+            set { _pktId = value; }
+        }
+
         #endregion
-        
 
     }
 }

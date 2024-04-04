@@ -28,8 +28,8 @@ namespace DemoSale
     record ShortlyInfo(string value1, string value2, string laue3, string value4);
     public partial class PktPageDemoMain : Page
     {
-        private static ObservableCollection<DemoPkt> _a = new();
-        public static ObservableCollection<DemoPkt> a
+        private static ObservableCollection<Pkt> _a = new();
+        public static ObservableCollection<Pkt> a
         {
             get { return _a; }
             set { _a = value; UpdateJson(); }
@@ -44,7 +44,8 @@ namespace DemoSale
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            FrameClass.mainFrame.Navigate(new PktPageDemo());
+            FrameClass.mainFrame.Navigate(new PktPageDemo());            
+            //FrameClass.mainFrame.Navigate(new PktPage());
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -59,7 +60,7 @@ namespace DemoSale
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            var schema = JsonSchema.FromType<List<DemoPkt>>();
+            var schema = JsonSchema.FromType<List<Pkt>>();
             var schemaJson = schema.ToJson();
 
             FileStream temp = new FileStream("schema.json", FileMode.OpenOrCreate);
@@ -72,7 +73,7 @@ namespace DemoSale
             string s = reader.ReadToEnd();
             reader.Close();
 
-            a = JsonConvert.DeserializeObject<ObservableCollection<DemoPkt>>(s);
+            a = JsonConvert.DeserializeObject<ObservableCollection<Pkt>>(s);
 
             dgMain.ItemsSource = a;
 
@@ -82,7 +83,7 @@ namespace DemoSale
         {
             if ((bool)((CheckBox)sender).IsChecked)
             {
-                foreach (DemoPkt item in a)
+                foreach (Pkt item in a)
                 {
                     ShortlyInfo temp = new ShortlyInfo(item.positionType, item.positionName, item.deptMoney.ToString(), item.realization.ToString());
                     b.Add(temp);
@@ -99,7 +100,7 @@ namespace DemoSale
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            //var schema = JsonSchema.FromType<List<DemoPkt>>();
+            //var schema = JsonSchema.FromType<List<Pkt>>();
             //var schemaJson = schema.ToJson();
             //
             //FileStream temp = new FileStream("schema.json", FileMode.OpenOrCreate);
@@ -110,7 +111,7 @@ namespace DemoSale
             //string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "testData.json");
             //string s = new StreamReader(path).ReadToEnd();
             //
-            //a = JsonConvert.DeserializeObject<ObservableCollection<DemoPkt>>(s);
+            //a = JsonConvert.DeserializeObject<ObservableCollection<Pkt>>(s);
 
             //dgMain.ItemsSource = a;
         }

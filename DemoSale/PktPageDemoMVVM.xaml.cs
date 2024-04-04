@@ -34,7 +34,7 @@ namespace DemoSale
         private void Init()
         {
             textDescriptionCollection = new List<TestClass>();
-            var temp = typeof(DemoPkt).GetProperties().Select(x => x.Name).ToList();
+            var temp = typeof(Pkt).GetProperties().Select(x => x.Name).ToList();
             for (int i = 0; i < temp.Count-1; i++) 
             {
                 textDescriptionCollection.Add(new TestClass(temp[i], string.Empty));

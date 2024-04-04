@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DemoSale.Data;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ namespace DemoSale.DataBaseCore
 {
     public class ApplicationContext : DbContext
     {
+        public DbSet<Pkt> Pkt { get; set; }
         public DbSet<Dealer> Dealer { get; set; }
         public DbSet<PositionType> PositionType { get; set; }
 

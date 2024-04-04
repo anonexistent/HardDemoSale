@@ -1,29 +1,18 @@
-﻿using System;
+﻿using DemoSale.Data;
+using DemoSale.DataBaseCore;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using DemoSale.Data;
-using DemoSale.DataBaseCore;
-using Syncfusion.Windows.Shared;
+using System.Windows;
 
-namespace DemoSale
+namespace DemoSale.UI
 {
-    /// <summary>
-    /// Логика взаимодействия для PktPageDemo.xaml
-    /// </summary>
-    public partial class PktPageDemo : Page
+    public class PktViewModel
     {
         public class PktData
         {
@@ -74,34 +63,18 @@ namespace DemoSale
             }
         }
 
-        private Pkt _currentPosition = new();
+        public Data.Pkt currentPosition = new();
 
-        public Pkt currentPosition
-        {
-            get { return _currentPosition; }
-            set { _currentPosition = value; }
-        }
-
-
-        public ApplicationContext db;
-
-        public PktPageDemo()
-        {
-            InitializeComponent();
-
-            InitItems();
-
-            //spTbs.DataContext = currentPosition;
-        }
+        public ApplicationContext db = new();
 
         private void InitItems()
         {
-            var ss = FrameClass.db.Dealer.ToList();
+            //var ss = FrameClass.db.Dealer.ToList();
 
-            for (int i=0; i < ss.Count; i++)
-            {
-                cbDealer.Items.Add(new ComboBoxItem() { Content = ss[i].dealerName });
-            }
+            //for (int i = 0; i < ss.Count; i++)
+            //{
+            //    cbDealer.Items.Add(new ComboBoxItem() { Content = ss[i].dealerName });
+            //}
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
@@ -114,10 +87,19 @@ namespace DemoSale
             if (currentPosition.dealer.Contains("Татарстан"))
             {
                 //MessageBox.Show("tatar is detected!!!!!!!!!");
-                TatarstanAnnualReport temp = new() { id = -1, count = currentPosition.count, dateShipment = currentPosition.dateShipment,
-                paymentMethod = currentPosition.paymentMethod, phone = "н/д", positionName = currentPosition.positionName,
-                realization = currentPosition.realization, region = currentPosition.region, seller = currentPosition.seller, 
-                    sellerAgent = currentPosition.sellerAgent};
+                TatarstanAnnualReport temp = new()
+                {
+                    id = -1,
+                    count = currentPosition.count,
+                    dateShipment = currentPosition.dateShipment,
+                    paymentMethod = currentPosition.paymentMethod,
+                    phone = "н/д",
+                    positionName = currentPosition.positionName,
+                    realization = currentPosition.realization,
+                    region = currentPosition.region,
+                    seller = currentPosition.seller,
+                    sellerAgent = currentPosition.sellerAgent
+                };
                 TatarstanReportPage.b.Add(temp);
             }
 
