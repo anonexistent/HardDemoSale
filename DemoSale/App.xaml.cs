@@ -13,5 +13,6 @@ namespace DemoSale
     /// </summary>
     public partial class App : Application
     {
+
     }
 }

@@ -28,7 +28,7 @@ namespace DemoSale
     record ShortlyInfo(string value1, string value2, string laue3, string value4);
     public partial class PktPageDemoMain : Page
     {
-        private static ObservableCollection<DemoPkt> _a;
+        private static ObservableCollection<DemoPkt> _a = new();
         public static ObservableCollection<DemoPkt> a
         {
             get { return _a; }

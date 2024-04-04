@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,8 +25,58 @@ namespace DemoSale
     /// </summary>
     public partial class PktPageDemo : Page
     {
-        public ApplicationContext db;
+        public class PktData
+        {
+            string _selectedPay;
+
+            private ObservableCollection<string> _pays = new() { "111", "222", "333" };
+            public IEnumerable<string> Pays
+            {
+                get { return _pays; }
+            }
+
+            public string SelectedPay
+            {
+                get { return _selectedPay; }
+                set
+                {
+                    _selectedPay = value;
+                    OnPropertyChanged(nameof(SelectedPay));
+                }
+            }
+
+            public string NewPay
+            {
+                set
+                {
+                    if (SelectedPay != null)
+                    {
+                        return;
+                    }
+                    if (!String.IsNullOrEmpty(value))
+                    {
+                        _pays.Add(value);
+                        SelectedPay = value;
+                    }
+                }
+            }
+
+
+            public event PropertyChangedEventHandler? PropertyChanged;
+
+            void OnPropertyChanged(string propName)
+            {
+                var handler = this.PropertyChanged;
+                if (handler != null)
+                {
+                    handler(this, new PropertyChangedEventArgs(propName));
+                }
+            }
+        }
+
         public DemoPkt currentPosition = new();
+
+        public ApplicationContext db;
 
         public PktPageDemo()
         {
@@ -32,7 +84,7 @@ namespace DemoSale
 
             InitItems();
 
-            spTbs.DataContext = currentPosition;
+            //spTbs.DataContext = currentPosition;
         }
 
         private void InitItems()
