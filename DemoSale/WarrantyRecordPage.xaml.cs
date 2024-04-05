@@ -50,7 +50,7 @@ namespace DemoSale
         {
             InitializeComponent();
 
-            dgMain.ItemsSource = ooooooooooo; 
+            //dgMain.ItemsSource = ooooooooooo; 
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -59,14 +59,14 @@ namespace DemoSale
 
             win.ShowDialog();
 
-            dgMain.ItemsSource = null;
-            dgMain.ItemsSource = ooooooooooo;
+            //dgMain.ItemsSource = null;
+            //dgMain.ItemsSource = ooooooooooo;
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            dgMain.ItemsSource = null;
-            dgMain.ItemsSource = ooooooooooo;
+            //dgMain.ItemsSource = null;
+            //dgMain.ItemsSource = ooooooooooo;
 
         }
 

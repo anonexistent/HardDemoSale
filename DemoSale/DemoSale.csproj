@@ -12,6 +12,9 @@
     <None Remove="Resources\card_staff.jpg" />
     <None Remove="Resources\Clouds.jpg" />
     <None Remove="Resources\favicon.ico" />
+    <None Remove="Resources\icons8-airCar-100.png" />
+    <None Remove="Resources\icons8-education-100.png" />
+    <None Remove="Resources\icons8-repair-100.png" />
     <None Remove="Resources\icons8150.png" />
     <None Remove="Resources\icons850.png" />
     <None Remove="Resources\icons860.png" />
@@ -36,6 +39,9 @@
     <Resource Include="Resources\card_staff.jpg" />
     <Resource Include="Resources\Clouds.jpg" />
     <Resource Include="Resources\favicon.ico" />
+    <Resource Include="Resources\icons8-airCar-100.png" />
+    <Resource Include="Resources\icons8-education-100.png" />
+    <Resource Include="Resources\icons8-repair-100.png" />
     <Resource Include="Resources\icons850.png" />
     <Resource Include="Resources\icons8150.png" />
     <Resource Include="Resources\icons860.png" />
