@@ -12,7 +12,16 @@
         Title="PktPage" Height="450" Width="800">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Image Grid.RowSpan="2" Stretch="Fill" Source="/Resources/Clouds/50-p-67.png"/>
+
+        <!-- Анимированная часть - облака -->
+        <Canvas x:Name="canvas">
+            <!-- Здесь будут облака -->
+        </Canvas>
     </Grid>
     
 </Page>

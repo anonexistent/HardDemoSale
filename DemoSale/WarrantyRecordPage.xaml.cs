@@ -49,7 +49,8 @@ namespace DemoSale
         public WarrantyRecordPage()
         {
             InitializeComponent();
-
+            //  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            ((Window)FrameClass.mainFrame.Parent).Background = new SolidColorBrush(Colors.Red);
             //dgMain.ItemsSource = ooooooooooo; 
         }
 
