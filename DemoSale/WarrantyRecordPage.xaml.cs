@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using NJsonSchema;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -51,7 +52,14 @@ namespace DemoSale
         new MyClass(7, "a", new DateTime(2001,01,01), "xxxx"),
         };
 
-        public static List<WarrantyRecord> yyyyy { get; set; } = new List<WarrantyRecord>();
+        private ObservableCollection<WarrantyRecord> _y;
+
+        public ObservableCollection<WarrantyRecord> yyyyy
+        {
+            get { return _y; }
+            set { _y = value; }
+        }
+
 
         public WarrantyRecordPage()
         {
@@ -110,7 +118,7 @@ namespace DemoSale
             string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "testDataWar.json");
             string s = new StreamReader(path).ReadToEnd();
 
-            yyyyy = JsonConvert.DeserializeObject<List<WarrantyRecord>>(s);
+            yyyyy = JsonConvert.DeserializeObject<ObservableCollection<WarrantyRecord>>(s);
 
             lbMain.ItemsSource = yyyyy;
 
