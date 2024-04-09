@@ -11,6 +11,7 @@ namespace DemoSale.DataBaseCore
 {
     public class ApplicationContext : DbContext
     {
+        public DbSet<WarrantyRecord> WarrantyRecord { get; set; }
         public DbSet<Pkt> Pkt { get; set; }
         public DbSet<Dealer> Dealer { get; set; }
         public DbSet<PositionType> PositionType { get; set; }
@@ -24,7 +25,7 @@ namespace DemoSale.DataBaseCore
 
         protected override void OnConfiguring(DbContextOptionsBuilder ob)
         {
-            ob.UseSqlite("DataSource=autoservice.db");
+            ob.UseSqlite("DataSource=autocenter.db");
 
         }
     }

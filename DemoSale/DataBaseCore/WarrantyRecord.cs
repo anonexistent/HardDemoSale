@@ -1,60 +1,66 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DemoSale.Data
 {
+    [PrimaryKey("warrantyId")]
     public class WarrantyRecord
     {
-		private DateOnly _dateShipment;
-		private DateOnly _dateUnsubscribe;
+        private Guid? _warrantyId;
+
+        private DateOnly? _dateShipment;
+		private DateOnly? _dateUnsubscribe;
         //	№УПД
         /*
 		 * 01УТ-000006
 		 */
-        private string _unTransDocNumber;
-		private string _paymentMethod;
-		private string _dealer;
+        private string? _unTransDocNumber;
+		private string? _paymentMethod;
+		private string? _dealer;
         //	Модель  (коплектация)
-        private string _positionName;
-		private int _count;
-		private string _vin;
+        private string? _positionName;
+		private int? _count;
+		private string? _vin;
         //	Модель, номер двигателя
         /*
 		 * Д-123S4, 567890
 		 */
-        private string _engine;
-		private string _seller;
-		private string _region;
-		private string _manager;
+        private string? _engine;
+		private string? _seller;
+		private string? _region;
+		private string? _manager;
         //	Фактический адресс
         /*
 		 * 460000 Уральская обл., с. Цветочкино, ул. Улан-Баторская 123
 		 */
-        private string _regionDeFacto;
+        private string? _regionDeFacto;
         //	Котакты ИТР, лиц ответственных за эксплуатацию
         /*
 		 * 7-912-345-67-89 Евгений
 		 */
-        private string _engTecWorker;
+        private string? _engTecWorker;
         //	№ догов. на СО
-        private string _serviceContract;
-		private DateOnly _dateServiceContract;
-		private DateOnly _dateRelease;
+        private string? _serviceContract;
+		private DateOnly? _dateServiceContract;
+		private DateOnly? _dateRelease;
         /*
          * 30 м/ч	250м/ч	500м/ч	750м/ч	1000м/ч
          */
-        private string _technicalMaintenance;
+        private string? _technicalMaintenance;
 		//	Дата снятия с учета
-		private DateOnly _dateEndWarranty;
+		private DateOnly? _dateEndWarranty;
 
         #region ctors
 
         public WarrantyRecord()
         {
-            
+
         }
 
         public WarrantyRecord(DateOnly dateShipment, DateOnly dateUnsubscribe, string unTransDocNumber, string paymentMethod, 
@@ -87,7 +93,7 @@ namespace DemoSale.Data
 
         #region auto props
 
-        public DateOnly dateEndWarranty
+        public DateOnly? dateEndWarranty
         {
             get { return _dateEndWarranty; }
             set { _dateEndWarranty = value; }
@@ -99,13 +105,13 @@ namespace DemoSale.Data
             set { _technicalMaintenance = value; }
         }
 
-        public DateOnly dateRelease
+        public DateOnly? dateRelease
         {
             get { return _dateRelease; }
             set { _dateRelease = value; }
         }
 
-        public DateOnly dateServiceContract
+        public DateOnly? dateServiceContract
         {
             get { return _dateServiceContract; }
             set { _dateServiceContract = value; }
@@ -159,7 +165,7 @@ namespace DemoSale.Data
             set { _vin = value; }
         }
 
-        public int count
+        public int? count
         {
             get { return _count; }
             set { _count = value; }
@@ -189,16 +195,20 @@ namespace DemoSale.Data
             set { _unTransDocNumber = value; }
         }
 
-        public DateOnly dateUnsubscribe
+        public DateOnly? dateUnsubscribe
         {
             get { return _dateUnsubscribe; }
             set { _dateUnsubscribe = value; }
         }
 
-        public DateOnly dateShipment
+        public DateOnly? dateShipment
         {
             get { return _dateShipment; }
             set { _dateShipment = value; }
+        }
+        public Guid? warrantyId
+        {
+            get { return _warrantyId; }
         }
 
         #endregion

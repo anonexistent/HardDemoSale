@@ -115,16 +115,33 @@ namespace DemoSale
             //x.Write(newJson);
             //x.Close();
 
-            string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "testDataWar.json");
-            string s = new StreamReader(path).ReadToEnd();
+            //string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "testDataWar.json");
+            //string s = new StreamReader(path).ReadToEnd();
 
-            yyyyy = JsonConvert.DeserializeObject<ObservableCollection<WarrantyRecord>>(s);
+            //yyyyy = JsonConvert.DeserializeObject<ObservableCollection<WarrantyRecord>>(s);
 
-            lbMain.ItemsSource = yyyyy;
+            //foreach (var item in yyyyy)
+            //{
+            //    if (string.IsNullOrEmpty(item.seller)) item.seller = "н/д";
+            //    if (string.IsNullOrEmpty(item.vin)) item.vin = "н/д";
+            //    if (string.IsNullOrEmpty(item.engine)) item.engine = "н/д";
+            //    FrameClass.db.WarrantyRecord.Add(item);
+            //}
 
-            QrCode inputDialog = new("Please enter your name:", "John Doe");
-            if (inputDialog.ShowDialog() == true) return;
-            //    lblName.Text = inputDialog.Answer;
+            //FrameClass.db.SaveChanges();
+
+            FrameClass.db = new();
+            var temp = FrameClass.db.WarrantyRecord.ToList();
+            lbMain.ItemsSource = temp;
+
+            //QrCode inputDialog = new("Please enter your name:", "John Doe");
+            //if (inputDialog.ShowDialog() == true) return;
+            ////    lblName.Text = inputDialog.Answer;
+        }
+
+        private void lbMain_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
