@@ -1,5 +1,10 @@
-﻿using System;
+﻿using DemoSale.Data;
+using DemoSale.QR;
+using Newtonsoft.Json;
+using NJsonSchema;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,11 +51,13 @@ namespace DemoSale
         new MyClass(7, "a", new DateTime(2001,01,01), "xxxx"),
         };
 
+        public static List<WarrantyRecord> yyyyy { get; set; } = new List<WarrantyRecord>();
+
         public WarrantyRecordPage()
         {
             InitializeComponent();
             //  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            ((Window)FrameClass.mainFrame.Parent).Background = new SolidColorBrush(Colors.Red);
+            ((Window)FrameClass.mainFrame.Parent).Background = new SolidColorBrush(Colors.OldLace);
             //dgMain.ItemsSource = ooooooooooo; 
         }
 
@@ -74,6 +81,42 @@ namespace DemoSale
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             FrameClass.mainFrame.Navigate(new MainPage());
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            FrameClass.mainFrame.Navigate(new WarrantyRecordPageAdd());
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            //var schema = JsonSchema.FromType<List<WarrantyRecord>>();
+            //var schemaJson = schema.ToJson();
+
+            //FileStream temp = new FileStream("schemaListWar.json", FileMode.OpenOrCreate);
+            //StreamWriter tempWriter = new StreamWriter(temp);
+            //tempWriter.Write(schemaJson);
+            //tempWriter.Close();
+
+            //yyyyy.Add(new WarrantyRecord() { vin="X43g!4gbvr323", count=10, dateEndWarranty=new DateOnly(2020,1,1), dateServiceContract=new DateOnly(2022,10,18) });
+            //yyyyy.Add(new WarrantyRecord() { dateRelease=new DateOnly(2009,10,10), engine="G38-1, 20291", regionDeFacto="124, Orenburg, 101,3 4f" });
+
+            //string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "testDataWar.json");
+            //string newJson = JsonConvert.SerializeObject(yyyyy, Formatting.Indented);
+            //var x = new StreamWriter(path);
+            //x.Write(newJson);
+            //x.Close();
+
+            string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "testDataWar.json");
+            string s = new StreamReader(path).ReadToEnd();
+
+            yyyyy = JsonConvert.DeserializeObject<List<WarrantyRecord>>(s);
+
+            lbMain.ItemsSource = yyyyy;
+
+            QrCode inputDialog = new("Please enter your name:", "John Doe");
+            if (inputDialog.ShowDialog() == true) return;
+            //    lblName.Text = inputDialog.Answer;
         }
     }
 }
