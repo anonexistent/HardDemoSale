@@ -7,8 +7,12 @@
       xmlns:local="clr-namespace:DemoSale"
       mc:Ignorable="d" 
       d:DesignHeight="1450" d:DesignWidth="800"
-      Title="WarrantyRecordPage">
+      Title="WarrantyRecordPage" Loaded="Page_Loaded">
 
+    <Page.Resources>
+        <local:ValueToCheckBoxConverter x:Key="ValueToCheckBoxConverter" />
+    </Page.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -54,93 +58,93 @@
                     <RowDefinition Height="5*"/>
                 </Grid.RowDefinitions>
 
-                <GroupBox Margin="10" Grid.Row="1">
-                    <GroupBox.Header>
-                        <StackPanel Orientation="Horizontal">
-                            <Image Width="{Binding ActualHeight, ElementName=textBlock, Mode=OneWay}" Source="/Resources/icons8-education-100.png" MaxHeight="50"/>
-                            <TextBlock x:Name="textBlock" FontSize="24" MaxHeight="50" Padding="15" Text="Контрагент"/>
-                        </StackPanel>
-                    </GroupBox.Header>
+                <StackPanel Grid.RowSpan="3" DataContext="{Binding ElementName=lbMain, Path=SelectedItem}">
+                    <GroupBox Margin="10" >
+                        <GroupBox.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Width="{Binding ActualHeight, ElementName=textBlock, Mode=OneWay}" Source="/Resources/icons8-education-100.png" MaxHeight="50"/>
+                                <TextBlock x:Name="textBlock" FontSize="24" MaxHeight="50" Padding="15" Text="Контрагент"/>
+                            </StackPanel>
+                        </GroupBox.Header>
 
-                    <StackPanel>
-                        <TextBlock Text="Дата акта п/п"/>
-                        <DatePicker Text=""/>
-                        <TextBlock Text="Дата отписки"/>
-                        <DatePicker/>
-                        <TextBlock Text="УПД"/>
-                        <TextBox/>
-                        <TextBlock Text="Способ оплаты"/>
-                        <ComboBox IsEditable="True"/>
+                        <StackPanel>
+                            <TextBlock Text="Дата акта п/п"/>
+                            <DatePicker Text="{Binding dateShipment}"/>
+                            <TextBlock Text="Дата отписки"/>
+                            <DatePicker Text="{Binding dateUnsubscribe}"/>
+                            <TextBlock Text="УПД"/>
+                            <TextBox Text="{Binding unTransDocNumber}"/>
+                            <TextBlock Text="Способ оплаты"/>
+                            <ComboBox IsEditable="True" SelectedItem="{Binding paymentMethod}"/>
 
-                    </StackPanel>
-
-                </GroupBox>
-
-                <GroupBox Grid.Row="2" Margin="10">
-                    <GroupBox.Header>
-                        <StackPanel Orientation="Horizontal">
-                            <Image Width="{Binding ActualHeight, ElementName=textBlock1, Mode=OneWay}" Source="/Resources/icons8-airCar-100.png"  MaxHeight="50"/>
-                            <TextBlock x:Name="textBlock1" FontSize="24" Padding="15" Text="Техника"/>
-                        </StackPanel>
-                    </GroupBox.Header>
-
-                    <StackPanel>
-
-
-                        <TextBlock Text="Поставщик"/>
-                        <ComboBox/>
-                        <TextBlock Text="Модель"/>
-                        <TextBox/>
-                        <TextBlock Text="Кол-во"/>
-                        <TextBox HorizontalAlignment="Left" MinWidth="50" TextAlignment="Center"/>
-                        <TextBlock Text="VIN"/>
-                        <TextBox />
-                        <TextBlock Text="Двигатель-модель"/>
-                        <ComboBox IsEditable="True" />
-                        <TextBlock Text="Двигатель-номер"/>
-                        <TextBox />
-                        <TextBlock Text="Контрагент"/>
-                        <TextBox />
-                        <TextBlock Text="Район" LineStackingStrategy="MaxHeight"/>
-                        <TextBox />
-                        <TextBlock Text="Менеджер"/>
-                        <ComboBox IsEditable="True" />
-                        <TextBlock Text="Фактический адрес" />
-                        <TextBox />
-                        <TextBlock Text="Контакты"/>
-                        <TextBox />
-                        <TextBlock Text="№ договора СО"/>
-                        <DatePicker />
-                        <TextBlock Text="Год выпуска"/>
-                        <ComboBox />
-                    </StackPanel>
-
-                </GroupBox>
-
-                <GroupBox Grid.Row="3" Margin="10">
-                    <GroupBox.Header>
-                        <StackPanel Orientation="Horizontal">
-                            <Image Width="{Binding ActualHeight, ElementName=textBlock2, Mode=OneWay}" Source="/Resources/icons8-repair-100.png"  MaxHeight="50"/>
-                            <TextBlock x:Name="textBlock2" FontSize="24" Padding="15" Text="Плановое ТО"/>
-                        </StackPanel>
-                    </GroupBox.Header>
-
-                    <StackPanel>
-                        <TextBlock Text="ТО"/>
-                        <StackPanel Orientation="Horizontal">
-                            <CheckBox x:Name="check0" Content="30"/>
-                            <CheckBox x:Name="check1" Content="250" IsEnabled="{Binding ElementName=check0, Path=IsChecked}"/>
-                            <CheckBox x:Name="check2" Content="500" IsEnabled="{Binding ElementName=check1, Path=IsChecked}"/>
-                            <CheckBox x:Name="check3" Content="750" IsEnabled="{Binding ElementName=check2, Path=IsChecked}"/>
-                            <CheckBox x:Name="check4" Content="1000" IsEnabled="{Binding ElementName=check3, Path=IsChecked}"/>
                         </StackPanel>
 
-                        <TextBlock Text="Дата снятия с учета"/>
-                        <DatePicker />
-                    </StackPanel>
+                    </GroupBox>
 
-                </GroupBox>
+                    <GroupBox Margin="10">
+                        <GroupBox.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Width="{Binding ActualHeight, ElementName=textBlock1, Mode=OneWay}" Source="/Resources/icons8-airCar-100.png"  MaxHeight="50"/>
+                                <TextBlock x:Name="textBlock1" FontSize="24" Padding="15" Text="Техника"/>
+                            </StackPanel>
+                        </GroupBox.Header>
 
+                        <StackPanel>
+
+                            <TextBlock Text="Поставщик"/>
+                            <ComboBox SelectedValue="{Binding dealer}"/>
+                            <TextBlock Text="Модель"/>
+                            <TextBox Text="{Binding positionName}"/>
+                            <TextBlock Text="Кол-во"/>
+                            <TextBox Text="{Binding count}" HorizontalAlignment="Left" MinWidth="50" TextAlignment="Center"/>
+                            <TextBlock Text="VIN"/>
+                            <TextBox Text="{Binding vin}"/>
+                            <TextBlock Text="Двигатель"/>
+                            <TextBox Text="{Binding engine}"/>
+                            <TextBlock Text="Контрагент"/>
+                            <TextBox Text="{Binding seller}"/>
+                            <TextBlock Text="Район" LineStackingStrategy="MaxHeight"/>
+                            <TextBox Text="{Binding region}"/>
+                            <TextBlock Text="Менеджер"/>
+                            <ComboBox IsEditable="True" SelectedValue="{Binding manager}"/>
+                            <TextBlock Text="Фактический адрес" />
+                            <TextBox Text="{Binding regionDeFacto}"/>
+                            <TextBlock Text="Контакты"/>
+                            <TextBox Text="{Binding engTecWorker}"/>
+                            <TextBlock Text="№ договора СО"/>
+                            <TextBox Text="{Binding serviceContract}"/>
+                            <TextBlock Text="Год выпуска"/>
+                            <ComboBox x:Name="cbYearsRelease" SelectedItem="{Binding dateRelease}"/>
+                        </StackPanel>
+
+                    </GroupBox>
+
+                    <GroupBox Margin="10">
+                        <GroupBox.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Width="{Binding ActualHeight, ElementName=textBlock2, Mode=OneWay}" Source="/Resources/icons8-repair-100.png"  MaxHeight="50"/>
+                                <TextBlock x:Name="textBlock2" FontSize="24" Padding="15" Text="Плановое ТО"/>
+                            </StackPanel>
+                        </GroupBox.Header>
+
+                        <StackPanel>
+                            <TextBlock Text="ТО"/>
+                            <StackPanel x:Name="checksTo" Orientation="Horizontal">
+                                <CheckBox IsChecked="{Binding technicalMaintenance, Converter={StaticResource ValueToCheckBoxConverter}, ConverterParameter=30}" x:Name="check0" Content="30"/>
+                                <CheckBox IsChecked="{Binding technicalMaintenance, Converter={StaticResource ValueToCheckBoxConverter}, ConverterParameter=250}" x:Name="check1" Content="250" IsEnabled="{Binding ElementName=check0, Path=IsChecked}"/>
+                                <CheckBox IsChecked="{Binding technicalMaintenance, Converter={StaticResource ValueToCheckBoxConverter}, ConverterParameter=500}" x:Name="check2" Content="500" IsEnabled="{Binding ElementName=check1, Path=IsChecked}"/>
+                                <CheckBox IsChecked="{Binding technicalMaintenance, Converter={StaticResource ValueToCheckBoxConverter}, ConverterParameter=750}" x:Name="check3" Content="750" IsEnabled="{Binding ElementName=check2, Path=IsChecked}"/>
+                                <CheckBox IsChecked="{Binding technicalMaintenance, Converter={StaticResource ValueToCheckBoxConverter}, ConverterParameter=1000}" x:Name="check4" Content="1000" IsEnabled="{Binding ElementName=check3, Path=IsChecked}"/>
+                            </StackPanel>
+
+                            <TextBlock Text="Дата снятия с учета"/>
+                            <DatePicker />
+                        </StackPanel>
+
+                    </GroupBox>
+
+                </StackPanel>
+                
                 <!--<Button Grid.Row="4" VerticalAlignment="Center" Margin="15" Content="Добавить" FontSize="22"/>-->
             </Grid>
         </ScrollViewer>

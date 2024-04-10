@@ -48,11 +48,11 @@ namespace DemoSale.Data
         //	№ догов. на СО
         private string? _serviceContract;
 		private DateOnly? _dateServiceContract;
-		private DateOnly? _dateRelease;
+		private int? _dateRelease;
         /*
          * 30 м/ч	250м/ч	500м/ч	750м/ч	1000м/ч
          */
-        private string? _technicalMaintenance;
+        private int? _technicalMaintenance;
 		//	Дата снятия с учета
 		private DateOnly? _dateEndWarranty;
 
@@ -65,8 +65,8 @@ namespace DemoSale.Data
 
         public WarrantyRecord(DateOnly dateShipment, DateOnly dateUnsubscribe, string unTransDocNumber, string paymentMethod, 
             string dealer, string positionName, int count, string vin, string engine, string seller, string region, string manager, 
-            string regionDeFacto, string engTecWorker, string serviceContract, DateOnly dateServiceContract, DateOnly dateRelease, 
-            string technicalMaintenance, DateOnly dateEndWarranty)
+            string regionDeFacto, string engTecWorker, string serviceContract, DateOnly dateServiceContract, int dateRelease, 
+            int? technicalMaintenance, DateOnly dateEndWarranty)
         {
             this.dateShipment = dateShipment;
             this.dateUnsubscribe = dateUnsubscribe;
@@ -99,13 +99,13 @@ namespace DemoSale.Data
             set { _dateEndWarranty = value; }
         }
 
-        public string technicalMaintenance
+        public int? technicalMaintenance
         {
             get { return _technicalMaintenance; }
             set { _technicalMaintenance = value; }
         }
 
-        public DateOnly? dateRelease
+        public int? dateRelease
         {
             get { return _dateRelease; }
             set { _dateRelease = value; }

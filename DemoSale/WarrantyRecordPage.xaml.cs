@@ -5,6 +5,7 @@ using NJsonSchema;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -41,6 +42,10 @@ namespace DemoSale
     /// </summary>
     public partial class WarrantyRecordPage : Page
     {
+        public static int HowMuch = 2;
+
+        public ObservableCollection<bool> t { get; set; }
+
         public static List<MyClass> ooooooooooo = new List<MyClass>() {
         new MyClass(0, "a", new DateTime(2001,01,01), "xxx"),
         new MyClass(1, "a", new DateTime(2001,01,01), "xxxx"),
@@ -67,6 +72,18 @@ namespace DemoSale
             //  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             ((Window)FrameClass.mainFrame.Parent).Background = new SolidColorBrush(Colors.OldLace);
             //dgMain.ItemsSource = ooooooooooo; 
+
+            yyyyy = new();
+
+            InitData();
+        }
+
+        private void InitData()
+        {
+            for (int i = 2000; i <= DateTime.Now.Year; i++)
+            {
+                cbYearsRelease.Items.Add(i);
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -130,18 +147,74 @@ namespace DemoSale
 
             //FrameClass.db.SaveChanges();
 
-            FrameClass.db = new();
-            var temp = FrameClass.db.WarrantyRecord.ToList();
-            lbMain.ItemsSource = temp;
-
             //QrCode inputDialog = new("Please enter your name:", "John Doe");
             //if (inputDialog.ShowDialog() == true) return;
             ////    lblName.Text = inputDialog.Answer;
+            ///
+            t[0] = true;
         }
 
         private void lbMain_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            GettechnicalMaintenanceInfo(sender);
+        }
 
+        private ObservableCollection<bool> GettechnicalMaintenanceInfo(object sender)
+        {
+            t = new() {
+                false,
+                false,
+                false,
+                false,
+                false
+            };
+
+            switch (((WarrantyRecord)((ListBox)sender).SelectedItem).technicalMaintenance)
+            {
+                case 30:
+                    t[0] = true;
+                    break;
+                case 250:
+                    t[0] = true;
+                    t[1] = true;
+                    break;
+                case 500:
+                    t[0] = true;
+                    t[1] = true;
+                    t[2] = true;
+                    break;
+                case 750:
+                    t[0] = true;
+                    t[1] = true;
+                    t[2] = true;
+                    t[3] = true;
+                    break;
+                case 1000:
+                    t[0] = true;
+                    t[1] = true;
+                    t[2] = true;
+                    t[3] = true;
+                    t[4] = true;
+                    break;
+
+                default:
+                    break;
+            }
+
+            return t;
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            FrameClass.db = new();
+            var temp = FrameClass.db.WarrantyRecord.ToList();
+
+            foreach (var item in temp)
+            {
+                yyyyy.Add(item);
+            }
+
+            lbMain.ItemsSource = yyyyy;
         }
     }
 }

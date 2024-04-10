@@ -47,5 +47,14 @@ namespace DemoSale
 
             FrameClass.mainFrame.Navigate(new MainPage());
         }
+        private void Button_Click2(object sender, RoutedEventArgs e)
+        {
+            ((Window)FrameClass.mainFrame.Parent).Height = 800;
+            ((Window)FrameClass.mainFrame.Parent).Width = 1200;
+
+            FrameClass.role = User.users[$"{tbLogin.Text}"];
+
+            FrameClass.mainFrame.Navigate(new PktPage());
+        }
     }
 }

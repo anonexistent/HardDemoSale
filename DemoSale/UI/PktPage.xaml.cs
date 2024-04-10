@@ -20,33 +20,17 @@ namespace DemoSale
     /// </summary>
     public partial class PktPage : Page
     {
+        public int HowMuch { get; set; } = 250;
+
         public PktPage()
         {
             InitializeComponent();
-            AddCloudsToCanvas();
+            DataContext = this;
         }
 
         public void AddCloudsToCanvas()
         {
-            Random rand = new Random();
-            for (int i = 0; i < 10; i++)
-            {
-                Image cloudImage = new Image();
-                cloudImage.Source = new BitmapImage(new Uri("C:\\Users\\wwwzl\\source\\repos\\DemoSale\\DemoSale\\Resources\\Clouds\\cl1.png"));
-                Canvas.SetLeft(cloudImage, rand.Next(0, 400));
-                Canvas.SetTop(cloudImage, rand.Next(0, 200));
-                canvas.Children.Add(cloudImage);
 
-                DoubleAnimation animation = new DoubleAnimation
-                {
-                    From = Canvas.GetLeft(cloudImage),
-                    To = 400,
-                    Duration = TimeSpan.FromSeconds(rand.Next(10, 20)),
-                    RepeatBehavior = RepeatBehavior.Forever
-                };
-
-                cloudImage.BeginAnimation(Canvas.LeftProperty, animation);
-            }
         }
     }
 }

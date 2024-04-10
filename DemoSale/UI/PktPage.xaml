@@ -11,17 +11,18 @@
         mc:Ignorable="d"
         Title="PktPage" Height="450" Width="800">
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Image Grid.RowSpan="2" Stretch="Fill" Source="/Resources/Clouds/50-p-67.png"/>
+    <Page.Resources>
+        <local:ValueToCheckBoxConverter x:Key="ValueToCheckBoxConverter" />
+    </Page.Resources>
 
-        <!-- Анимированная часть - облака -->
-        <Canvas x:Name="canvas">
-            <!-- Здесь будут облака -->
-        </Canvas>
+    <Grid>
+        <StackPanel x:Name="checksTo" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <CheckBox Content="CheckBox 1" IsChecked="{Binding HowMuch, Converter={StaticResource ValueToCheckBoxConverter}, ConverterParameter=30}"/>
+            <CheckBox Content="CheckBox 2" IsChecked="{Binding HowMuch, Converter={StaticResource ValueToCheckBoxConverter}, ConverterParameter=250}"/>
+            <CheckBox Content="CheckBox 3" IsChecked="{Binding HowMuch, Converter={StaticResource ValueToCheckBoxConverter}, ConverterParameter=500}"/>
+            <CheckBox Content="CheckBox 4" IsChecked="{Binding HowMuch, Converter={StaticResource ValueToCheckBoxConverter}, ConverterParameter=750}"/>
+            <CheckBox Content="CheckBox 5" IsChecked="{Binding HowMuch, Converter={StaticResource ValueToCheckBoxConverter}, ConverterParameter=1000}"/>
+        </StackPanel>
     </Grid>
     
 </Page>
