@@ -35,17 +35,12 @@ namespace DemoSale
             dgMain.ItemsSource = b;
         }
 
-        void A()
-        {
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ButtonBackClick(object sender, RoutedEventArgs e)
         {
             FrameClass.mainFrame.GoBack();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Click_1_Add(object sender, RoutedEventArgs e)
         {
             FrameClass.mainFrame.Navigate(new TatarstanReportAddPage());
 

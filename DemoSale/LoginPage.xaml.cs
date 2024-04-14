@@ -38,7 +38,7 @@ namespace DemoSale
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ButtonInClick(object sender, RoutedEventArgs e)
         {
             ((Window)FrameClass.mainFrame.Parent).Height = 800;
             ((Window)FrameClass.mainFrame.Parent).Width = 1200;
