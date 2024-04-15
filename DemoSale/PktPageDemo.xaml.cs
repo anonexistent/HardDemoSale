@@ -122,7 +122,7 @@ namespace DemoSale
             }
 
             MessageBox.Show("Запись создана");
-            PktPageDemoMain.a.Add(currentPosition);
+            PktPageDemoMain.pktList.Add(currentPosition);
             PktPageDemoMain.UpdateJson();
             FrameClass.mainFrame.GoBack();
         }

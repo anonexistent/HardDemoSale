@@ -44,36 +44,36 @@ namespace DemoSale
     {
         public static int HowMuch = 2;
 
-        public ObservableCollection<bool> t { get; set; }
+        public ObservableCollection<bool> isSselection { get; set; }
 
-        public static List<MyClass> ooooooooooo = new List<MyClass>() {
-        new MyClass(0, "a", new DateTime(2001,01,01), "xxx"),
-        new MyClass(1, "a", new DateTime(2001,01,01), "xxxx"),
-        new MyClass(2, "a", new DateTime(2001,01,01), "xxxx"),
-        new MyClass(3, "a", new DateTime(2001,01,01), "xxxx"),
-        new MyClass(4, "a", new DateTime(2001,01,01), "xxxx"),
-        new MyClass(5, "a", new DateTime(2001,01,01), "xxxx"),
-        new MyClass(6, "a", new DateTime(2001,01,01), "xxxx"),
-        new MyClass(7, "a", new DateTime(2001,01,01), "xxxx"),
+        public static List<MyClass> testListAboutPositions = new List<MyClass>() {
+        new MyClass(0, "pktList", new DateTime(2001,01,01), "xxx"),
+        new MyClass(1, "pktList", new DateTime(2001,01,01), "xxxx"),
+        new MyClass(2, "pktList", new DateTime(2001,01,01), "xxxx"),
+        new MyClass(3, "pktList", new DateTime(2001,01,01), "xxxx"),
+        new MyClass(4, "pktList", new DateTime(2001,01,01), "xxxx"),
+        new MyClass(5, "pktList", new DateTime(2001,01,01), "xxxx"),
+        new MyClass(6, "pktList", new DateTime(2001,01,01), "xxxx"),
+        new MyClass(7, "pktList", new DateTime(2001,01,01), "xxxx"),
         };
 
-        private ObservableCollection<WarrantyRecord> _y;
+        private ObservableCollection<WarrantyRecord> _generalList;
 
-        public ObservableCollection<WarrantyRecord> yyyyy
+        public ObservableCollection<WarrantyRecord> generalList
         {
-            get { return _y; }
-            set { _y = value; }
+            get { return _generalList; }
+            set { _generalList = value; }
         }
-
 
         public WarrantyRecordPage()
         {
+
             InitializeComponent();
             //  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             ((Window)FrameClass.mainFrame.Parent).Background = new SolidColorBrush(Colors.OldLace);
-            //dgMain.ItemsSource = ooooooooooo; 
+            //dgMain.ItemsSource = testListAboutPositions; 
 
-            yyyyy = new();
+            generalList = new();
 
             InitData();
         }
@@ -93,28 +93,65 @@ namespace DemoSale
             win.ShowDialog();
 
             //dgMain.ItemsSource = null;
-            //dgMain.ItemsSource = ooooooooooo;
+            //dgMain.ItemsSource = testListAboutPositions;
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             //dgMain.ItemsSource = null;
-            //dgMain.ItemsSource = ooooooooooo;
+            //dgMain.ItemsSource = testListAboutPositions;
 
         }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        
+        private ObservableCollection<bool> GettechnicalMaintenanceInfo(object sender)
         {
-            FrameClass.mainFrame.Navigate(new MainPage());
-        }
+            isSselection = new() {
+                false,
+                false,
+                false,
+                false,
+                false
+            };
 
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            FrameClass.mainFrame.Navigate(new WarrantyRecordPageAdd());
+            switch (((WarrantyRecord)((ListBox)sender).SelectedItem).technicalMaintenance)
+            {
+                case 30:
+                    isSselection[0] = true;
+                    break;
+                case 250:
+                    isSselection[0] = true;
+                    isSselection[1] = true;
+                    break;
+                case 500:
+                    isSselection[0] = true;
+                    isSselection[1] = true;
+                    isSselection[2] = true;
+                    break;
+                case 750:
+                    isSselection[0] = true;
+                    isSselection[1] = true;
+                    isSselection[2] = true;
+                    isSselection[3] = true;
+                    break;
+                case 1000:
+                    isSselection[0] = true;
+                    isSselection[1] = true;
+                    isSselection[2] = true;
+                    isSselection[3] = true;
+                    isSselection[4] = true;
+                    break;
+
+                default:
+                    break;
+            }
+
+            return isSselection;
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
+            #region json schema +bd work
+
             //var schema = JsonSchema.FromType<List<WarrantyRecord>>();
             //var schemaJson = schema.ToJson();
 
@@ -123,11 +160,11 @@ namespace DemoSale
             //tempWriter.Write(schemaJson);
             //tempWriter.Close();
 
-            //yyyyy.Add(new WarrantyRecord() { vin="X43g!4gbvr323", count=10, dateEndWarranty=new DateOnly(2020,1,1), dateServiceContract=new DateOnly(2022,10,18) });
-            //yyyyy.Add(new WarrantyRecord() { dateRelease=new DateOnly(2009,10,10), engine="G38-1, 20291", regionDeFacto="124, Orenburg, 101,3 4f" });
+            //generalList.Add(new WarrantyRecord() { vin="X43g!4gbvr323", count=10, dateEndWarranty=new DateOnly(2020,1,1), dateServiceContract=new DateOnly(2022,10,18) });
+            //generalList.Add(new WarrantyRecord() { dateRelease=new DateOnly(2009,10,10), engine="G38-1, 20291", regionDeFacto="124, Orenburg, 101,3 4f" });
 
             //string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "testDataWar.json");
-            //string newJson = JsonConvert.SerializeObject(yyyyy, Formatting.Indented);
+            //string newJson = JsonConvert.SerializeObject(generalList, Formatting.Indented);
             //var x = new StreamWriter(path);
             //x.Write(newJson);
             //x.Close();
@@ -135,9 +172,9 @@ namespace DemoSale
             //string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "testDataWar.json");
             //string s = new StreamReader(path).ReadToEnd();
 
-            //yyyyy = JsonConvert.DeserializeObject<ObservableCollection<WarrantyRecord>>(s);
+            //generalList = JsonConvert.DeserializeObject<ObservableCollection<WarrantyRecord>>(s);
 
-            //foreach (var item in yyyyy)
+            //foreach (var item in generalList)
             //{
             //    if (string.IsNullOrEmpty(item.seller)) item.seller = "н/д";
             //    if (string.IsNullOrEmpty(item.vin)) item.vin = "н/д";
@@ -151,57 +188,23 @@ namespace DemoSale
             //if (inputDialog.ShowDialog() == true) return;
             ////    lblName.Text = inputDialog.Answer;
             ///
-            t[0] = true;
+
+            #endregion
+        }
+
+        private void ButtonBackClick(object sender, RoutedEventArgs e)
+        {
+            FrameClass.mainFrame.Navigate(new MainPage());
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            FrameClass.mainFrame.Navigate(new WarrantyRecordPageAdd());
         }
 
         private void lbMain_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             GettechnicalMaintenanceInfo(sender);
-        }
-
-        private ObservableCollection<bool> GettechnicalMaintenanceInfo(object sender)
-        {
-            t = new() {
-                false,
-                false,
-                false,
-                false,
-                false
-            };
-
-            switch (((WarrantyRecord)((ListBox)sender).SelectedItem).technicalMaintenance)
-            {
-                case 30:
-                    t[0] = true;
-                    break;
-                case 250:
-                    t[0] = true;
-                    t[1] = true;
-                    break;
-                case 500:
-                    t[0] = true;
-                    t[1] = true;
-                    t[2] = true;
-                    break;
-                case 750:
-                    t[0] = true;
-                    t[1] = true;
-                    t[2] = true;
-                    t[3] = true;
-                    break;
-                case 1000:
-                    t[0] = true;
-                    t[1] = true;
-                    t[2] = true;
-                    t[3] = true;
-                    t[4] = true;
-                    break;
-
-                default:
-                    break;
-            }
-
-            return t;
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -211,10 +214,10 @@ namespace DemoSale
 
             foreach (var item in temp)
             {
-                yyyyy.Add(item);
+                generalList.Add(item);
             }
 
-            lbMain.ItemsSource = yyyyy;
+            lbMain.ItemsSource = generalList;
         }
     }
 }

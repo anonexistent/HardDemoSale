@@ -18,8 +18,8 @@ namespace DemoSale.DataBaseCore
 
         public ApplicationContext()
         {
-            //MigrationBuilder a = new MigrationBuilder("");
-            //a.RenameTable("_dealer", null, "Dealer");
+            //MigrationBuilder pktList = new MigrationBuilder("");
+            //pktList.RenameTable("_dealer", null, "Dealer");
             Database.EnsureCreated();
         }
 

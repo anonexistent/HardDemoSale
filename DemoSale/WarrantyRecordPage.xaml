@@ -26,7 +26,7 @@
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
 
-        <Menu MaxHeight="30" VerticalAlignment="Top" Margin="2" Grid.ColumnSpan="10">
+        <!--<Menu MaxHeight="30" VerticalAlignment="Top" Margin="2" Grid.ColumnSpan="10">
             <MenuItem Header="File" FontSize="14">
                 <MenuItem Header="Добавить новый" Click="MenuItem_Click"/>
                 <MenuItem Header="Exit"/>
@@ -34,9 +34,11 @@
             <MenuItem Header="Help" FontSize="14">
                 <MenuItem Header="About"/>
             </MenuItem>
-        </Menu>
+        </Menu>-->
 
-        <ListBox x:Name="lbMain" Grid.Row="1" Grid.RowSpan="5" Margin="3" ItemsSource="{Binding yyyyy}" ScrollViewer.VerticalScrollBarVisibility="Visible" SelectionChanged="lbMain_SelectionChanged">
+        <Button Content="↩" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10" FontSize="20" Background="Black" Foreground="White" Click="ButtonBackClick"/>
+
+        <ListBox x:Name="lbMain" Grid.Row="1" Grid.RowSpan="5" Margin="3" ItemsSource="{Binding generalList}" ScrollViewer.VerticalScrollBarVisibility="Visible" SelectionChanged="lbMain_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Margin="3" Background="Plum">
