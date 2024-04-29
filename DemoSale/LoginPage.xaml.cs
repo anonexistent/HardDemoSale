@@ -55,6 +55,69 @@ namespace DemoSale
             FrameClass.role = User.users[$"{tbLogin.Text}"];
 
             FrameClass.mainFrame.Navigate(new PktPage());
+
+            #region backup
+
+            //List<Dealer> backupDealers = new List<Dealer>() {
+            //        new Dealer("Тверца"),
+            //        new Dealer("МТЗ-Татарстан"),
+            //        new Dealer("ЗКАвгуст"),
+            //        new Dealer("ПМЗ"),
+            //        new Dealer("МАМ"),
+            //        new Dealer("ТООТехмаш"),
+            //        new Dealer("Смолтра"),
+            //        new Dealer("Белагро"),
+            //        new Dealer("Агромашснаб"),
+            //        new Dealer("Техномаркет"),
+            //        new Dealer("ЮжныйВетер"),
+            //        new Dealer("Ульяновское"),
+            //        new Dealer("БольшаяЗемля"),
+            //        new Dealer("ТРИО"),
+            //        new Dealer("Агриматко"),
+            //        new Dealer("КРМЗ"),
+            //        new Dealer("М-Агро"),
+            //        new Dealer("ТДМТЗ-СЗ")
+            //};
+
+            //foreach (var item in backupDealers)
+            //{
+            //    FrameClass.db.Dealer.Add(item);
+
+            //}
+            //FrameClass.db.SaveChanges();
+
+            //List<PositionType> backupTypes = new List<PositionType>() {
+            //            new PositionType("Погрузчики"),
+            //            new PositionType("Тракторы"),
+            //            new PositionType("Кондиционеры"),
+            //            new PositionType("Оборудование коммунальное"),
+            //            new PositionType("Прицепы"),
+            //            new PositionType("Спецтехника"),
+            //            new PositionType("Сеялки"),
+            //            new PositionType("Культиваторы"),
+            //            new PositionType("Сцепки"),
+            //            new PositionType("Косилки"),
+            //            new PositionType("Плуги"),
+            //            new PositionType("Дискаторы"),
+            //            new PositionType("Пресс-подборщики"),
+            //            new PositionType("Овощнаятехника"),
+            //            new PositionType("Навесное"),
+            //            new PositionType("Кормораздатчики"),
+            //            new PositionType("Глубокорыхлители"),
+            //            new PositionType("Грабли"),
+            //            new PositionType("Бороны"),
+            //            new PositionType("Лущильники")
+
+            //};
+
+            //foreach (var item in backupTypes)
+            //{
+            //    FrameClass.db.PositionType.Add(item);
+            //}
+            //FrameClass.db.SaveChanges();
+
+            #endregion
+
         }
     }
 }

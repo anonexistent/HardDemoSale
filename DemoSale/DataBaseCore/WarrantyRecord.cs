@@ -63,6 +63,13 @@ namespace DemoSale.Data
 
         }
 
+        public WarrantyRecord(DateOnly dateShipment, string seller, string positionName)
+        {
+            this.dateShipment = dateShipment;
+            this.seller = seller;
+            this.positionName = positionName;
+        }
+
         public WarrantyRecord(DateOnly dateShipment, DateOnly dateUnsubscribe, string unTransDocNumber, string paymentMethod, 
             string dealer, string positionName, int count, string vin, string engine, string seller, string region, string manager, 
             string regionDeFacto, string engTecWorker, string serviceContract, DateOnly dateServiceContract, int dateRelease, 

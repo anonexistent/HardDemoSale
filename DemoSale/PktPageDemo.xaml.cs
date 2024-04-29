@@ -82,8 +82,7 @@ namespace DemoSale
             set { _currentPosition = value; }
         }
 
-
-        public ApplicationContext db;
+        //public ApplicationContext db;
 
         public PktPageDemo()
         {
@@ -102,6 +101,13 @@ namespace DemoSale
             {
                 cbDealer.Items.Add(new ComboBoxItem() { Content = ss[i].dealerName });
             }
+
+            var sss = FrameClass.db.PositionType.ToList();
+            foreach (var item in sss)
+            {
+                cbPosTypes.ItemsSource = sss;
+            }
+
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
@@ -121,9 +127,13 @@ namespace DemoSale
                 TatarstanReportPage.b.Add(temp);
             }
 
+            //add to db this record
+            FrameClass.db.Pkt.Add(currentPosition);
+            FrameClass.db.SaveChanges();
+
+            //PktPageDemoMain.pktList.Add(currentPosition);
             MessageBox.Show("Запись создана");
-            PktPageDemoMain.pktList.Add(currentPosition);
-            PktPageDemoMain.UpdateJson();
+            //PktPageDemoMain.UpdateJson();
             FrameClass.mainFrame.GoBack();
         }
     }

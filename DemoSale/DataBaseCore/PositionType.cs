@@ -9,8 +9,12 @@ namespace DemoSale.DataBaseCore
 {
     public class PositionType
     {
-		[Key]
+        [Key]
         public string positionName { get; set; }
 
+        public PositionType(string positionName)
+        {
+            this.positionName = positionName;
+        }
     }
 }

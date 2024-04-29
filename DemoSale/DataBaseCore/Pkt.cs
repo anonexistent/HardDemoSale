@@ -18,7 +18,7 @@ namespace DemoSale.Data
         //  дата поступления
         private DateOnly _dateEntry = new DateOnly(2020, 1, 1);
 		private string _seller = "н/д";
-        private string _sellerAgent;
+        private string _sellerAgent = "н/д";
 
         private string _region = "н/д";
 		private string _manager = "н/д";

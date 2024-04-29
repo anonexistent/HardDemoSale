@@ -70,7 +70,8 @@ namespace DemoSale
 
             InitializeComponent();
             //  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            ((Window)FrameClass.mainFrame.Parent).Background = new SolidColorBrush(Colors.OldLace);
+            //((Window)FrameClass.mainFrame.Parent).Background = new SolidColorBrush(Colors.OldLace);
+            this.Background = new SolidColorBrush( Colors.OldLace);
             //dgMain.ItemsSource = testListAboutPositions; 
 
             generalList = new();
@@ -210,6 +211,7 @@ namespace DemoSale
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             FrameClass.db = new();
+
             var temp = FrameClass.db.WarrantyRecord.ToList();
 
             foreach (var item in temp)
@@ -218,6 +220,36 @@ namespace DemoSale
             }
 
             lbMain.ItemsSource = generalList;
+        }
+
+        private void JokeAboutWarRecordsInDb()
+        {
+            //var schema = JsonSchema.FromType<List<WarrantyRecord>>();
+            //var schemaJson = schema.ToJson();
+
+            //FileStream tempSch = new FileStream("schemaListWar.json", FileMode.OpenOrCreate);
+            //StreamWriter tempWriter = new StreamWriter(tempSch);
+            //tempWriter.Write(schemaJson);
+            //tempWriter.Close();
+
+            string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "testDataWar.json");
+            //string newJson = JsonConvert.SerializeObject(generalList, Formatting.Indented);
+            //var x = new StreamWriter(path);
+            //x.Write(newJson);
+            //x.Close();
+
+            string s = new StreamReader(path).ReadToEnd();
+
+            var tempList = JsonConvert.DeserializeObject<ObservableCollection<WarrantyRecord>>(s);
+
+            foreach (WarrantyRecord item in tempList)
+            {
+                FrameClass.db.WarrantyRecord.Add(item);
+            }
+            FrameClass.db.SaveChanges();
+
+            var tempTest = FrameClass.db.WarrantyRecord.ToList();
+            //generalList = JsonConvert.DeserializeObject<ObservableCollection<WarrantyRecord>>(s);
         }
     }
 }

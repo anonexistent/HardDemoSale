@@ -1,5 +1,4 @@
-﻿using DemoSale.Data;
-using DemoSale.DataBaseCore;
+﻿using DemoSale.DataBaseCore;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
