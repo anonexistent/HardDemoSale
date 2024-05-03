@@ -114,7 +114,7 @@ namespace DemoSale
                 false
             };
 
-            switch (((WarrantyRecord)((ListBox)sender).SelectedItem).technicalMaintenance)
+            switch (((WarrantyRecord)((ListBox)sender).SelectedItem).contract.technicalMaintenance)
             {
                 case 30:
                     isSselection[0] = true;

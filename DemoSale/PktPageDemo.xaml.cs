@@ -127,14 +127,32 @@ namespace DemoSale
                 TatarstanReportPage.b.Add(temp);
             }
 
+            WarrantySubject tempWarSub = new() { positionName = currentPosition.positionName};
+            WarrantyContract tempWarCon = new() { serviceContract = "01УТ-090121" };
+            WarrantyRecord tempWar = new(tempWarCon.ToString(), tempWarSub.ToString(), currentPosition.pktId);
+
             //add to db this record
             FrameClass.db.Pkt.Add(currentPosition);
+            FrameClass.db.WarrantySubject.Add(tempWarSub);
+            FrameClass.db.Add(tempWarCon);
+            FrameClass.db.WarrantyRecord.Add(tempWar);
+
             FrameClass.db.SaveChanges();
 
             //PktPageDemoMain.pktList.Add(currentPosition);
             MessageBox.Show("Запись создана");
             //PktPageDemoMain.UpdateJson();
             FrameClass.mainFrame.GoBack();
+        }
+
+        void CreateTatarstanRecord()
+        {
+
+        }
+
+        void CreateWarranty()
+        {
+
         }
     }
 }

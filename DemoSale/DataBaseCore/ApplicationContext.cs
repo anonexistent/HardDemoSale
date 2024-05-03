@@ -11,10 +11,12 @@ namespace DemoSale.DataBaseCore
 {
     public class ApplicationContext : DbContext
     {
-        public DbSet<WarrantyRecord> WarrantyRecord { get; set; }
         public DbSet<Pkt> Pkt { get; set; }
         public DbSet<Dealer> Dealer { get; set; }
         public DbSet<PositionType> PositionType { get; set; }
+        public DbSet<WarrantySubject> WarrantySubject { get; set; }
+        public DbSet<WarrantyContract> WarrantyContract { get; set; }
+        public DbSet<WarrantyRecord> WarrantyRecord { get; set; }
 
         public ApplicationContext()
         {
