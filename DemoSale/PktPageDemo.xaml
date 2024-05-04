@@ -70,13 +70,15 @@
                             <TextBox Text="{Binding sellerAgent, Mode=TwoWay}"/>
                             <TextBox Text="{Binding region}"/>
                             <TextBox Text="{Binding manager}"/>
-                            <ComboBox x:Name="cbPosTypes" SelectedValue="{Binding positionName}" DisplayMemberPath="positionName">
+                            
+                            <ComboBox x:Name="cbPosTypes" SelectedValue="{Binding positionType}" DisplayMemberPath="positionName">
                                 <!--<ComboBoxItem Content="element0"/>
                                 <ComboBoxItem Content="element1" IsSelected="True"/>
                                 <ComboBoxItem Content="element2"/>
                                 <ComboBoxItem Content="element3"/>-->
                             </ComboBox>
-                            <ComboBox IsEditable="True">
+                            
+                            <ComboBox IsEditable="True" Text="{Binding positionName}" DisplayMemberPath="{Binding positionName}">
                                 <!--<ComboBoxItem>element0</ComboBoxItem>
                     <ComboBoxItem>element1</ComboBoxItem>
                     <ComboBoxItem>element2</ComboBoxItem>

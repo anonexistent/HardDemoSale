@@ -13,7 +13,7 @@ namespace DemoSale.Data
     [PrimaryKey("warrantyId")]
     public class WarrantyRecord
     {
-        private Guid? _warrantyId;
+        private Guid? _warrantyId = Guid.NewGuid();
 
         private DateOnly? _dateShipment;
 		private DateOnly? _dateUnsubscribe;
@@ -25,7 +25,7 @@ namespace DemoSale.Data
 
         private uint _pktParentId;
 
-        public Pkt pktParent { get; private set; }
+        public Pkt pktParent { get; set; }
 
         private string _subjectVin;
 
@@ -35,22 +35,27 @@ namespace DemoSale.Data
         public WarrantySubject subject { get; set; }
 
         #region from pkt
-        private string? _paymentMethod { get { return pktParent.paymentMethod; } }
-		private string? _dealer { get { return pktParent.dealer; } }
-        //	Модель  (коплектация)
-        private string? _positionName { get { return pktParent.positionName; } }       
-        private string? _seller { get { return pktParent.seller; } }
-		private string? _region { get { return pktParent.region; } }
-		private string? _manager { get { return pktParent.manager; } }
+        //      private string? _paymentMethod { get { return pktParent.paymentMethod; } }
+        //private string? _dealer { get { return pktParent.dealer; } }
+        //      //	Модель  (коплектация)
+        //      private string? _positionName { get { return pktParent.positionName; } }       
+        //      private string? _seller { get { return pktParent.seller; } }
+        //private string? _region { get { return pktParent.region; } }
+        //private string? _manager { get { return pktParent.manager; } }
         #endregion
 
         #region ctors
 
-        public WarrantyRecord(string contractId, string subjectVin, uint pktParentId)
+        public WarrantyRecord()
         {
-            this.pktParentId = pktParentId;
+            
+        }
+
+        public WarrantyRecord(string contractId, string subjectVin, uint pktId)
+        {
             this.contractId = contractId;
             this.subjectVin = subjectVin;
+            this.pktParentId = pktId;
         }
 
         //public WarrantyRecord(WarrantyContract contractId, WarrantySubject subjectVin, Pkt pktParentId, DateOnly dateShipment, 
@@ -59,7 +64,7 @@ namespace DemoSale.Data
         //    this.pktParentId = pktParentId.pktId;
         //    this.contractId = contractId.serviceContract;
         //    this.subjectVin = subjectVin.vin;
-                 
+
         //    this.dateShipment = dateShipment;
         //    this.dateUnsubscribe = dateUnsubscribe;
         //    this.unTransDocNumber = unTransDocNumber;
@@ -150,7 +155,7 @@ namespace DemoSale.Data
         public uint pktParentId
         {
             get { return _pktParentId; }
-            private set { _pktParentId = value; }
+            set { _pktParentId = value; }
         }
 
         #endregion
