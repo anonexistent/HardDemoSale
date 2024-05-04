@@ -27,12 +27,9 @@ namespace DemoSale.Data
 
         public Pkt pktParent { get; set; }
 
-        private string _subjectVin;
+        private string? _subjectVin;
 
-        private string _contractId;
-
-        public WarrantyContract contract { get; set; }
-        public WarrantySubject subject { get; set; }
+        private string? _contractId;
 
         #region from pkt
         //      private string? _paymentMethod { get { return pktParent.paymentMethod; } }
@@ -90,13 +87,13 @@ namespace DemoSale.Data
 
         #region auto props
 
-        public string subjectVin
+        public string? subjectVin
         {
             get { return _subjectVin; }
             set { _subjectVin = value; }
         }
 
-        public string contractId
+        public string? contractId
         {
             get { return _contractId; }
             set { _contractId = value; }
@@ -131,7 +128,7 @@ namespace DemoSale.Data
         //    get { return _paymentMethod; }
         //}
 
-        public string unTransDocNumber
+        public string? unTransDocNumber
         {
             get { return _unTransDocNumber; }
             set { _unTransDocNumber = value; }

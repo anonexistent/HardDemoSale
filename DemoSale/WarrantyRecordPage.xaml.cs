@@ -1,4 +1,5 @@
 ﻿using DemoSale.Data;
+using DemoSale.DataBaseCore;
 using DemoSale.QR;
 using Newtonsoft.Json;
 using NJsonSchema;
@@ -114,7 +115,10 @@ namespace DemoSale
                 false
             };
 
-            switch (((WarrantyRecord)((ListBox)sender).SelectedItem).contract.technicalMaintenance)
+            var tempContractId = ((WarrantyRecord)((ListBox)sender).SelectedItem).contractId;
+            var tempContract = FrameClass.db.WarrantyContract.Where(x=>x.serviceContract==tempContractId).FirstOrDefault();
+
+            switch (tempContract.technicalMaintenance)
             {
                 case 30:
                     isSselection[0] = true;
@@ -210,11 +214,9 @@ namespace DemoSale
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            FrameClass.db = new();
+            var a = FrameClass.db;
 
-            var temp = FrameClass.db.WarrantyRecord.ToList();
-
-            foreach (var item in temp)
+            foreach (var item in FrameClass.db.WarrantyRecord.ToList())
             {
                 generalList.Add(item);
             }

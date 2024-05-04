@@ -70,8 +70,8 @@
                             <TextBox Text="{Binding sellerAgent, Mode=TwoWay}"/>
                             <TextBox Text="{Binding region}"/>
                             <TextBox Text="{Binding manager}"/>
-                            
-                            <ComboBox x:Name="cbPosTypes" SelectedValue="{Binding positionType}" DisplayMemberPath="positionName">
+
+                            <ComboBox x:Name="cbPosTypes" Text="{Binding positionType}" SelectedItem="{Binding positionType}" DisplayMemberPath="positionName">
                                 <!--<ComboBoxItem Content="element0"/>
                                 <ComboBoxItem Content="element1" IsSelected="True"/>
                                 <ComboBoxItem Content="element2"/>
@@ -200,11 +200,11 @@
                         </StackPanel>
 
                         <StackPanel Style="{Binding Mode=OneWay, Source={StaticResource FirstStackPanelStyle}}" VerticalAlignment="Center" Grid.Column="1">
-                            <TextBox IsEnabled="False" Text="???"/>
-                            <TextBox IsEnabled="False" Text="???"/>
-                            <TextBox IsEnabled="False" Text="???"/>
+                            <TextBox Text="{Binding kvMoney}"/>
+                            <TextBox Text="{Binding otherMoney}"/>
+                            <TextBox IsEnabled="False" Text="{Binding dopPositionDescription}"/>
                             <DatePicker SelectedDate="{Binding deliveryDate}"/>
-                            <syncfusion:CurrencyTextBox Value="{Binding forCalculation, Mode=TwoWay, StringFormat=\{0:C\}}" Style="{Binding Source={StaticResource SecondStackPanelStyle}}">
+                            <syncfusion:CurrencyTextBox Value="{Binding forCalculation}" Style="{Binding Source={StaticResource SecondStackPanelStyle}}">
                             </syncfusion:CurrencyTextBox>
                         </StackPanel>
                     </Grid>

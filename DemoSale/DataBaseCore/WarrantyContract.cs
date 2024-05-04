@@ -67,19 +67,19 @@ namespace DemoSale.DataBaseCore
         }
 
         [Key]
-        public string serviceContract
+        public string? serviceContract
         {
             get { return _serviceContract; }
             set { _serviceContract = value; }
         }
 
-        public string engTecWorker
+        public string? engTecWorker
         {
             get { return _engTecWorker; }
             set { _engTecWorker = value; }
         }
 
-        public string regionDeFacto
+        public string? regionDeFacto
         {
             get { return _regionDeFacto; }
             set { _regionDeFacto = value; }

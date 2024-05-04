@@ -13,8 +13,8 @@ namespace DemoSale.DataBaseCore
         private string? _engine;
         private int? _dateRelease;
         //electonic vehicle passport
-        private string _evp;
-        private string _positionName;
+        private string? _evp;
+        private string? _positionName;
 
         #region ctors
 
@@ -36,12 +36,12 @@ namespace DemoSale.DataBaseCore
 
         #region auto props
 
-        public string positionName
+        public string? positionName
         {
             get { return _positionName; }
             set { _positionName = value; }
         }
-        public string evp
+        public string? evp
         {
             get { return _evp; }
             set { _evp = value; }
@@ -51,14 +51,14 @@ namespace DemoSale.DataBaseCore
             get { return _dateRelease; }
             set { _dateRelease = value; }
         }
-        public string engine
+        public string? engine
         {
             get { return _engine; }
             set { _engine = value; }
         }
 
         [Key]
-        public string vin
+        public string? vin
         {
             get { return _vin; }
             set { _vin = value; }

@@ -17,6 +17,7 @@ namespace DemoSale.DataBaseCore
         public DbSet<WarrantySubject> WarrantySubject { get; set; }
         public DbSet<WarrantyContract> WarrantyContract { get; set; }
         public DbSet<WarrantyRecord> WarrantyRecord { get; set; }
+        public DbSet<TatarstanAnnualReport> TatarstanReport { get; set; }
 
         public ApplicationContext()
         {

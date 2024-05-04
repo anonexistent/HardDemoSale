@@ -45,5 +45,10 @@ namespace DemoSale
             FrameClass.mainFrame.Navigate(new TatarstanReportAddPage());
 
         }
+
+        private void Button_ClickRestore(object sender, RoutedEventArgs e)
+        {
+            dgMain.ItemsSource = FrameClass.db.TatarstanReport.ToList();
+        }
     }
 }

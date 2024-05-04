@@ -1,26 +1,24 @@
-﻿using System;
+﻿using DemoSale.Data;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace DemoSale.DataBaseCore
 {
     public class TatarstanAnnualReport
     {
-        [Display(Order = 0, Name = "№ п/п")]
+        [Key]
         private int _id;
-        [Display(Order = 1, Name = "№ п/п")]
-        private DateOnly _dateShipment;
-        [Display(Order = 2, Name = "№ п/п")]
+        private DateOnly? _dateShipment;
         private string _positionName;
-        [Display(Order = 3, Name = "№ п/п")]
         private int _count;
         private double _realization;
-        private string _paymentMethod;
-        private string _region;
+        private string? _paymentMethod;
+        private string? _region;
         //	контрагент
-        private string _seller;
+        private string? _seller;
         //	представитель
-        private string _sellerAgent;
-        private string _phone;
+        private string? _sellerAgent;
+        private string? _phone = "н/д";
 
         #region ctors
 
@@ -28,12 +26,24 @@ namespace DemoSale.DataBaseCore
         {
 
         }
+        
+        public TatarstanAnnualReport(Pkt parent)
+        {
+            this.dateShipment = parent.dateShipment;
+            this.positionName = parent.positionName;
+            this.count = parent.count;
+            this.realization = parent.realization;
+            this.paymentMethod = parent.paymentMethod;
+            this.region = parent.region;
+            this.seller = parent.seller;
+            this.sellerAgent = parent.sellerAgent;
+            //this.phone = parent.phone;
+        }
 
-        public TatarstanAnnualReport(int id, DateOnly dateShipment,
+        public TatarstanAnnualReport(DateOnly dateShipment,
             string positionName, int count, double realization, string paymentMethod,
             string region, string seller, string sellerAgent, string phone)
         {
-            this.id = id;
             this.dateShipment = dateShipment;
             this.positionName = positionName;
             this.count = count;
@@ -49,33 +59,33 @@ namespace DemoSale.DataBaseCore
 
         #region auto props
 
-        public string phone
+        public string? phone
         {
             get { return _phone; }
             set { _phone = value; }
         }
 
 
-        public string sellerAgent
+        public string? sellerAgent
         {
             get { return _sellerAgent; }
             set { _sellerAgent = value; }
         }
 
-        public string seller
+        public string? seller
         {
             get { return _seller; }
             set { _seller = value; }
         }
 
 
-        public string region
+        public string? region
         {
             get { return _region; }
             set { _region = value; }
         }
 
-        public string paymentMethod
+        public string? paymentMethod
         {
             get { return _paymentMethod; }
             set { _paymentMethod = value; }
@@ -96,13 +106,13 @@ namespace DemoSale.DataBaseCore
         }
 
 
-        public string positionName
+        public string? positionName
         {
             get { return _positionName; }
             set { _positionName = value; }
         }
 
-        public DateOnly dateShipment
+        public DateOnly? dateShipment
         {
             get { return _dateShipment; }
             set { _dateShipment = value; }

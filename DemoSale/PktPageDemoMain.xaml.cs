@@ -60,26 +60,26 @@ namespace DemoSale
 
         private void Button_Click_reload(object sender, RoutedEventArgs e)
         {
-            #region json schema
+            //#region json schema
 
-            var schema = JsonSchema.FromType<List<Pkt>>();
-            var schemaJson = schema.ToJson();
+            //var schema = JsonSchema.FromType<List<Pkt>>();
+            //var schemaJson = schema.ToJson();
 
-            FileStream temp = new FileStream("schema.json", FileMode.OpenOrCreate);
-            StreamWriter tempWriter = new StreamWriter(temp);
-            tempWriter.Write(schemaJson);
-            tempWriter.Close();
+            //FileStream temp = new FileStream("schema.json", FileMode.OpenOrCreate);
+            //StreamWriter tempWriter = new StreamWriter(temp);
+            //tempWriter.Write(schemaJson);
+            //tempWriter.Close();
 
-            #endregion
+            //#endregion
 
-            string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "testData.json");
-            var reader = new StreamReader(path);
-            string s = reader.ReadToEnd();
-            reader.Close();
+            //string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "testData.json");
+            //var reader = new StreamReader(path);
+            //string s = reader.ReadToEnd();
+            //reader.Close();
 
-            pktList = JsonConvert.DeserializeObject<ObservableCollection<Pkt>>(s);
-
-            dgMain.ItemsSource = pktList;
+            //pktList = JsonConvert.DeserializeObject<ObservableCollection<Pkt>>(s);
+            
+            dgMain.ItemsSource = FrameClass.db.Pkt.ToList();
         }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)

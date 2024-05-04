@@ -105,7 +105,7 @@ namespace DemoSale
             var sss = FrameClass.db.PositionType.ToList();
             foreach (var item in sss)
             {
-                cbPosTypes.ItemsSource = sss;
+                cbPosTypes.Items.Add(item);
             }
 
         }
