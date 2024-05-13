@@ -20,6 +20,8 @@ namespace DemoSale.DataBaseCore
         private string? _sellerAgent;
         private string? _phone = "н/д";
 
+        private uint _pktId;
+
         #region ctors
 
         public TatarstanAnnualReport()
@@ -59,12 +61,17 @@ namespace DemoSale.DataBaseCore
 
         #region auto props
 
+        public uint pktId
+        {
+            get { return _pktId; }
+            set { _pktId = value; }
+        }
+
         public string? phone
         {
             get { return _phone; }
             set { _phone = value; }
         }
-
 
         public string? sellerAgent
         {

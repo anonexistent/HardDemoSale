@@ -48,7 +48,7 @@ namespace DemoSale
 
         private void Button_ClickRestore(object sender, RoutedEventArgs e)
         {
-            dgMain.ItemsSource = FrameClass.db.TatarstanReport.ToList();
+            //dgMain.ItemsSource = FrameClass.db.TatarstanReport.ToList();
         }
     }
 }
