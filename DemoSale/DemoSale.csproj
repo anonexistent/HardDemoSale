@@ -15,7 +15,7 @@
     <None Remove="Resources\Clouds\cl1.png" />
     <None Remove="Resources\Clouds\cl2.png" />
     <None Remove="Resources\Clouds\cl3.png" />
-    <None Remove="Resources\favicon.ico" />
+    <None Remove="Resources\favicon1.ico" />
     <None Remove="Resources\icons8-airCar-100.png" />
     <None Remove="Resources\icons8-education-100.png" />
     <None Remove="Resources\icons8-repair-100.png" />
@@ -29,6 +29,10 @@
     <None Remove="Resources\info4.jpg" />
     <None Remove="Resources\kartinki-pshenichnoe-pole-49.jpg" />
     <None Remove="Resources\question100.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\favicon.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -55,7 +59,6 @@
     <Resource Include="Resources\Clouds\cl1.png" />
     <Resource Include="Resources\Clouds\cl2.png" />
     <Resource Include="Resources\Clouds\cl3.png" />
-    <Resource Include="Resources\favicon.ico" />
     <Resource Include="Resources\icons8-airCar-100.png" />
     <Resource Include="Resources\icons8-education-100.png" />
     <Resource Include="Resources\icons8-repair-100.png" />

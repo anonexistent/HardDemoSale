@@ -7,7 +7,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DemoSale"
         mc:Ignorable="d"
-        Title='000 "Автоцентр"' Height="450" Width="800" Background="#FF77C0FF" Icon="/Resources/favicon.ico">
+        Title='000 "Автоцентр"' Height="450" Width="800" Background="#FF77C0FF">
     <Frame Name="fMain" Margin="15" NavigationUIVisibility="Hidden">
         
     </Frame>
