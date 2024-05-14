@@ -23,7 +23,7 @@ namespace DemoSale
     /// <summary>
     /// Логика взаимодействия для PktPageDemo.xaml
     /// </summary>
-    public partial class PktPageDemo : Page
+    public partial class PktAddPage : Page
     {
         public class PktData
         {
@@ -82,15 +82,15 @@ namespace DemoSale
             set { _currentPosition = value; }
         }
 
-        //public ApplicationContext db;
+        ApplicationContext db = new();
 
-        public PktPageDemo()
+        public PktAddPage()
         {
             InitializeComponent();
 
             InitItems();
 
-            //spTbs.DataContext = currentPosition;
+            spTbs.DataContext = currentPosition;
         }
 
         private void InitItems()
@@ -112,7 +112,7 @@ namespace DemoSale
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            FrameClass.mainFrame.Navigate(new PktPageDemoMain());
+            FrameClass.mainFrame.Navigate(new PktMainPage());
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -124,7 +124,8 @@ namespace DemoSale
                 paymentMethod = currentPosition.paymentMethod, phone = "н/д", positionName = currentPosition.positionName,
                 realization = currentPosition.realization, region = currentPosition.region, seller = currentPosition.seller, 
                     sellerAgent = currentPosition.sellerAgent};
-                TatarstanReportPage.b.Add(temp);
+                db.TatarstanReport.Add(temp);
+                db.SaveChanges();
             }
 
             WarrantySubject tempWarSub = new() { positionName = currentPosition.positionName.ToString()};

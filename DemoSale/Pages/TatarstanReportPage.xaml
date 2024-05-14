@@ -90,7 +90,7 @@
         
         <StackPanel Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="25 0 25 25">
             <StackPanel Orientation="Horizontal" Margin="10 0 0 0">
-                <Button Content="+" FontSize="26" FontWeight="Black" Background="Thistle" Foreground="Black" Click="Button_Click_1_Add"/>
+                <Button Content=" + " FontSize="26" FontWeight="Black" Background="Thistle" Foreground="Black" Click="Button_Click_1_Add"/>
                 <!--<Button Content="—" FontSize="20" FontWeight="Black" Margin="5" Background="AliceBlue" Foreground="Black" Click="Button_Click_1"/>
                 <Button Content="✏️" FontSize="20" Background="AliceBlue" Foreground="Black"/>-->
                 <Button Content=" ⟳ " FontSize="24" Margin="5 0 0 0" Background="AliceBlue" Foreground="Black" Click="Button_ClickRestore"/>

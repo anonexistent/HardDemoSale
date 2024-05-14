@@ -26,7 +26,7 @@ namespace DemoSale
     /// </summary>
     
     record ShortlyInfo(string value1, string value2, string laue3, string value4);
-    public partial class PktPageDemoMain : Page
+    public partial class PktMainPage : Page
     {
         private static ObservableCollection<Pkt> _pktList = new();
         public static ObservableCollection<Pkt> pktList
@@ -37,14 +37,14 @@ namespace DemoSale
 
         List<ShortlyInfo> ptkListShortView = new List<ShortlyInfo>();
 
-        public PktPageDemoMain()
+        public PktMainPage()
         {
             InitializeComponent();
         }
 
         private void ButtonAddClick(object sender, RoutedEventArgs e)
         {
-            FrameClass.mainFrame.Navigate(new PktPageDemo());            
+            FrameClass.mainFrame.Navigate(new PktAddPage());
             //FrameClass.mainFrame.Navigate(new PktPage());
         }
 
@@ -126,6 +126,18 @@ namespace DemoSale
             var x = new StreamWriter(path);
             x.Write(newJson);
             x.Close();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedRowInDataGrid = dgMain.SelectedItem as Pkt;
+            if (selectedRowInDataGrid == null)
+            {
+                MessageBox.Show("Необходимо выбрать элемент", "Ошибка");
+                return;
+            }
+
+
         }
     }
 }

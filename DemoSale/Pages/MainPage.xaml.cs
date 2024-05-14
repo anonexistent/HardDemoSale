@@ -76,7 +76,7 @@ namespace DemoSale
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {            
             //FrameClass.mainFrame.Navigate(new PktPageDemoMVVM());
-            FrameClass.mainFrame.Navigate(new PktPageDemoMain());
+            FrameClass.mainFrame.Navigate(new PktMainPage());
 
         }
 

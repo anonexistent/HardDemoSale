@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"      
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
 
-      xmlns:local="clr-namespace:DemoSale"
+      xmlns:local="clr-namespace:DemoSale.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="TatarstanReportAddPage">
@@ -110,7 +110,7 @@
 
                     <StackPanel VerticalAlignment="Center" Grid.Column="1" Style="{Binding Mode=OneWay, Source={StaticResource FirstStackPanelStyle}}" >
                         
-                        <ComboBox x:Name="cbDealer" Text="{Binding dealer, Mode=TwoWay}" ItemsSource="{Binding db.Dealer, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:PktPageDemo}}}" >
+                        <ComboBox x:Name="cbDealer" Text="{Binding dealer, Mode=TwoWay}">
 
                         </ComboBox>
 

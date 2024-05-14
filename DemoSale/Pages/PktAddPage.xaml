@@ -4,9 +4,9 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:DemoSale"
+      xmlns:local="clr-namespace:DemoSale.Pages"
       xmlns:Globalization="clr-namespace:System.Globalization;assembly=System.Runtime" 
-      x:Class="DemoSale.PktPageDemo"
+      x:Class="DemoSale.PktAddPage"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PktPageDemo">
@@ -42,7 +42,7 @@
     <ScrollViewer>
 
         <Grid>
-            <TabControl x:Name="spTbs" DataContext="{Binding Path=currentPosition,Mode=TwoWay, RelativeSource={RelativeSource AncestorType={x:Type local:PktPageDemo}}}">
+            <TabControl x:Name="spTbs">
                 <TabItem Header="Основное" Margin="2 2 2 0">
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -113,7 +113,7 @@
 
                         <StackPanel VerticalAlignment="Center" Grid.Column="1" Style="{Binding Mode=OneWay, Source={StaticResource FirstStackPanelStyle}}" >
 
-                            <ComboBox x:Name="cbDealer" SelectedItem="{Binding dealer}" Text="{Binding dealer, Mode=TwoWay}" ItemsSource="{Binding db.Dealer, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:PktPageDemo}}}" />
+                            <ComboBox x:Name="cbDealer" SelectedItem="{Binding dealer}" Text="{Binding dealer, Mode=TwoWay}"/>
 
                             <syncfusion:CurrencyTextBox Value="{Binding purchaseMoney}" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
                             <syncfusion:CurrencyTextBox Value="{Binding paidMoney}" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
@@ -167,8 +167,8 @@
                                 <RadioButton Content="222" Margin="3"/>
                             </StackPanel>-->
 
-                            <ComboBox Height="30" IsEditable="True" ItemsSource="{Binding Path=Pays}" SelectedItem="{Binding Path=SelectedPay}" Text="{Binding Path=NewPay, UpdateSourceTrigger=LostFocus}"
-                                      DataContext="{Binding PktData, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:PktPageDemo}}}" >
+                            <ComboBox Height="30" IsEditable="True" ItemsSource="{Binding Path=Pays}" SelectedItem="{Binding Path=SelectedPay}" 
+                                      Text="{Binding Path=NewPay, UpdateSourceTrigger=LostFocus}">
                                 
                             </ComboBox>
                             
@@ -209,7 +209,8 @@
                         </StackPanel>
                     </Grid>
                 </TabItem>
-                <TabItem Header="Test 1"/>
+                
+                <!--<TabItem Header="Test 1"/>-->
             </TabControl>
 
             <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5">
