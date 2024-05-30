@@ -1,12 +1,5 @@
-﻿using DemoSale.DataBaseCore;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DemoSale.Data
 {
@@ -16,7 +9,7 @@ namespace DemoSale.Data
         private Guid? _warrantyId = Guid.NewGuid();
 
         private DateOnly? _dateShipment;
-		private DateOnly? _dateUnsubscribe;
+        private DateOnly? _dateUnsubscribe;
         //	№УПД
         /*
 		 * 01УТ-000006
@@ -43,12 +36,16 @@ namespace DemoSale.Data
 
         #region ctors
 
+#pragma warning disable CS8618 // Поле, не допускающее значения NULL, должно содержать значение, отличное от NULL, при выходе из конструктора. Возможно, стоит объявить поле как допускающее значения NULL.
         public WarrantyRecord()
+#pragma warning restore CS8618 // Поле, не допускающее значения NULL, должно содержать значение, отличное от NULL, при выходе из конструктора. Возможно, стоит объявить поле как допускающее значения NULL.
         {
-            
+
         }
 
+#pragma warning disable CS8618 // Поле, не допускающее значения NULL, должно содержать значение, отличное от NULL, при выходе из конструктора. Возможно, стоит объявить поле как допускающее значения NULL.
         public WarrantyRecord(string contractId, string subjectVin, uint pktId)
+#pragma warning restore CS8618 // Поле, не допускающее значения NULL, должно содержать значение, отличное от NULL, при выходе из конструктора. Возможно, стоит объявить поле как допускающее значения NULL.
         {
             this.contractId = contractId;
             this.subjectVin = subjectVin;

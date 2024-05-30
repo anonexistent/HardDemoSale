@@ -30,10 +30,10 @@ namespace DemoSale.DataBaseCore
 
         public WarrantyContract()
         {
-            
+
         }
 
-        public WarrantyContract(string? regionDeFacto, string? engTecWorker, string? serviceContract, 
+        public WarrantyContract(string? regionDeFacto, string? engTecWorker, string? serviceContract,
             DateOnly? dateServiceContract, int? technicalMaintenance, DateOnly? dateEndWarranty)
         {
             _regionDeFacto = regionDeFacto;

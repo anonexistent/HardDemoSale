@@ -4,14 +4,15 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:DemoSale.Pages"
+      xmlns:local="clr-namespace:DemoSale"
       xmlns:Globalization="clr-namespace:System.Globalization;assembly=System.Runtime" 
-      x:Class="DemoSale.PktAddPage"
+      x:Class="DemoSale.PktAddEditPage"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PktPageDemo">
 
     <Page.Resources>
+        <local:DateOnlyConverter x:Key="DateOnlyConverter"/>
         <Style TargetType="{x:Type TabItem}">
             <Style.Triggers>
                 <Trigger Property="IsSelected" Value="True">
@@ -71,7 +72,10 @@
                             <TextBox Text="{Binding region}"/>
                             <TextBox Text="{Binding manager}"/>
 
-                            <ComboBox x:Name="cbPosTypes" Text="{Binding positionType}" SelectedItem="{Binding positionType}" DisplayMemberPath="positionName">
+
+                            <!--<ComboBox x:Name="cbDealer" SelectedItem="{Binding dealer}" Text="{Binding dealer, Mode=TwoWay}"/>-->
+
+                            <ComboBox x:Name="cbPosTypes" SelectedItem="{Binding positionType}" Text="{Binding positionType, Mode=TwoWay}">
                                 <!--<ComboBoxItem Content="element0"/>
                                 <ComboBoxItem Content="element1" IsSelected="True"/>
                                 <ComboBoxItem Content="element2"/>
@@ -85,7 +89,7 @@
                     <ComboBoxItem>element3</ComboBoxItem>
                     <TextBox>новый...</TextBox>-->
                             </ComboBox>
-                            <TextBox HorizontalAlignment="Center" Padding="20 0 20 0"/>
+                            <TextBox HorizontalAlignment="Center" Text="{Binding count}" Padding="20 0 20 0"/>
                         </StackPanel>
 
                     </Grid>
@@ -104,6 +108,8 @@
 
                         <StackPanel Style="{StaticResource ResourceKey=FirstStackPanelStyle}" VerticalAlignment="Center">
                             <TextBlock Text="Поставщик"/>
+                            <TextBlock Text="Дата отгрузки"/>
+                            <TextBlock Text="Дата поступления"/>
                             <TextBlock Text="Закуп"/>
                             <TextBlock Text="Оплата поставщику"/>
                             <TextBlock Text="Долг Поставщику"/>
@@ -115,15 +121,14 @@
 
                             <ComboBox x:Name="cbDealer" SelectedItem="{Binding dealer}" Text="{Binding dealer, Mode=TwoWay}"/>
 
+                            <DatePicker x:Name="dpDateShipment" SelectedDate="{Binding dateShipment, Converter={StaticResource DateOnlyConverter}}"/>
+                            <DatePicker x:Name="dpDateEntry" SelectedDate="{Binding dateEntry, Converter={StaticResource DateOnlyConverter}}"/>
+
                             <syncfusion:CurrencyTextBox Value="{Binding purchaseMoney}" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
                             <syncfusion:CurrencyTextBox Value="{Binding paidMoney}" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
                             <syncfusion:CurrencyTextBox Value="{Binding deptMoney}" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
-                            <DatePicker Text="{Binding paymentTerm}"/>
-                            <ComboBox SelectedItem="{Binding specification}">
-                                <ComboBoxItem Content="spec0"/>
-                                <ComboBoxItem Content="spec1" IsSelected="True"/>
-                                <ComboBoxItem Content="spec2"/>
-                                <ComboBoxItem Content="spec3"/>
+                            <DatePicker x:Name="dpDatePaymentTerm" SelectedDate="{Binding paymentTerm, Converter={StaticResource DateOnlyConverter}}"/>
+                            <ComboBox x:Name="cbSpec" SelectedItem="{Binding specification}" Text="{Binding specification, Mode=TwoWay}">
                             </ComboBox>
                         </StackPanel>
 
@@ -155,11 +160,11 @@
                         </StackPanel>
 
                         <StackPanel Style="{Binding Mode=OneWay, Source={StaticResource FirstStackPanelStyle}}" VerticalAlignment="Center" Grid.Column="1">
-                            <syncfusion:CurrencyTextBox Value="0.00" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
-                            <syncfusion:CurrencyTextBox Value="0.00" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
-                            <syncfusion:CurrencyTextBox Value="0.00" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
-                            <syncfusion:CurrencyTextBox Value="0.00" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
-                            <DatePicker/>
+                            <syncfusion:CurrencyTextBox Value="{Binding salesDepartmentMoney}" x:Name="tbPriceSellerDep" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
+                            <syncfusion:CurrencyTextBox Value="{Binding realization}" x:Name="tbPriceRealization" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
+                            <syncfusion:CurrencyTextBox Value="{Binding arrivedMoney}" x:Name="tbPriceGotten" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
+                            <syncfusion:CurrencyTextBox Value="{Binding realizationDept, Mode=OneWay}" x:Name="tbPriceDebt" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
+                            <DatePicker x:Name="dpDatePay" SelectedDate="{Binding paymentTermRealization, Converter={StaticResource DateOnlyConverter}}"/>
                             
                             <!--<StackPanel Orientation="Horizontal" Height="30" HorizontalAlignment="Center">
                                 <RadioButton Content="000" Margin="3"/>
@@ -167,15 +172,15 @@
                                 <RadioButton Content="222" Margin="3"/>
                             </StackPanel>-->
 
-                            <ComboBox Height="30" IsEditable="True" ItemsSource="{Binding Path=Pays}" SelectedItem="{Binding Path=SelectedPay}" 
+                            <ComboBox x:Name="cbPaymentMethod" Height="30" IsEditable="True" ItemsSource="{Binding Path=Pays}" SelectedItem="{Binding Path=SelectedPay}" 
                                       Text="{Binding Path=NewPay, UpdateSourceTrigger=LostFocus}">
                                 
                             </ComboBox>
-                            
-                            <syncfusion:CurrencyTextBox Value="{Binding marginalProfit}" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
-                            <syncfusion:CurrencyTextBox Value="{Binding transportOther}" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
-                            <syncfusion:CurrencyTextBox Value="{Binding transportOtherNds}" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
-                            <syncfusion:CurrencyTextBox Value="{Binding loadingUnloading}" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
+
+                            <syncfusion:CurrencyTextBox Value="{Binding marginalProfit}" x:Name="tbPriceMarginalProfit" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
+                            <syncfusion:CurrencyTextBox Value="{Binding transportOther}" x:Name="tbPriceTransportOther" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
+                            <syncfusion:CurrencyTextBox Value="{Binding transportOtherNds}" x:Name="tbPriceTransportOtherNds" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
+                            <syncfusion:CurrencyTextBox Value="{Binding loadingUnloading}" x:Name="tbPriceLoadingUnloading" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
                         </StackPanel>
                     </Grid>
                 </TabItem>
@@ -200,12 +205,11 @@
                         </StackPanel>
 
                         <StackPanel Style="{Binding Mode=OneWay, Source={StaticResource FirstStackPanelStyle}}" VerticalAlignment="Center" Grid.Column="1">
-                            <TextBox Text="{Binding kvMoney}"/>
-                            <TextBox Text="{Binding otherMoney}"/>
-                            <TextBox IsEnabled="False" Text="{Binding dopPositionDescription}"/>
-                            <DatePicker SelectedDate="{Binding deliveryDate}"/>
-                            <syncfusion:CurrencyTextBox Value="{Binding forCalculation}" Style="{Binding Source={StaticResource SecondStackPanelStyle}}">
-                            </syncfusion:CurrencyTextBox>
+                            <syncfusion:CurrencyTextBox Value="{Binding kvMoney}" x:Name="tbMoneyKv" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
+                            <syncfusion:CurrencyTextBox Value="{Binding otherMoney}" x:Name="tbMoneyOther" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
+                            <TextBox x:Name="tbOtherWorks" IsEnabled="False" Text="{Binding dopPositionDescription}"/>
+                            <DatePicker x:Name="dpDateDelivery" SelectedDate="{Binding deliveryDate, Converter={StaticResource DateOnlyConverter}}"/>
+                            <syncfusion:CurrencyTextBox x:Name="tbForCalculation" Value="{Binding forCalculation}" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
                         </StackPanel>
                     </Grid>
                 </TabItem>
@@ -214,8 +218,8 @@
             </TabControl>
 
             <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5">
-                <Button Content="💾" FontSize="20" Margin="0 0 15 0"/>
-                <Button Content=" x " FontSize="20" Background="Transparent" Click="Button_Click"/>
+                <Button x:Name="btnSave" Content="💾" FontSize="20" Margin="0 0 15 0" ToolTip="Сохранить изменения" Click="Button_Click_1"/>
+                <Button x:Name="btnClose" Content=" x " FontSize="20" Background="Transparent" Click="Button_Click"/>
             </StackPanel>
         </Grid>
     </ScrollViewer>

@@ -179,6 +179,66 @@ namespace DemoSale.Migrations
                     b.ToTable("PositionType");
                 });
 
+            modelBuilder.Entity("DemoSale.DataBaseCore.Specification", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("description")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Specification");
+                });
+
+            modelBuilder.Entity("DemoSale.DataBaseCore.TatarstanAnnualReport", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("count")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateOnly?>("dateShipment")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("paymentMethod")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("phone")
+                        .HasColumnType("TEXT");
+
+                    b.Property<uint>("pktId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("positionName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<double>("realization")
+                        .HasColumnType("REAL");
+
+                    b.Property<string>("region")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("seller")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("sellerAgent")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("id");
+
+                    b.ToTable("TatarstanReport");
+                });
+
             modelBuilder.Entity("DemoSale.DataBaseCore.WarrantyContract", b =>
                 {
                     b.Property<string>("serviceContract")

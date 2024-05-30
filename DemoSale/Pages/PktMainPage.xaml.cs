@@ -1,30 +1,22 @@
 ﻿using DemoSale.Data;
+using DemoSale.DataBaseCore;
+using DemoSale.Pages;
 using Newtonsoft.Json;
-using NJsonSchema;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.DirectoryServices.ActiveDirectory;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Text.Json.Nodes;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace DemoSale
 {
     /// <summary>
     /// Логика взаимодействия для PktPageDemoMain.xaml
     /// </summary>
-    
+
     record ShortlyInfo(string value1, string value2, string laue3, string value4);
     public partial class PktMainPage : Page
     {
@@ -36,69 +28,115 @@ namespace DemoSale
         }
 
         List<ShortlyInfo> ptkListShortView = new List<ShortlyInfo>();
+        ApplicationContext db = new();
 
         public PktMainPage()
         {
             InitializeComponent();
+
+            InitStaticFileds();
+        }
+
+        private void InitStaticFileds()
+        {
+            try
+            {
+                dgMain.ItemsSource = FrameClass.db.Pkt.ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка");
+            }
         }
 
         private void ButtonAddClick(object sender, RoutedEventArgs e)
         {
-            FrameClass.mainFrame.Navigate(new PktAddPage());
+#pragma warning disable CS8602 // Разыменование вероятной пустой ссылки.
+            FrameClass.mainFrame.Navigate(new PktAddEditPage());
+#pragma warning restore CS8602 // Разыменование вероятной пустой ссылки.
             //FrameClass.mainFrame.Navigate(new PktPage());
         }
 
         private void Button_Click_1_del(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Удалить элемент № ?", "Удаление", MessageBoxButton.OKCancel);
+            var selectedItem = (dgMain as DataGrid).SelectedItem as Pkt;
+
+            if(selectedItem!=null)
+            {
+                var a = MessageBox.Show("Удалить элемент № ?", "Удаление", MessageBoxButton.OKCancel);
+                if(a==MessageBoxResult.Yes)
+                {
+                    db.Pkt.Remove(selectedItem);
+                    db.SaveChanges();
+
+                    (dgMain as DataGrid).ItemsSource = db.Pkt.ToList();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Необходимо выбрать элемент", "Ошибка");
+                return;
+            }
+
         }
 
         private void ButtonBackClick(object sender, RoutedEventArgs e)
         {
+#pragma warning disable CS8602 // Разыменование вероятной пустой ссылки.
             FrameClass.mainFrame.Navigate(new MainPage());
+#pragma warning restore CS8602 // Разыменование вероятной пустой ссылки.
         }
 
         private void Button_Click_reload(object sender, RoutedEventArgs e)
         {
-            //#region json schema
+            try
+            {
+                //#region json schema
 
-            //var schema = JsonSchema.FromType<List<Pkt>>();
-            //var schemaJson = schema.ToJson();
+                //var schema = JsonSchema.FromType<List<Pkt>>();
+                //var schemaJson = schema.ToJson();
 
-            //FileStream temp = new FileStream("schema.json", FileMode.OpenOrCreate);
-            //StreamWriter tempWriter = new StreamWriter(temp);
-            //tempWriter.Write(schemaJson);
-            //tempWriter.Close();
+                //FileStream temp = new FileStream("schema.json", FileMode.OpenOrCreate);
+                //StreamWriter tempWriter = new StreamWriter(temp);
+                //tempWriter.Write(schemaJson);
+                //tempWriter.Close();
 
-            //#endregion
+                //#endregion
 
-            //string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "testData.json");
-            //var reader = new StreamReader(path);
-            //string s = reader.ReadToEnd();
-            //reader.Close();
+                //string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "testData.json");
+                //var reader = new StreamReader(path);
+                //string s = reader.ReadToEnd();
+                //reader.Close();
 
-            //pktList = JsonConvert.DeserializeObject<ObservableCollection<Pkt>>(s);
-            
-            dgMain.ItemsSource = FrameClass.db.Pkt.ToList();
+                //pktList = JsonConvert.DeserializeObject<ObservableCollection<Pkt>>(s);
+
+                dgMain.ItemsSource = FrameClass.db.Pkt.ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                throw;
+            }
+
         }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            if ((bool)((CheckBox)sender).IsChecked)
-            {
-                foreach (Pkt item in pktList)
-                {
-                    ShortlyInfo temp = new ShortlyInfo(item.positionType, item.positionName, 
-                        item.deptMoney.ToString(), item.realization.ToString());
-                    ptkListShortView.Add(temp);
-                }
+            //if ((bool)((CheckBox)sender).IsChecked)
+            //{
+            //    foreach (Pkt item in pktList)
+            //    {
+            //        ShortlyInfo temp = new ShortlyInfo(item.positionType, item.positionName,
+            //            item.deptMoney.ToString(), item.realization.ToString());
+            //        ptkListShortView.Add(temp);
+            //    }
 
-                dgMain.ItemsSource = ptkListShortView;
-            }
-            else
-            {
-                dgMain.ItemsSource = pktList;
-            }
+            //    dgMain.ItemsSource = ptkListShortView;
+            //}
+            //else
+            //{
+            //    dgMain.ItemsSource = pktList;
+            //}
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -131,7 +169,11 @@ namespace DemoSale
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var selectedRowInDataGrid = dgMain.SelectedItem as Pkt;
-            if (selectedRowInDataGrid == null)
+            if (selectedRowInDataGrid != null)
+            {
+                FrameClass.mainFrame.Navigate(new PktEditPage(selectedRowInDataGrid));
+            }
+            else
             {
                 MessageBox.Show("Необходимо выбрать элемент", "Ошибка");
                 return;

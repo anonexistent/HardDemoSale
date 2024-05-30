@@ -1,9 +1,6 @@
-﻿using Syncfusion.Windows.Shared;
+﻿using DemoSale.DataBaseCore;
 using System;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 
 namespace DemoSale.Data
 {
@@ -14,50 +11,50 @@ namespace DemoSale.Data
 
         private int _monthDeal;
         //  дата отгрузки
-        private DateOnly _dateShipment = new DateOnly(2020,1,1);
+        private DateOnly _dateShipment = new DateOnly(2020, 1, 1);
         //  дата поступления
         private DateOnly _dateEntry = new DateOnly(2020, 1, 1);
-		private string _seller = "н/д";
+        private string _seller = "н/д";
         private string _sellerAgent = "н/д";
 
         private string _region = "н/д";
-		private string _manager = "н/д";
-		private string _positionType = "н/д";
-		private string _positionName = "н/д";
-		private int _count;
+        private string _manager = "н/д";
+        private string _positionType = "н/д";
+        private string _positionName = "н/д";
+        private int _count = 1;
         //  поставщик
-		private string _dealer = "н/д";
-		//	закуп
-		private double _purchaseMoney;
-		//	оплачено
-		private double _paidMoney;
-		//	долг
-		private double _deptMoney;
-		private DateOnly _paymentTerm = new DateOnly(2020, 1, 1);
-		private string _specification = "н/д";
-		private double _salesDepartmentMoney;
-		private double _realization;
-		private double _arrivedMoney;
-		private double _realizationDept;
-		private DateOnly _paymentTermRealization = new DateOnly(2020, 1, 1);
-		private string _paymentMethod = "н/д";
-		private double _marginalProfit;
-		private double _transportOther;
-		private double _transportOtherNds;
-		private double _loadingUnloading;
-		//	кв.
-		private double _kvMoney;
-		//	прочие
-		private double _otherMoney;
-		private string _dopPositionDescription = "н/д";
-		private DateOnly _deliveryDate = new DateOnly(2020, 1, 1);
-		private double _forCalculation;
+        private string _dealer = "н/д";
+        //	закуп
+        private double _purchaseMoney;
+        //	оплачено поставщику
+        private double _paidMoney;
+        //	долг поставщику
+        private double _deptMoney;
+        private DateOnly _paymentTerm = new DateOnly(2020, 1, 1);
+        private string _specification = "н/д";
+        private double _salesDepartmentMoney;
+        private double _realization;
+        private double _arrivedMoney;
+        private double _realizationDept;
+        private DateOnly _paymentTermRealization = new DateOnly(2020, 1, 1);
+        private string _paymentMethod = "н/д";
+        private double _marginalProfit;
+        private double _transportOther;
+        private double _transportOtherNds;
+        private double _loadingUnloading;
+        //	кв.
+        private double _kvMoney;
+        //	прочие
+        private double _otherMoney;
+        private string _dopPositionDescription = "н/д";
+        private DateOnly _deliveryDate = new DateOnly(2020, 1, 1);
+        private double _forCalculation;
 
         #region ctors
 
         public Pkt()
         {
-            
+
         }
 
         public Pkt(int monthDeal, DateOnly dateShipment, DateOnly dateEntry, string seller, string sellerAgent,
@@ -156,7 +153,7 @@ namespace DemoSale.Data
 
         public double marginalProfit
         {
-            set 
+            set
             {
 
             }
@@ -212,8 +209,8 @@ namespace DemoSale.Data
 
         public double deptMoney
         {
-            set 
-            { 
+            set
+            {
                 //if (value == _purchaseMoney - _paidMoney) _deptMoney = _purchaseMoney - _paidMoney;
                 //else _deptMoney=-1;
             }

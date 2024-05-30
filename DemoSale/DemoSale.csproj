@@ -5,6 +5,7 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>favicon1.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,6 +16,7 @@
     <None Remove="Resources\Clouds\cl1.png" />
     <None Remove="Resources\Clouds\cl2.png" />
     <None Remove="Resources\Clouds\cl3.png" />
+    <None Remove="Resources\di-Z3ZYZ6.gif" />
     <None Remove="Resources\favicon1.ico" />
     <None Remove="Resources\icons8-airCar-100.png" />
     <None Remove="Resources\icons8-education-100.png" />
@@ -32,6 +34,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="favicon1.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\di-Z3ZYZ6.gif" />
     <Resource Include="Resources\favicon.ico" />
   </ItemGroup>
 
@@ -49,6 +56,7 @@
     <PackageReference Include="NJsonSchema" Version="11.0.0" />
     <PackageReference Include="Syncfusion.Shared.WPF" Version="25.1.35" />
     <PackageReference Include="System.Drawing.Common" Version="8.0.3" />
+    <PackageReference Include="XamlAnimatedGif" Version="2.3.0" />
   </ItemGroup>
 
   <ItemGroup>

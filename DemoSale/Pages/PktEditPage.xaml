@@ -65,10 +65,10 @@
                         </StackPanel>
 
                         <StackPanel VerticalAlignment="Center" Grid.Column="1" Style="{Binding Mode=OneWay, Source={StaticResource FirstStackPanelStyle}}" >
-                            <TextBox Text="{Binding seller, Mode=TwoWay}"/>
-                            <TextBox Text="{Binding sellerAgent, Mode=TwoWay}"/>
-                            <TextBox Text="{Binding region}"/>
-                            <TextBox Text="{Binding manager}"/>
+                            <TextBox x:Name="tbKontr" Text="{Binding seller, Mode=TwoWay}"/>
+                            <TextBox x:Name="tbGr" Text="{Binding sellerAgent, Mode=TwoWay}"/>
+                            <TextBox x:Name="tbArea" Text="{Binding region}"/>
+                            <TextBox x:Name="tbManager" Text="{Binding manager}"/>
 
                             <ComboBox x:Name="cbPosTypes" Text="{Binding positionType}" SelectedItem="{Binding positionType}" DisplayMemberPath="positionName">
                                 <!--<ComboBoxItem Content="element0"/>
@@ -77,14 +77,14 @@
                             <ComboBoxItem Content="element3"/>-->
                             </ComboBox>
 
-                            <ComboBox IsEditable="True" Text="{Binding positionName}" DisplayMemberPath="{Binding positionName}">
+                            <ComboBox x:Name="cbPosName" IsEditable="True" Text="{Binding positionName}" DisplayMemberPath="{Binding positionName}">
                                 <!--<ComboBoxItem>element0</ComboBoxItem>
                 <ComboBoxItem>element1</ComboBoxItem>
                 <ComboBoxItem>element2</ComboBoxItem>
                 <ComboBoxItem>element3</ComboBoxItem>
                 <TextBox>новый...</TextBox>-->
                             </ComboBox>
-                            <TextBox HorizontalAlignment="Center" Padding="20 0 20 0"/>
+                            <TextBox x:Name="tbCount" HorizontalAlignment="Center" Padding="20 0 20 0"/>
                         </StackPanel>
 
                     </Grid>
@@ -112,14 +112,13 @@
 
                         <StackPanel VerticalAlignment="Center" Grid.Column="1" Style="{Binding Mode=OneWay, Source={StaticResource FirstStackPanelStyle}}" >
 
-                            <ComboBox x:Name="cbDealer" SelectedItem="{Binding dealer}" Text="{Binding dealer, Mode=TwoWay}" 
-                                      ItemsSource="{Binding db.Dealer, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:PktEditPage}}}" />
+                            <ComboBox x:Name="cbDealer" DisplayMemberPath="dealerName"/>
 
-                            <syncfusion:CurrencyTextBox Value="{Binding purchaseMoney}" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
-                            <syncfusion:CurrencyTextBox Value="{Binding paidMoney}" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
-                            <syncfusion:CurrencyTextBox Value="{Binding deptMoney}" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
-                            <DatePicker Text="{Binding paymentTerm}"/>
-                            <ComboBox SelectedItem="{Binding specification}">
+                            <syncfusion:CurrencyTextBox x:Name="tbMoneyZakup" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
+                            <syncfusion:CurrencyTextBox x:Name="tbMoneyDealer" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
+                            <syncfusion:CurrencyTextBox x:Name="tbMoneyDealerDebt" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
+                            <DatePicker x:Name="dpPayTerm" Text="{Binding paymentTerm}"/>
+                            <ComboBox x:Name="cbSpec" SelectedItem="{Binding specification}">
                                 <ComboBoxItem Content="spec0"/>
                                 <ComboBoxItem Content="spec1" IsSelected="True"/>
                                 <ComboBoxItem Content="spec2"/>
@@ -155,11 +154,11 @@
                         </StackPanel>
 
                         <StackPanel Style="{Binding Mode=OneWay, Source={StaticResource FirstStackPanelStyle}}" VerticalAlignment="Center" Grid.Column="1">
-                            <syncfusion:CurrencyTextBox Value="0.00" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
-                            <syncfusion:CurrencyTextBox Value="0.00" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
-                            <syncfusion:CurrencyTextBox Value="0.00" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
-                            <syncfusion:CurrencyTextBox Value="0.00" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
-                            <DatePicker/>
+                            <syncfusion:CurrencyTextBox x:Name="tbPriceSellerDep" Value="0.00" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
+                            <syncfusion:CurrencyTextBox x:Name="tbPriceRealization" Value="0.00" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
+                            <syncfusion:CurrencyTextBox x:Name="tbPriceGotten" Value="0.00" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
+                            <syncfusion:CurrencyTextBox x:Name="tbPriceDebt" Value="0.00" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
+                            <DatePicker x:Name="dpDateGiveMoney"/>
 
                             <!--<StackPanel Orientation="Horizontal" Height="30" HorizontalAlignment="Center">
                             <RadioButton Content="000" Margin="3"/>
@@ -167,15 +166,15 @@
                             <RadioButton Content="222" Margin="3"/>
                         </StackPanel>-->
 
-                            <ComboBox Height="30" IsEditable="True" ItemsSource="{Binding Path=Pays}" SelectedItem="{Binding Path=SelectedPay}" Text="{Binding Path=NewPay, UpdateSourceTrigger=LostFocus}"
+                            <ComboBox x:Name="cbPaymentMethod" Height="30" IsEditable="True" ItemsSource="{Binding Path=Pays}" SelectedItem="{Binding Path=SelectedPay}" Text="{Binding Path=NewPay, UpdateSourceTrigger=LostFocus}"
                                   DataContext="{Binding PktData, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:PktEditPage}}}" >
 
                             </ComboBox>
 
-                            <syncfusion:CurrencyTextBox Value="{Binding marginalProfit}" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
-                            <syncfusion:CurrencyTextBox Value="{Binding transportOther}" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
-                            <syncfusion:CurrencyTextBox Value="{Binding transportOtherNds}" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
-                            <syncfusion:CurrencyTextBox Value="{Binding loadingUnloading}" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
+                            <syncfusion:CurrencyTextBox x:Name="tbMarzh" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
+                            <syncfusion:CurrencyTextBox x:Name="tbTrans" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
+                            <syncfusion:CurrencyTextBox x:Name="tbTransNds" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
+                            <syncfusion:CurrencyTextBox x:Name="tbLoading" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
                         </StackPanel>
                     </Grid>
                 </TabItem>
@@ -194,18 +193,17 @@
                         <StackPanel Style="{Binding Mode=OneWay, Source={StaticResource FirstStackPanelStyle}}" VerticalAlignment="Center">
                             <TextBlock Text="КВ"/>
                             <TextBlock Text="Прочие"/>
-                            <TextBlock Text="Видыдоп. работ"/>
+                            <TextBlock Text="Виды доп. работ"/>
                             <TextBlock Text="Срок поставки"/>
                             <TextBlock Text="К начислению"/>
                         </StackPanel>
 
                         <StackPanel Style="{Binding Mode=OneWay, Source={StaticResource FirstStackPanelStyle}}" VerticalAlignment="Center" Grid.Column="1">
-                            <TextBox Text="{Binding kvMoney}"/>
-                            <TextBox Text="{Binding otherMoney}"/>
-                            <TextBox IsEnabled="False" Text="{Binding dopPositionDescription}"/>
-                            <DatePicker SelectedDate="{Binding deliveryDate}"/>
-                            <syncfusion:CurrencyTextBox Value="{Binding forCalculation}" Style="{Binding Source={StaticResource SecondStackPanelStyle}}">
-                            </syncfusion:CurrencyTextBox>
+                            <syncfusion:CurrencyTextBox x:Name="tbKv" Text="{Binding kvMoney}"/>
+                            <syncfusion:CurrencyTextBox x:Name="tbMoneyOther" Text="{Binding otherMoney}"/>
+                            <TextBox x:Name="tbOtherWork" IsEnabled="False" Text="н/д"/>
+                            <DatePicker x:Name="dpDeliveryTerm" SelectedDate="{Binding deliveryDate}"/>
+                            <syncfusion:CurrencyTextBox x:Name="tbForeCalc" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
                         </StackPanel>
                     </Grid>
                 </TabItem>

@@ -1,19 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace DemoSale
 {
@@ -26,7 +15,9 @@ namespace DemoSale
 
         List<string> forRandomImage;
 
+#pragma warning disable CS8618 // Поле, не допускающее значения NULL, должно содержать значение, отличное от NULL, при выходе из конструктора. Возможно, стоит объявить поле как допускающее значения NULL.
         public DemoPagePosition(byte windowCode)
+#pragma warning restore CS8618 // Поле, не допускающее значения NULL, должно содержать значение, отличное от NULL, при выходе из конструктора. Возможно, стоит объявить поле как допускающее значения NULL.
         {
             InitializeComponent();
 
@@ -48,7 +39,7 @@ namespace DemoSale
                     g0.Visibility = Visibility.Visible;
                     g1.Visibility = Visibility.Collapsed;
                     g2.Visibility = Visibility.Collapsed;
-                    break; 
+                    break;
 
                 case 1:
                     //store
@@ -58,7 +49,7 @@ namespace DemoSale
 
                     Init1();
 
-                    break; 
+                    break;
 
                 case 2:
                     //vehicle
@@ -71,7 +62,9 @@ namespace DemoSale
 
         private void btnAddNewPhone_Click(object sender, RoutedEventArgs e)
         {
+#pragma warning disable CS8602 // Разыменование вероятной пустой ссылки.
             FrameClass.mainFrame.Navigate(new DemoPageForm());
+#pragma warning restore CS8602 // Разыменование вероятной пустой ссылки.
         }
 
         private void lb1_SelectionChanged(object sender, SelectionChangedEventArgs e)

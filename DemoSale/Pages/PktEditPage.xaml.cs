@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using DemoSale.Data;
+using DemoSale.DataBaseCore;
+using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace DemoSale.Pages
 {
@@ -20,9 +12,54 @@ namespace DemoSale.Pages
     /// </summary>
     public partial class PktEditPage : Page
     {
-        public PktEditPage()
+        ApplicationContext db = new();
+        public Pkt cifc;
+
+        public PktEditPage(Pkt item)
         {
             InitializeComponent();
+
+            cifc = item;
+            InitStaticFields();
+        }
+
+        private void InitStaticFields()
+        {
+            cbDealer.ItemsSource = db.Dealer.ToList();
+            InitCurrentItemForChange();
+
+        }
+
+        private void InitCurrentItemForChange()
+        {
+            tbKontr.Text = cifc.seller;
+            tbGr.Text = cifc.sellerAgent;
+            tbArea.Text = cifc.region;
+            tbManager.Text = cifc.manager;
+
+            cbDealer.SelectedItem = db.Dealer.Where(x=>x.dealerName== cifc.dealer).FirstOrDefault();
+            tbMoneyZakup.Text = cifc.purchaseMoney.ToString();
+            tbMoneyDealer.Text = cifc.paidMoney.ToString();
+            tbMoneyDealerDebt.Text = cifc.deptMoney.ToString();
+            dpPayTerm.SelectedDate = DateTime.Parse(cifc.paymentTerm.ToString());
+            cbSpec.SelectedItem = cifc.specification;
+
+            tbPriceSellerDep.Text = cifc.salesDepartmentMoney.ToString();
+            tbPriceRealization.Text = cifc.realization.ToString();
+            tbPriceGotten.Text = cifc.arrivedMoney.ToString();
+            tbPriceDebt.Text = cifc.realizationDept.ToString();
+            dpDateGiveMoney.SelectedDate = DateTime.Parse(cifc.paymentTermRealization.ToString());
+            cbPaymentMethod.SelectedValue = cifc.paymentMethod;
+            tbMarzh.Text = cifc.marginalProfit.ToString();
+            tbTrans.Text = cifc.transportOther.ToString();
+            tbTransNds.Text = cifc.transportOtherNds.ToString();
+            tbLoading.Text = cifc.loadingUnloading.ToString();
+
+            tbKv.Text = cifc.kvMoney.ToString();
+            tbMoneyOther.Text = cifc.otherMoney.ToString();
+            tbOtherWork.Text = cifc.dopPositionDescription;
+            dpDeliveryTerm.SelectedDate = DateTime.Parse(cifc.deliveryDate.ToString());
+            tbForeCalc.Text = cifc.forCalculation.ToString();
         }
     }
 }

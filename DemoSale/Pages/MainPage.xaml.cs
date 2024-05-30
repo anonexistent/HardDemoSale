@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Drawing;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Animation;
 
 namespace DemoSale
 {
@@ -11,7 +11,9 @@ namespace DemoSale
     public partial class MainPage : Page
     {
         UIElementCollection btns;
+#pragma warning disable CS8618 // Поле, не допускающее значения NULL, должно содержать значение, отличное от NULL, при выходе из конструктора. Возможно, стоит объявить поле как допускающее значения NULL.
         public MainPage()
+#pragma warning restore CS8618 // Поле, не допускающее значения NULL, должно содержать значение, отличное от NULL, при выходе из конструктора. Возможно, стоит объявить поле как допускающее значения NULL.
         {
             InitializeComponent();
             Init();
@@ -29,7 +31,7 @@ namespace DemoSale
 
                 case 1:
                     MakeVisibleSection("учет");
-                    break; 
+                    break;
 
                 case 2:
 
@@ -45,10 +47,12 @@ namespace DemoSale
         {
             foreach (Button child in btns)
             {
+#pragma warning disable CS8602 // Разыменование вероятной пустой ссылки.
                 if (child.Content.ToString().ToLower().Contains(name))
                 {
                     child.IsEnabled = true;
                 }
+#pragma warning restore CS8602 // Разыменование вероятной пустой ссылки.
             }
         }
 
@@ -57,7 +61,9 @@ namespace DemoSale
             ////staff
             //FrameClass.mainFrame.Navigate(new DemoPagePosition(0));
 
+#pragma warning disable CS8602 // Разыменование вероятной пустой ссылки.
             FrameClass.mainFrame.Navigate(new WarrantyRecordPage());
+#pragma warning restore CS8602 // Разыменование вероятной пустой ссылки.
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -70,25 +76,40 @@ namespace DemoSale
         {
             ////vehicle
             //FrameClass.mainFrame.Navigate(new DemoPagePosition(2));
+#pragma warning disable CS8602 // Разыменование вероятной пустой ссылки.
             FrameClass.mainFrame.Navigate(new TatarstanReportPage());
+#pragma warning restore CS8602 // Разыменование вероятной пустой ссылки.
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
-        {            
+        {
             //FrameClass.mainFrame.Navigate(new PktPageDemoMVVM());
+#pragma warning disable CS8602 // Разыменование вероятной пустой ссылки.
             FrameClass.mainFrame.Navigate(new PktMainPage());
+#pragma warning restore CS8602 // Разыменование вероятной пустой ссылки.
 
         }
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
-            Application.Current.Shutdown();
+            FrameClass.mainFrame.Navigate(new LoginPage());
+            //System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+            //Application.Current.Shutdown();
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

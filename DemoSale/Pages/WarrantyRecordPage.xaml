@@ -140,7 +140,7 @@
                             </StackPanel>
 
                             <TextBlock Text="Дата снятия с учета"/>
-                            <DatePicker />
+                            <DatePicker SelectedDateChanged="DatePicker_SelectedDateChanged"/>
                         </StackPanel>
 
                     </GroupBox>

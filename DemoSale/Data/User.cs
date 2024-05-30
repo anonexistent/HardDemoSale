@@ -1,29 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace DemoSale.Data
 {
     public static class User
     {
-		private static Dictionary<string, int> _users;
+#pragma warning disable CS8618 // Поле, не допускающее значения NULL, должно содержать значение, отличное от NULL, при выходе из конструктора. Возможно, стоит объявить поле как допускающее значения NULL.
+        private static Dictionary<string, int> _users;
+#pragma warning restore CS8618 // Поле, не допускающее значения NULL, должно содержать значение, отличное от NULL, при выходе из конструктора. Возможно, стоит объявить поле как допускающее значения NULL.
 
-		public static Dictionary<string, int> users
-		{
-			get
+        public static Dictionary<string, int> users
+        {
+            get
             {
                 UpdateUsers();
                 return _users;
-			}
-			set { _users = value; }
+            }
+            set { _users = value; }
 
-		}
+        }
 
-		private static void UpdateUsers()
-		{
-			users = new Dictionary<string, int>() { { "Менеджер сервиса", 1 },{ "Директор", 0 },{ "Бухгалтер", 3 },{ "Начальник отдела", 2 } };
+        private static void UpdateUsers()
+        {
+            users = new Dictionary<string, int>() { { "Менеджер сервиса", 1 }, { "Директор", 0 }, { "Бухгалтер", 3 }, { "Начальник отдела", 2 } };
 
         }
     }

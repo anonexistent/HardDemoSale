@@ -24,12 +24,16 @@ namespace DemoSale.DataBaseCore
 
         #region ctors
 
+#pragma warning disable CS8618 // Поле, не допускающее значения NULL, должно содержать значение, отличное от NULL, при выходе из конструктора. Возможно, стоит объявить поле как допускающее значения NULL.
         public TatarstanAnnualReport()
+#pragma warning restore CS8618 // Поле, не допускающее значения NULL, должно содержать значение, отличное от NULL, при выходе из конструктора. Возможно, стоит объявить поле как допускающее значения NULL.
         {
 
         }
-        
+
+#pragma warning disable CS8618 // Поле, не допускающее значения NULL, должно содержать значение, отличное от NULL, при выходе из конструктора. Возможно, стоит объявить поле как допускающее значения NULL.
         public TatarstanAnnualReport(Pkt parent)
+#pragma warning restore CS8618 // Поле, не допускающее значения NULL, должно содержать значение, отличное от NULL, при выходе из конструктора. Возможно, стоит объявить поле как допускающее значения NULL.
         {
             this.dateShipment = parent.dateShipment;
             this.positionName = parent.positionName;
@@ -42,7 +46,9 @@ namespace DemoSale.DataBaseCore
             //this.phone = parent.phone;
         }
 
+#pragma warning disable CS8618 // Поле, не допускающее значения NULL, должно содержать значение, отличное от NULL, при выходе из конструктора. Возможно, стоит объявить поле как допускающее значения NULL.
         public TatarstanAnnualReport(DateOnly dateShipment,
+#pragma warning restore CS8618 // Поле, не допускающее значения NULL, должно содержать значение, отличное от NULL, при выходе из конструктора. Возможно, стоит объявить поле как допускающее значения NULL.
             string positionName, int count, double realization, string paymentMethod,
             string region, string seller, string sellerAgent, string phone)
         {
@@ -116,7 +122,9 @@ namespace DemoSale.DataBaseCore
         public string? positionName
         {
             get { return _positionName; }
+#pragma warning disable CS8601 // Возможно, назначение-ссылка, допускающее значение NULL.
             set { _positionName = value; }
+#pragma warning restore CS8601 // Возможно, назначение-ссылка, допускающее значение NULL.
         }
 
         public DateOnly? dateShipment

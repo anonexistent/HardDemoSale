@@ -1,25 +1,14 @@
 ﻿using DemoSale.Data;
-using DemoSale.DataBaseCore;
-using DemoSale.QR;
 using Newtonsoft.Json;
 using NJsonSchema;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace DemoSale
 {
@@ -66,13 +55,17 @@ namespace DemoSale
             set { _generalList = value; }
         }
 
+#pragma warning disable CS8618 // Поле, не допускающее значения NULL, должно содержать значение, отличное от NULL, при выходе из конструктора. Возможно, стоит объявить поле как допускающее значения NULL.
+#pragma warning disable CS8618 // Поле, не допускающее значения NULL, должно содержать значение, отличное от NULL, при выходе из конструктора. Возможно, стоит объявить поле как допускающее значения NULL.
         public WarrantyRecordPage()
+#pragma warning restore CS8618 // Поле, не допускающее значения NULL, должно содержать значение, отличное от NULL, при выходе из конструктора. Возможно, стоит объявить поле как допускающее значения NULL.
+#pragma warning restore CS8618 // Поле, не допускающее значения NULL, должно содержать значение, отличное от NULL, при выходе из конструктора. Возможно, стоит объявить поле как допускающее значения NULL.
         {
 
             InitializeComponent();
             //  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             //((Window)FrameClass.mainFrame.Parent).Background = new SolidColorBrush(Colors.OldLace);
-            this.Background = new SolidColorBrush( Colors.OldLace);
+            this.Background = new SolidColorBrush(Colors.OldLace);
             //dgMain.ItemsSource = testListAboutPositions; 
 
             generalList = new();
@@ -104,7 +97,7 @@ namespace DemoSale
             //dgMain.ItemsSource = testListAboutPositions;
 
         }
-        
+
         private ObservableCollection<bool> GettechnicalMaintenanceInfo(object sender)
         {
             isSselection = new() {
@@ -116,8 +109,9 @@ namespace DemoSale
             };
 
             var tempContractId = ((WarrantyRecord)((ListBox)sender).SelectedItem).contractId;
-            var tempContract = FrameClass.db.WarrantyContract.Where(x=>x.serviceContract==tempContractId).FirstOrDefault();
+            var tempContract = FrameClass.db.WarrantyContract.Where(x => x.serviceContract == tempContractId).FirstOrDefault();
 
+#pragma warning disable CS8602 // Разыменование вероятной пустой ссылки.
             switch (tempContract.technicalMaintenance)
             {
                 case 30:
@@ -149,6 +143,7 @@ namespace DemoSale
                 default:
                     break;
             }
+#pragma warning restore CS8602 // Разыменование вероятной пустой ссылки.
 
             return isSselection;
         }
@@ -199,12 +194,16 @@ namespace DemoSale
 
         private void ButtonBackClick(object sender, RoutedEventArgs e)
         {
+#pragma warning disable CS8602 // Разыменование вероятной пустой ссылки.
             FrameClass.mainFrame.Navigate(new MainPage());
+#pragma warning restore CS8602 // Разыменование вероятной пустой ссылки.
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
+#pragma warning disable CS8602 // Разыменование вероятной пустой ссылки.
             FrameClass.mainFrame.Navigate(new WarrantyRecordPageAdd());
+#pragma warning restore CS8602 // Разыменование вероятной пустой ссылки.
         }
 
         private void lbMain_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -244,14 +243,21 @@ namespace DemoSale
 
             var tempList = JsonConvert.DeserializeObject<ObservableCollection<WarrantyRecord>>(s);
 
+#pragma warning disable CS8602 // Разыменование вероятной пустой ссылки.
             foreach (WarrantyRecord item in tempList)
             {
                 FrameClass.db.WarrantyRecord.Add(item);
             }
+#pragma warning restore CS8602 // Разыменование вероятной пустой ссылки.
             FrameClass.db.SaveChanges();
 
             var tempTest = FrameClass.db.WarrantyRecord.ToList();
             //generalList = JsonConvert.DeserializeObject<ObservableCollection<WarrantyRecord>>(s);
+        }
+
+        private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var a = MessageBox.Show($"Подтвердите снятие с гарантийного учета:\nдата:{((DatePicker)sender).SelectedDate}\nпричина: []", "Подтверждение", MessageBoxButton.YesNo);
         }
     }
 }

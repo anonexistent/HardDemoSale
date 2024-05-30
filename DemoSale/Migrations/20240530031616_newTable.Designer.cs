@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DemoSale.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20240508072742_addNewTable2count2")]
-    partial class addNewTable2count2
+    [Migration("20240530031616_newTable")]
+    partial class newTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -180,6 +180,25 @@ namespace DemoSale.Migrations
                     b.HasKey("positionName");
 
                     b.ToTable("PositionType");
+                });
+
+            modelBuilder.Entity("DemoSale.DataBaseCore.Specification", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("description")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Specification");
                 });
 
             modelBuilder.Entity("DemoSale.DataBaseCore.TatarstanAnnualReport", b =>

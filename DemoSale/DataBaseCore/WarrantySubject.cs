@@ -20,7 +20,7 @@ namespace DemoSale.DataBaseCore
 
         public WarrantySubject()
         {
-            
+
         }
 
         public WarrantySubject(string? vin, string? engine, int? dateRelease, string evp, string positionName)

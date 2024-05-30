@@ -1,19 +1,7 @@
 ﻿using DemoSale.DataBaseCore;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace DemoSale
 {
@@ -58,12 +46,16 @@ namespace DemoSale
 
         private void ButtonBackClick(object sender, RoutedEventArgs e)
         {
+#pragma warning disable CS8602 // Разыменование вероятной пустой ссылки.
             FrameClass.mainFrame.GoBack();
+#pragma warning restore CS8602 // Разыменование вероятной пустой ссылки.
         }
 
         private void Button_Click_1_Add(object sender, RoutedEventArgs e)
         {
+#pragma warning disable CS8602 // Разыменование вероятной пустой ссылки.
             FrameClass.mainFrame.Navigate(new TatarstanReportAddPage());
+#pragma warning restore CS8602 // Разыменование вероятной пустой ссылки.
 
         }
 

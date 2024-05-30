@@ -1,29 +1,19 @@
-﻿using System;
+﻿using DemoSale.Data;
+using DemoSale.DataBaseCore;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using DemoSale.Data;
-using DemoSale.DataBaseCore;
-using Syncfusion.Windows.Shared;
 
 namespace DemoSale
 {
     /// <summary>
     /// Логика взаимодействия для PktPageDemo.xaml
     /// </summary>
-    public partial class PktAddPage : Page
+    public partial class PktAddEditPage : Page
     {
         public class PktData
         {
@@ -84,7 +74,7 @@ namespace DemoSale
 
         ApplicationContext db = new();
 
-        public PktAddPage()
+        public PktAddEditPage()
         {
             InitializeComponent();
 
@@ -96,8 +86,7 @@ namespace DemoSale
         private void InitItems()
         {
             var ss = FrameClass.db.Dealer.ToList();
-
-            for (int i=0; i < ss.Count; i++)
+            for (int i = 0; i < ss.Count; i++)
             {
                 cbDealer.Items.Add(new ComboBoxItem() { Content = ss[i].dealerName });
             }
@@ -105,7 +94,14 @@ namespace DemoSale
             var sss = FrameClass.db.PositionType.ToList();
             foreach (var item in sss)
             {
-                cbPosTypes.Items.Add(item);
+                cbPosTypes.Items.Add(new ComboBoxItem() { Content=item.positionName });
+            }
+
+            var ssss = FrameClass.db.Specification.ToList();
+            while(ssss.Count>0)
+            {
+                cbSpec.Items.Add(new ComboBoxItem{ Content = ssss.FirstOrDefault().name });
+                ssss.Remove(ssss[0]);
             }
 
         }
@@ -117,22 +113,40 @@ namespace DemoSale
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (currentPosition.dealer.Contains("Татарстан"))
+            var a = MessageBox.Show("Добавить запись?\n\nПредупреждение: в случае отмены изменения не будут применены","Подтверждение действия", MessageBoxButton.YesNo);
+            if (a == MessageBoxResult.No)
             {
-                //MessageBox.Show("tatar is detected!!!!!!!!!");
-                TatarstanAnnualReport temp = new() { id = -1, count = currentPosition.count, dateShipment = currentPosition.dateShipment,
-                paymentMethod = currentPosition.paymentMethod, phone = "н/д", positionName = currentPosition.positionName,
-                realization = currentPosition.realization, region = currentPosition.region, seller = currentPosition.seller, 
-                    sellerAgent = currentPosition.sellerAgent};
-                db.TatarstanReport.Add(temp);
-                db.SaveChanges();
+                FrameClass.mainFrame.GoBack();
+                return;
             }
 
-            WarrantySubject tempWarSub = new() { positionName = currentPosition.positionName.ToString()};
-            WarrantyContract tempWarCon = new() { serviceContract = "01УТ-01" + (new Random().Next(0, ushort.MaxValue)).ToString() };
+            if (currentPosition.dealer.Contains("Татарстан"))
+            {
+
+
+                //MessageBox.Show("tatar is detected!!!!!!!!!");
+                TatarstanAnnualReport temp = new()
+                {
+                    count = currentPosition.count,
+                    dateShipment = currentPosition.dateShipment,
+                    paymentMethod = currentPosition.paymentMethod,
+                    phone = "н/д",
+                    positionName = currentPosition.positionName,
+                    realization = currentPosition.realization,
+                    region = currentPosition.region,
+                    seller = currentPosition.seller,
+                    sellerAgent = currentPosition.sellerAgent
+                };
+                db.TatarstanReport.Add(temp);
+            }
 
             //add to db this record
             FrameClass.db.Pkt.Add(currentPosition);
+            FrameClass.db.SaveChanges();
+
+            WarrantySubject tempWarSub = new() { positionName = currentPosition.positionName.ToString() };
+            WarrantyContract tempWarCon = new() { serviceContract = "01УТ-01" + (new Random().Next(0, ushort.MaxValue)).ToString() };
+
             FrameClass.db.WarrantySubject.Add(tempWarSub);
             FrameClass.db.WarrantyContract.Add(tempWarCon);
 
@@ -159,6 +173,11 @@ namespace DemoSale
         void CreateWarranty()
         {
 
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Сохранить изменения элемента № ? ", "Изменение", MessageBoxButton.YesNo);
         }
     }
 }
