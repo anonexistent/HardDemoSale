@@ -20,24 +20,32 @@ namespace DemoSale.Pages
             InitializeComponent();
 
             cifc = item;
+
             InitStaticFields();
+            InitCurrentItemForChange();
+
         }
 
         private void InitStaticFields()
         {
             cbDealer.ItemsSource = db.Dealer.ToList();
-            InitCurrentItemForChange();
+            cbSpec.ItemsSource = db.Specification.ToList();
+            cbPosTypes.ItemsSource = db.PositionType.ToList();
 
         }
 
         private void InitCurrentItemForChange()
         {
-            tbKontr.Text = cifc.seller;
+
+            tbKontr.Text = cifc.seller.ToString();
             tbGr.Text = cifc.sellerAgent;
             tbArea.Text = cifc.region;
             tbManager.Text = cifc.manager;
+            cbPosTypes.SelectedItem = db.PositionType.Where(x => x.positionName == cifc.positionType).FirstOrDefault();
+            cbPosName.Text = cifc.positionName;
+            tbCount.Text = cifc.count.ToString();
 
-            cbDealer.SelectedItem = db.Dealer.Where(x=>x.dealerName== cifc.dealer).FirstOrDefault();
+            cbDealer.SelectedItem = db.Dealer.Where(x => x.dealerName == cifc.dealer).FirstOrDefault();
             tbMoneyZakup.Text = cifc.purchaseMoney.ToString();
             tbMoneyDealer.Text = cifc.paidMoney.ToString();
             tbMoneyDealerDebt.Text = cifc.deptMoney.ToString();
