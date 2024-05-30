@@ -83,7 +83,7 @@
                 <ComboBoxItem>element3</ComboBoxItem>
                 <TextBox>новый...</TextBox>-->
                             </ComboBox>
-                            <TextBox x:Name="tbCount" HorizontalAlignment="Center" Padding="20 0 20 0"/>
+                            <TextBox x:Name="tbCount" HorizontalAlignment="Center" Padding="20 0 20 0" PreviewTextInput="tbCount_PreviewTextInput"/>
                         </StackPanel>
 
                     </Grid>

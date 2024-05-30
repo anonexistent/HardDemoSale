@@ -1,4 +1,4 @@
-﻿<Page
+﻿<Page xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -24,7 +24,6 @@
             <MenuItem Header="Вид" ></MenuItem>
             <MenuItem Header="Справка" ></MenuItem>
         </Menu>-->
-
 
         <!--<Image x:Name="iGifBack" Stretch="Fill" gif:AnimationBehavior.SourceUri="/Resources/di-Z3ZYZ6.gif" 
                gif:AnimationBehavior.AutoStart="True" gif:AnimationBehavior.RepeatBehavior="1">
