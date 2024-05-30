@@ -22,7 +22,7 @@ namespace DemoSale.Pages
             cifc = item;
 
             InitStaticFields();
-            InitCurrentItemForChange();
+            InitCurrentItemForChange(GetCifc());
 
         }
 
@@ -34,7 +34,12 @@ namespace DemoSale.Pages
 
         }
 
-        private void InitCurrentItemForChange()
+        private Pkt GetCifc()
+        {
+            return cifc;
+        }
+
+        private void InitCurrentItemForChange(Pkt cifc)
         {
 
             tbKontr.Text = cifc.seller.ToString();
@@ -46,28 +51,58 @@ namespace DemoSale.Pages
             tbCount.Text = cifc.count.ToString();
 
             cbDealer.SelectedItem = db.Dealer.Where(x => x.dealerName == cifc.dealer).FirstOrDefault();
-            tbMoneyZakup.Text = cifc.purchaseMoney.ToString();
-            tbMoneyDealer.Text = cifc.paidMoney.ToString();
-            tbMoneyDealerDebt.Text = cifc.deptMoney.ToString();
+            tbMoneyZakup.Value = (decimal?)cifc.purchaseMoney;
+            tbMoneyDealer.Value = (decimal?)cifc.paidMoney;
+            tbMoneyDealerDebt.Value = (decimal?)cifc.deptMoney;
             dpPayTerm.SelectedDate = DateTime.Parse(cifc.paymentTerm.ToString());
-            cbSpec.SelectedItem = cifc.specification;
+            cbSpec.SelectedItem = db.Specification.FirstOrDefault(x=>x.name==cifc.specification);
 
-            tbPriceSellerDep.Text = cifc.salesDepartmentMoney.ToString();
-            tbPriceRealization.Text = cifc.realization.ToString();
-            tbPriceGotten.Text = cifc.arrivedMoney.ToString();
-            tbPriceDebt.Text = cifc.realizationDept.ToString();
+            tbPriceSellerDep.Value = (decimal?)cifc.salesDepartmentMoney;
+            tbPriceRealization.Value = (decimal?)cifc.realization;
+            tbPriceGotten.Value = (decimal?)cifc.arrivedMoney;
+            tbPriceGotten.Value = (decimal?)cifc.arrivedMoney;
+            tbPriceDebt.Value = (decimal?)cifc.realizationDept;
             dpDateGiveMoney.SelectedDate = DateTime.Parse(cifc.paymentTermRealization.ToString());
-            cbPaymentMethod.SelectedValue = cifc.paymentMethod;
-            tbMarzh.Text = cifc.marginalProfit.ToString();
-            tbTrans.Text = cifc.transportOther.ToString();
-            tbTransNds.Text = cifc.transportOtherNds.ToString();
-            tbLoading.Text = cifc.loadingUnloading.ToString();
+            cbPaymentMethod.Text = cifc.paymentMethod;
+            tbMarzh.Value = (decimal?)cifc.marginalProfit;
+            tbTrans.Value = (decimal?)cifc.transportOther;
+            tbTransNds.Value = (decimal?)cifc.transportOtherNds;
+            tbLoading.Value = (decimal?)cifc.loadingUnloading;
 
-            tbKv.Text = cifc.kvMoney.ToString();
-            tbMoneyOther.Text = cifc.otherMoney.ToString();
+            tbKv.Value = (decimal?)cifc.kvMoney;
+            tbMoneyOther.Value = (decimal?)cifc.otherMoney;
             tbOtherWork.Text = cifc.dopPositionDescription;
             dpDeliveryTerm.SelectedDate = DateTime.Parse(cifc.deliveryDate.ToString());
-            tbForeCalc.Text = cifc.forCalculation.ToString();
+            tbForeCalc.Value = (decimal?)cifc.forCalculation;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var a = MessageBox.Show("Все изменения будут утеряны","Уведомление", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+            if (a != MessageBoxResult.OK) return;
+            FrameClass.mainFrame.Navigate(new PktMainPage());
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Type t = cifc.GetType();
+            var props = t.GetProperties();
+
+            foreach (var item in props)
+            {
+                MessageBox.Show(item.Name +"\t" + item.GetValue(cifc).ToString());
+            }
+
+            string message = "Принять следующие изменения?" +
+                "1. -" +
+                "2. -" +
+                "3. -";
+            var a = MessageBox.Show(message, "Уведомление", MessageBoxButton.YesNo, MessageBoxImage.Information);
+            if (a == MessageBoxResult.Yes)
+            {
+
+            }
+            FrameClass.mainFrame.Navigate(new PktMainPage());
         }
     }
 }

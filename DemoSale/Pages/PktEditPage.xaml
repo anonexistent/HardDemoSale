@@ -117,7 +117,7 @@
                             <syncfusion:CurrencyTextBox x:Name="tbMoneyDealer" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
                             <syncfusion:CurrencyTextBox x:Name="tbMoneyDealerDebt" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
                             <DatePicker x:Name="dpPayTerm" Text="{Binding paymentTerm}"/>
-                            <ComboBox x:Name="cbSpec" SelectedItem="{Binding specification}">
+                            <ComboBox x:Name="cbSpec" DisplayMemberPath="name">
                             </ComboBox>
                         </StackPanel>
 
@@ -161,8 +161,7 @@
                             <RadioButton Content="222" Margin="3"/>
                         </StackPanel>-->
 
-                            <ComboBox x:Name="cbPaymentMethod" Height="30" IsEditable="True" ItemsSource="{Binding Path=Pays}" SelectedItem="{Binding Path=SelectedPay}" Text="{Binding Path=NewPay, UpdateSourceTrigger=LostFocus}"
-                                  DataContext="{Binding PktData, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:PktEditPage}}}" >
+                            <ComboBox x:Name="cbPaymentMethod" Height="30" IsEditable="True">
 
                             </ComboBox>
 
@@ -197,7 +196,7 @@
                             <syncfusion:CurrencyTextBox x:Name="tbKv" Text="{Binding kvMoney}"/>
                             <syncfusion:CurrencyTextBox x:Name="tbMoneyOther" Text="{Binding otherMoney}"/>
                             <TextBox x:Name="tbOtherWork" IsEnabled="False" Text="н/д"/>
-                            <DatePicker x:Name="dpDeliveryTerm" SelectedDate="{Binding deliveryDate}"/>
+                            <DatePicker x:Name="dpDeliveryTerm"/>
                             <syncfusion:CurrencyTextBox x:Name="tbForeCalc" Style="{Binding Source={StaticResource SecondStackPanelStyle}}"/>
                         </StackPanel>
                     </Grid>
@@ -207,8 +206,8 @@
             </TabControl>
 
             <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5">
-                <Button Content="💾" FontSize="20" Margin="0 0 15 0"/>
-                <Button Content=" x " FontSize="20" Background="Transparent"/>
+                <Button Content="💾" FontSize="20" Margin="0 0 15 0" Click="Button_Click_1"/>
+                <Button Content=" x " FontSize="20" Background="Transparent" Click="Button_Click"/>
             </StackPanel>
         </Grid>
     </ScrollViewer>

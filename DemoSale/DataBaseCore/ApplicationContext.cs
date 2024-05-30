@@ -6,6 +6,7 @@ namespace DemoSale.DataBaseCore
     public class ApplicationContext : DbContext
     {
         public DbSet<Specification> Specification { get; set; }
+        public DbSet<PaymentMethod> PaymentMethod { get; set; }
         public DbSet<Pkt> Pkt { get; set; }
         public DbSet<Dealer> Dealer { get; set; }
         public DbSet<PositionType> PositionType { get; set; }
