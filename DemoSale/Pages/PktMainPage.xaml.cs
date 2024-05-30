@@ -33,7 +33,7 @@ namespace DemoSale
         public PktMainPage()
         {
             InitializeComponent();
-
+            
             InitStaticFileds();
         }
 
@@ -41,7 +41,7 @@ namespace DemoSale
         {
             try
             {
-                dgMain.ItemsSource = FrameClass.db.Pkt.ToList();
+                dgMain.ItemsSource = db.Pkt.ToList();
             }
             catch (Exception ex)
             {
@@ -63,7 +63,7 @@ namespace DemoSale
 
             if(selectedItem!=null)
             {
-                var a = MessageBox.Show("Удалить элемент № ?", "Удаление", MessageBoxButton.OKCancel);
+                var a = MessageBox.Show($"Удалить элемент №{selectedItem.pktId} ?", "Удаление", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if(a==MessageBoxResult.Yes)
                 {
                     db.Pkt.Remove(selectedItem);

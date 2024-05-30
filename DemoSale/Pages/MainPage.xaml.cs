@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using DemoSale.Pages;
+using System.Drawing;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
@@ -11,9 +12,7 @@ namespace DemoSale
     public partial class MainPage : Page
     {
         UIElementCollection btns;
-#pragma warning disable CS8618 // Поле, не допускающее значения NULL, должно содержать значение, отличное от NULL, при выходе из конструктора. Возможно, стоит объявить поле как допускающее значения NULL.
         public MainPage()
-#pragma warning restore CS8618 // Поле, не допускающее значения NULL, должно содержать значение, отличное от NULL, при выходе из конструктора. Возможно, стоит объявить поле как допускающее значения NULL.
         {
             InitializeComponent();
             Init();
@@ -56,37 +55,32 @@ namespace DemoSale
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click_War(object sender, RoutedEventArgs e)
         {
             ////staff
             //FrameClass.mainFrame.Navigate(new DemoPagePosition(0));
 
-#pragma warning disable CS8602 // Разыменование вероятной пустой ссылки.
             FrameClass.mainFrame.Navigate(new WarrantyRecordPage());
-#pragma warning restore CS8602 // Разыменование вероятной пустой ссылки.
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Click_Finances(object sender, RoutedEventArgs e)
         {
             ////store
             //FrameClass.mainFrame.Navigate(new DemoPagePosition(1));
+            FrameClass.mainFrame.Navigate(new FinanceReportMainPage());
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void Button_Click_Tatar(object sender, RoutedEventArgs e)
         {
             ////vehicle
             //FrameClass.mainFrame.Navigate(new DemoPagePosition(2));
-#pragma warning disable CS8602 // Разыменование вероятной пустой ссылки.
             FrameClass.mainFrame.Navigate(new TatarstanReportPage());
-#pragma warning restore CS8602 // Разыменование вероятной пустой ссылки.
         }
 
-        private void Button_Click_3(object sender, RoutedEventArgs e)
+        private void Button_Click_Pkt(object sender, RoutedEventArgs e)
         {
             //FrameClass.mainFrame.Navigate(new PktPageDemoMVVM());
-#pragma warning disable CS8602 // Разыменование вероятной пустой ссылки.
             FrameClass.mainFrame.Navigate(new PktMainPage());
-#pragma warning restore CS8602 // Разыменование вероятной пустой ссылки.
 
         }
 

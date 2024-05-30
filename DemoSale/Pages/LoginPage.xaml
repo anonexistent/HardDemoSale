@@ -1,4 +1,5 @@
 ﻿<Page x:Class="DemoSale.LoginPage"
+      xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
       xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -26,6 +27,8 @@
 
         <StackPanel Margin="5" VerticalAlignment="Center">
             <StackPanel Margin="15">
+                <syncfusion:DateTimeEdit x:Name="dpToday" FontSize="26" Padding="10 5" IsEnabled="False" HorizontalAlignment="Center" VerticalAlignment="Center" />
+
                 <TextBlock Text="Логин:" Foreground="White" FontSize="32" FontWeight="Black" Margin="20 10 10 10"/>
                 <!--<TextBox x:Name="tbLogin"/>-->
                 <ComboBox x:Name="tbLogin" FontSize="22" Margin="5">

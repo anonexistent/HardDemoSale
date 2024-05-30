@@ -18,19 +18,17 @@ namespace DemoSale
 
             //MessageBox.Show(db.Dealer.ToList().Count.ToString());
 
-            InitApplication();
+            InitStatickFileds();
         }
 
-        private void InitApplication()
+        private void InitStatickFileds()
         {
-
+            dpToday.DateTime = System.DateTime.Now;
         }
 
         private void ButtonInClick(object sender, RoutedEventArgs e)
         {
-#pragma warning disable CS8602 // Разыменование вероятной пустой ссылки.
             ((Window)FrameClass.mainFrame.Parent).Height = 800;
-#pragma warning restore CS8602 // Разыменование вероятной пустой ссылки.
             ((Window)FrameClass.mainFrame.Parent).Width = 1200;
 
             FrameClass.role = User.users[$"{tbLogin.Text}"];

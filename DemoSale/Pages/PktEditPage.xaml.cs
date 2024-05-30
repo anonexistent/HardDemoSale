@@ -24,7 +24,7 @@ namespace DemoSale.Pages
             cifc = item;
 
             InitStaticFields();
-            InitCurrentItemForChange(GetCifc());
+            InitCurrentItemForChange(cifc);
 
         }
 
@@ -36,14 +36,8 @@ namespace DemoSale.Pages
 
         }
 
-        private Pkt GetCifc()
-        {
-            return cifc;
-        }
-
         private void InitCurrentItemForChange(Pkt cifc)
         {
-
             tbKontr.Text                    = cifc.seller.ToString();
             tbGr.Text                       = cifc.sellerAgent;
             tbArea.Text                     = cifc.region;
@@ -77,29 +71,46 @@ namespace DemoSale.Pages
             tbForeCalc.Value                = (decimal?)cifc.forCalculation;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click_Close(object sender, RoutedEventArgs e)
         {
             var a = MessageBox.Show("Все изменения будут утеряны","Уведомление", MessageBoxButton.OKCancel, MessageBoxImage.Information);
             if (a != MessageBoxResult.OK) return;
             FrameClass.mainFrame.Navigate(new PktMainPage());
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Click_Save(object sender, RoutedEventArgs e)
         {
             var newItem = GetNewPktFromForm();
+            //  работа идет с определенны заранее документом
+            newItem.pktId = cifc.pktId;
             //  отличиающиеся поля
             var listDiff = GetDifferencesFieldName(cifc, newItem);
-            
-            string message = "Принять следующие изменения?" +
-                "1. -" +
-                "2. -" +
-                "3. -";
+
+            var formatedList = GetFormatedDifferencesFieldName(listDiff);
+            string message = "Принять следующие изменения?\n" + formatedList;
+
             var a = MessageBox.Show(message, "Уведомление", MessageBoxButton.YesNo, MessageBoxImage.Information);
             if (a == MessageBoxResult.Yes)
             {
-
+                cifc = newItem;
+                db.Pkt.Update(cifc);
+                db.SaveChanges();
+                
             }
             FrameClass.mainFrame.Navigate(new PktMainPage());
+        }
+
+        private string GetFormatedDifferencesFieldName(object stringArray)
+        {
+            string result = String.Empty;
+
+            for (int i = 0; i < ((List<string>)stringArray).Count; i++)
+            {
+                result += $"\n{i+1}. {((List<string>)stringArray)[i]}";
+
+            }
+
+            return result;
         }
 
         private List<string> GetDifferencesFieldName(Pkt original, Pkt newItem)
@@ -115,9 +126,10 @@ namespace DemoSale.Pages
             {
                 var tempOrig = prop.GetValue(original);
                 var tempNew = prop.GetValue(newItem);
-                if(tempNew != tempOrig)
+                if(tempNew.ToString() != tempOrig.ToString())
                 {
-                    MessageBox.Show($"i found a difference:\n\n([{prop}] {tempOrig} — {tempNew})","", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                    result.Add(prop.Name);
+                    //MessageBox.Show($"i found a difference:\n\n([{prop.Name}] {tempOrig} — {tempNew})","", MessageBoxButton.OK, MessageBoxImage.Asterisk);
                 }
             }
 
@@ -145,14 +157,14 @@ namespace DemoSale.Pages
                 purchaseMoney = (double)tbMoneyZakup.Value,
                 paidMoney = (double)tbMoneyDealer.Value,
                 deptMoney = (double)tbMoneyDealerDebt.Value,
-                paymentTerm = DateOnly.Parse(dpPayTerm.SelectedDate.Value.Date.ToString()),
+                paymentTerm = DateOnly.Parse(dpPayTerm.SelectedDate.Value.ToShortDateString()),
                 specification = (cbSpec.SelectedItem as Specification).name,
 
                 salesDepartmentMoney = (double)tbPriceSellerDep.Value,
                 realization = (double)tbPriceRealization.Value,
                 arrivedMoney = (double)tbPriceGotten.Value,
                 //result.realizationDept    =tbPriceDebt.Value           ;
-                paymentTermRealization = DateOnly.Parse(dpDateGiveMoney.SelectedDate.Value.Date.ToString()),
+                paymentTermRealization = DateOnly.Parse(dpDateGiveMoney.SelectedDate.Value.ToShortDateString()),
                 paymentMethod = cbPaymentMethod.Text,
                 marginalProfit = (double)tbMarzh.Value,
                 transportOther = (double)tbTrans.Value,
@@ -162,7 +174,7 @@ namespace DemoSale.Pages
                 kvMoney = (double)tbKv.Value,
                 otherMoney = (double)tbMoneyOther.Value,
                 dopPositionDescription = tbOtherWork.Text,
-                deliveryDate = DateOnly.Parse(dpDeliveryTerm.SelectedDate.Value.Date.ToString()),
+                deliveryDate = DateOnly.Parse(dpDeliveryTerm.SelectedDate.Value.ToShortDateString()),
                 forCalculation = (double)tbForeCalc.Value
             };
 
