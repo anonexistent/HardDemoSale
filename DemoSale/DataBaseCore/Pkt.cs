@@ -11,9 +11,10 @@ namespace DemoSale.Data
 
         private int _monthDeal;
         //  дата отгрузки
-        private DateOnly _dateShipment = new DateOnly(2020, 1, 1);
+        private DateOnly? _dateShipment = new DateOnly(2020, 1, 1);
         //  дата поступления
-        private DateOnly _dateEntry = new DateOnly(2020, 1, 1);
+        private DateOnly? _dateEntry = new DateOnly(2020, 1, 1);
+        //  ип, ооо
         private string _seller = "н/д";
         private string _sellerAgent = "н/д";
 
@@ -57,46 +58,46 @@ namespace DemoSale.Data
 
         }
 
-        public Pkt(int monthDeal, DateOnly dateShipment, DateOnly dateEntry, string seller, string sellerAgent,
-            string region, string manager, string positionType, string positionName, int count,
-            string dealer, double purchaseMoney, double paidMoney, double deptMoney, DateOnly paymentTerm,
-            string specification, double salesDepartmentMoney, double realization, double arrivedMoney,
-            double realizationDept, DateOnly paymentTermRealization, string paymentMethod,
-            double marginalProfit, double transportOther, double transportOtherNds, double loadingUnloading,
-            double kvMoney, double otherMoney, string dopPositionDescription, DateOnly deliveryDate, double forCalculation)
-        {
-            this.monthDeal = monthDeal;
-            this.dateShipment = dateShipment;
-            this.dateEntry = dateEntry;
-            this.seller = seller;
-            this.sellerAgent = sellerAgent;
-            this.region = region;
-            this.manager = manager;
-            this.positionType = positionType;
-            this.positionName = positionName;
-            this.count = count;
-            this.dealer = dealer;
-            this.purchaseMoney = purchaseMoney;
-            this.paidMoney = paidMoney;
-            //this.deptMoney = deptMoney;
-            this.paymentTerm = paymentTerm;
-            this.specification = specification;
-            this.salesDepartmentMoney = salesDepartmentMoney;
-            this.realization = realization;
-            this.arrivedMoney = arrivedMoney;
-            //this.realizationDept = realizationDept;
-            this.paymentTermRealization = paymentTermRealization;
-            this.paymentMethod = paymentMethod;
-            //this.marginalProfit = marginalProfit;
-            this.transportOther = transportOther;
-            this.transportOtherNds = transportOtherNds;
-            this.loadingUnloading = loadingUnloading;
-            this.kvMoney = kvMoney;
-            this.otherMoney = otherMoney;
-            this.dopPositionDescription = dopPositionDescription;
-            this.deliveryDate = deliveryDate;
-            this.forCalculation = forCalculation;
-        }
+        //public Pkt(int monthDeal, DateOnly dateShipment, DateOnly dateEntry, string seller, string sellerAgent,
+        //    string region, string manager, string positionType, string positionName, int count,
+        //    string dealer, double purchaseMoney, double paidMoney, double deptMoney, DateOnly paymentTerm,
+        //    string specification, double salesDepartmentMoney, double realization, double arrivedMoney,
+        //    double realizationDept, DateOnly paymentTermRealization, string paymentMethod,
+        //    double marginalProfit, double transportOther, double transportOtherNds, double loadingUnloading,
+        //    double kvMoney, double otherMoney, string dopPositionDescription, DateOnly deliveryDate, double forCalculation)
+        //{
+        //    this.monthDeal = monthDeal;
+        //    this.dateShipment = dateShipment;
+        //    this.dateEntry = dateEntry;
+        //    this.seller = seller;
+        //    this.sellerAgent = sellerAgent;
+        //    this.region = region;
+        //    this.manager = manager;
+        //    this.positionType = positionType;
+        //    this.positionName = positionName;
+        //    this.count = count;
+        //    this.dealer = dealer;
+        //    this.purchaseMoney = purchaseMoney;
+        //    this.paidMoney = paidMoney;
+        //    //this.deptMoney = deptMoney;
+        //    this.paymentTerm = paymentTerm;
+        //    this.specification = specification;
+        //    this.salesDepartmentMoney = salesDepartmentMoney;
+        //    this.realization = realization;
+        //    this.arrivedMoney = arrivedMoney;
+        //    //this.realizationDept = realizationDept;
+        //    this.paymentTermRealization = paymentTermRealization;
+        //    this.paymentMethod = paymentMethod;
+        //    //this.marginalProfit = marginalProfit;
+        //    this.transportOther = transportOther;
+        //    this.transportOtherNds = transportOtherNds;
+        //    this.loadingUnloading = loadingUnloading;
+        //    this.kvMoney = kvMoney;
+        //    this.otherMoney = otherMoney;
+        //    this.dopPositionDescription = dopPositionDescription;
+        //    this.deliveryDate = deliveryDate;
+        //    this.forCalculation = forCalculation;
+        //}
 
         #endregion
 
@@ -282,13 +283,13 @@ namespace DemoSale.Data
             set { _seller = value; }
         }
 
-        public DateOnly dateEntry
+        public DateOnly? dateEntry
         {
             get { return _dateEntry; }
             set { _dateEntry = value; }
         }
 
-        public DateOnly dateShipment
+        public DateOnly? dateShipment
         {
             get { return _dateShipment; }
             set { _dateShipment = value; }

@@ -3,6 +3,7 @@ using System;
 using DemoSale.DataBaseCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DemoSale.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20240601070458_addFinanceReportTable")]
+    partial class addFinanceReportTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.18");
@@ -29,10 +32,10 @@ namespace DemoSale.Migrations
                     b.Property<int>("count")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateOnly?>("dateEntry")
+                    b.Property<DateOnly>("dateEntry")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateOnly?>("dateShipment")
+                    b.Property<DateOnly>("dateShipment")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("dealer")
@@ -182,6 +185,7 @@ namespace DemoSale.Migrations
                         .HasColumnType("REAL");
 
                     b.Property<string>("buyer")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<double>("buyerPart")
@@ -217,7 +221,7 @@ namespace DemoSale.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("seller")
+                    b.Property<string>("sellerAgent")
                         .IsRequired()
                         .HasColumnType("TEXT");
 

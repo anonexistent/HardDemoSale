@@ -7,6 +7,7 @@ namespace DemoSale.DataBaseCore
     {
         public DbSet<Specification> Specification { get; set; }
         public DbSet<PaymentMethod> PaymentMethod { get; set; }
+        public DbSet<FinanceReport> FinanceReport { get; set; }
         public DbSet<Pkt> Pkt { get; set; }
         public DbSet<Dealer> Dealer { get; set; }
         public DbSet<PositionType> PositionType { get; set; }

@@ -141,23 +141,28 @@ namespace DemoSale
             }
 
             //add to db this record
-            FrameClass.db.Pkt.Add(currentPosition);
-            FrameClass.db.SaveChanges();
+            db.Pkt.Add(currentPosition);
+            db.SaveChanges();
 
             WarrantySubject tempWarSub = new() { positionName = currentPosition.positionName.ToString() };
             WarrantyContract tempWarCon = new() { serviceContract = "01УТ-01" + (new Random().Next(0, ushort.MaxValue)).ToString() };
 
-            FrameClass.db.WarrantySubject.Add(tempWarSub);
-            FrameClass.db.WarrantyContract.Add(tempWarCon);
+            db.WarrantySubject.Add(tempWarSub);
+            db.WarrantyContract.Add(tempWarCon);
 
-            FrameClass.db.SaveChanges();
+            db.SaveChanges();
 
             WarrantyRecord tempWar = new(tempWarCon.serviceContract.ToString(), tempWarSub.vin.ToString(), currentPosition.pktId);
 
-            FrameClass.db.WarrantyRecord.Add(tempWar);
-            //FrameClass.db.WarrantyRecord.Add(new WarrantyRecord() { subjectVin= "f69be430-fb25-480f-b9d2-816d31eafbe5", contractId= "01УТ-0150625", pktParentId=4  } );
+            db.WarrantyRecord.Add(tempWar);
+            //db.WarrantyRecord.Add(new WarrantyRecord() { subjectVin= "f69be430-fb25-480f-b9d2-816d31eafbe5", contractId= "01УТ-0150625", pktParentId=4  } );
 
-            FrameClass.db.SaveChanges();
+            db.SaveChanges();
+
+            db.FinanceReport.Add(new FinanceReport() { pktId=currentPosition.pktId, agent=currentPosition.sellerAgent, 
+                manager=currentPosition.manager, region=currentPosition.region, document="X", dateShipment=currentPosition.dateShipment,
+            seller=currentPosition.seller, });
+            db.SaveChanges();
 
             //PktPageDemoMain.pktList.Add(currentPosition);
             MessageBox.Show("Запись создана");
