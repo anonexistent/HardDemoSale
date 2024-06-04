@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\add50.png" />
     <None Remove="Resources\backButton50.png" />
     <None Remove="Resources\C-dvCRpTfHM.jpg" />
     <None Remove="Resources\card_staff.jpg" />
@@ -18,6 +19,7 @@
     <None Remove="Resources\Clouds\cl2.png" />
     <None Remove="Resources\Clouds\cl3.png" />
     <None Remove="Resources\di-Z3ZYZ6.gif" />
+    <None Remove="Resources\edit50.png" />
     <None Remove="Resources\favicon1.ico" />
     <None Remove="Resources\icons8-airCar-100.png" />
     <None Remove="Resources\icons8-education-100.png" />
@@ -33,6 +35,7 @@
     <None Remove="Resources\kartinki-pshenichnoe-pole-49.jpg" />
     <None Remove="Resources\leftArrow50.png" />
     <None Remove="Resources\question100.png" />
+    <None Remove="Resources\remove50.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -40,8 +43,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\add50.png" />
     <Resource Include="Resources\backButton50.png" />
     <Resource Include="Resources\di-Z3ZYZ6.gif" />
+    <Resource Include="Resources\edit50.png" />
     <Resource Include="Resources\favicon.ico" />
   </ItemGroup>
 
@@ -84,6 +89,7 @@
     <Resource Include="Resources\kartinki-pshenichnoe-pole-49.jpg" />
     <Resource Include="Resources\leftArrow50.png" />
     <Resource Include="Resources\question100.png" />
+    <Resource Include="Resources\remove50.png" />
   </ItemGroup>
 
 </Project>

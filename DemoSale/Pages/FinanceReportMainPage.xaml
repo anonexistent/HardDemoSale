@@ -8,15 +8,127 @@
       d:DesignHeight="550" d:DesignWidth="800"
       Title="FinanceReportMainPage">
 
-    <Grid>
+    <ScrollViewer HorizontalScrollBarVisibility="Hidden">
+        <Grid Background="PaleGoldenrod">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
 
-        <Button x:Name="btnGoBack" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10" Padding="5 0" Click="btnGoBack_Click">
-            <Button.Content>
-                <StackPanel>
-                    <Image Source="/Resources/leftArrow50.png" MaxHeight="30"/>
-                    <TextBlock Text="Назад" FontSize="14"/>
+            <TextBlock Text="Отчет по продажам" HorizontalAlignment="Left" VerticalAlignment="Bottom" TextWrapping="Wrap" FontWeight="Bold" FontSize="34" Margin="10" />
+
+            <Button x:Name="btnGoBack" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10" Padding="5 0" Click="btnGoBack_Click">
+                <Button.Content>
+                    <StackPanel>
+                        <Image Source="/Resources/leftArrow50.png" MaxHeight="30"/>
+                        <TextBlock Text="Назад" FontSize="14"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+
+            <StackPanel Grid.Row="1" Margin="5" Background="PaleTurquoise">
+                <Button x:Name="btnAdd" HorizontalAlignment="Center" Margin="5">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Image Source="/Resources/add50.png" Margin="10 0" MaxHeight="33"/>
+                            <TextBlock Text="Добавить" VerticalAlignment="Center" FontSize="18"/>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <Button x:Name="btnEdit" HorizontalAlignment="Center" Margin="5">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Image Source="/Resources/edit50.png" Margin="10 0" MaxHeight="33"/>
+                            <TextBlock Text="Изменить" VerticalAlignment="Center" FontSize="18"/>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <Button x:Name="btnRemove" HorizontalAlignment="Center" Margin="5">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Image Source="/Resources/remove50.png" Margin="10 0" MaxHeight="33"/>
+                            <TextBlock Text="Удалить    " VerticalAlignment="Center" FontSize="18"/>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+            </StackPanel>
+
+            <Grid Grid.ColumnSpan="3" Grid.RowSpan="2" Grid.Column="1" Margin="10" Background="PaleTurquoise">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                
+                <Button x:Name="btnChangeItemBakc" Content="&lt;&lt; Предыдущий" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"/>
+                <Button x:Name="btnChangeItemNext" Grid.Column="1" Content="Следующий >>" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"/>
+
+                <StackPanel Grid.Row="1">
+                    <TextBlock Text="ID элемента ПКТ"/>
+                    <TextBlock Text="Дата создания очтета"/>
+                    <TextBlock Text="Начисление РОП"/>
+                    <TextBlock Text="Агент"/>
+                    <TextBlock Text="Начисление агенту"/>
+                    <TextBlock Text="Менеджер"/>
+                    <TextBlock Text="Район"/>
+                    <TextBlock Text="Документ"/>
+                    <TextBlock Text="Дата отгрузки"/>
+                    <TextBlock Text="Контрагент"/>
+                    <TextBlock Text="Цена отдела ПКТ"/>
+                    <TextBlock Text="Реализация"/>
+                    <TextBlock Text="+/-"/>
+                    <TextBlock Text="Начисление менеджеру"/>
+                    <TextBlock Text="Наименование техники"/>
+                    <TextBlock Text="Закупщик"/>
+                    <TextBlock Text="Маржинальная прибыль"/>
+                    <TextBlock Text="Начисление закупщику"/>
                 </StackPanel>
-            </Button.Content>
-        </Button>
-    </Grid>
+                <StackPanel Grid.Column="1" Grid.Row="1">
+                    <ComboBox x:Name="cbPktId"/>
+                    <TextBox x:Name="tbDateCreate" IsReadOnly="True"/>
+                </StackPanel>
+                <!--public uint pktId { get; set; }
+public DateTime dateCreate { get; private set; } = DateTime.Now;
+public double headPart { get; set; }
+public string? agent { get; set; }
+public double agentPart { get; set; }
+public string manager { get; set; }
+public string region { get; set; }
+public string document { get; set; }
+public DateOnly? dateShipment { get; set; }
+//  контрагент
+public string seller { get; set; }
+//public double salesDepartmentMoney { get; set; }
+//public double realization { get; set; }
+//  +/-, = реализация - цена отдела продаж
+public double difference { get; set; }
+public double managerPart { get; set; }
+////  type+name
+//public string positionName { get; set; }
+//public double marginalProfit { get; set; }
+//  закупщик
+public string? buyer { get; set; }
+//  1% marginalProfit
+public double buyerPart { get; set; }-->
+            </Grid>
+
+            <Label Grid.Row="2" Grid.ColumnSpan="4" Background="PaleTurquoise" Margin="10" >
+                <DataGrid x:Name="dgMain" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    
+                </DataGrid>
+            </Label>
+
+
+        </Grid>
+    </ScrollViewer>
 </Page>
