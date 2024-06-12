@@ -111,7 +111,7 @@ namespace DemoSale
             FrameClass.mainFrame.Navigate(new PktMainPage());
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             var a = MessageBox.Show("Добавить запись?\n\nПредупреждение: в случае отмены изменения не будут применены","Подтверждение действия", MessageBoxButton.YesNo);
             if (a == MessageBoxResult.No)
@@ -120,13 +120,15 @@ namespace DemoSale
                 return;
             }
 
+            db.Pkt.Add(currentPosition);
+            db.SaveChanges();
+
             if (currentPosition.dealer.Contains("Татарстан"))
             {
-
-
-                //MessageBox.Show("tatar is detected!!!!!!!!!");
+                //  гарантийное фиксирование
                 TatarstanAnnualReport temp = new()
                 {
+                    pktId= currentPosition.pktId,
                     count = currentPosition.count,
                     dateShipment = currentPosition.dateShipment,
                     paymentMethod = currentPosition.paymentMethod,
@@ -138,11 +140,12 @@ namespace DemoSale
                     sellerAgent = currentPosition.sellerAgent
                 };
                 db.TatarstanReport.Add(temp);
+                db.SaveChanges();
             }
 
             //add to db this record
-            db.Pkt.Add(currentPosition);
-            db.SaveChanges();
+
+            #region addOtherRecords
 
             WarrantySubject tempWarSub = new() { positionName = currentPosition.positionName.ToString() };
             WarrantyContract tempWarCon = new() { serviceContract = "01УТ-01" + (new Random().Next(0, ushort.MaxValue)).ToString() };
@@ -163,6 +166,8 @@ namespace DemoSale
                 manager=currentPosition.manager, region=currentPosition.region, document="X", dateShipment=currentPosition.dateShipment,
             seller=currentPosition.seller, });
             db.SaveChanges();
+
+            #endregion
 
             //PktPageDemoMain.pktList.Add(currentPosition);
             MessageBox.Show("Запись создана");

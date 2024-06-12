@@ -73,6 +73,18 @@ namespace DemoSale
             InitData();
         }
 
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            var a = FrameClass.db;
+
+            foreach (var item in FrameClass.db.WarrantyRecord.ToList())
+            {
+                generalList.Add(item);
+            }
+
+            lbMain.ItemsSource = generalList;
+        }
+
         private void InitData()
         {
             for (int i = 2000; i <= DateTime.Now.Year; i++)
@@ -109,9 +121,9 @@ namespace DemoSale
             };
 
             var tempContractId = ((WarrantyRecord)((ListBox)sender).SelectedItem).contractId;
-            var tempContract = FrameClass.db.WarrantyContract.Where(x => x.serviceContract == tempContractId).FirstOrDefault();
+            var tempContract = FrameClass.db.WarrantyContract.Where(x => 
+            x.serviceContract == tempContractId).FirstOrDefault();
 
-#pragma warning disable CS8602 // Разыменование вероятной пустой ссылки.
             switch (tempContract.technicalMaintenance)
             {
                 case 30:
@@ -143,7 +155,6 @@ namespace DemoSale
                 default:
                     break;
             }
-#pragma warning restore CS8602 // Разыменование вероятной пустой ссылки.
 
             return isSselection;
         }
@@ -209,18 +220,6 @@ namespace DemoSale
         private void lbMain_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             GettechnicalMaintenanceInfo(sender);
-        }
-
-        private void Page_Loaded(object sender, RoutedEventArgs e)
-        {
-            var a = FrameClass.db;
-
-            foreach (var item in FrameClass.db.WarrantyRecord.ToList())
-            {
-                generalList.Add(item);
-            }
-
-            lbMain.ItemsSource = generalList;
         }
 
         private void JokeAboutWarRecordsInDb()

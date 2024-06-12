@@ -23,7 +23,8 @@ namespace DemoSale
         {
             PreInitItems();
 
-            var a = MessageBox.Show("Возможно, были загружены не все записи. Загрузить?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            var a = MessageBox.Show("Возможно, были загружены не все записи. Загрузить?", 
+                "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             if (a == MessageBoxResult.No)
             {
                 return;
@@ -41,7 +42,7 @@ namespace DemoSale
 
         private void AddAllTatarstanFromPkt()
         {
-            MessageBox.Show("all entities from Pkt was benn loaded!");
+            //MessageBox.Show("all entities from Pkt was benn loaded!");
         }
 
         private void ButtonBackClick(object sender, RoutedEventArgs e)

@@ -10,19 +10,15 @@
       Title="Page2">
 
     <Grid>
-        <!--<Menu Height="27" VerticalAlignment="Top">
+        <Menu Height="27" VerticalAlignment="Top">
             <MenuItem Header="Файл">
-                <MenuItem Header="Добавить" ></MenuItem>
-                <MenuItem Header="Открыть..." >
-                    <MenuItem Header="WinForms"></MenuItem>
-                    <MenuItem Header="WPF" ></MenuItem>
-                </MenuItem>
+                <MenuItem Header="Добавить" Click="MenuItem_Click_AddItem"></MenuItem>
                 <Separator />
                 <MenuItem Header="Выход" Click="MenuItem_Click"></MenuItem>
             </MenuItem>
-            <MenuItem Header="Вид" ></MenuItem>
+            <!--<MenuItem Header="Вид" ></MenuItem>-->
             <MenuItem Header="Справка" ></MenuItem>
-        </Menu>-->
+        </Menu>
 
         <!--<Image x:Name="iGifBack" Stretch="Fill" gif:AnimationBehavior.SourceUri="/Resources/di-Z3ZYZ6.gif" 
                gif:AnimationBehavior.AutoStart="True" gif:AnimationBehavior.RepeatBehavior="1">
@@ -68,6 +64,15 @@
                 </Button>
                 <!--<Button IsEnabled="False" Content="Всеобщее информирование" FontSize="18" Margin="5" Click="Button_Click_4"/>-->
             </StackPanel>
+
+            <Button x:Name="btnStatistic" IsEnabled="False" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="20 5" Margin="5" Click="tnStatistic_Click">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="💹" Margin="20 0" FontSize="38"/>
+                        <TextBlock Text="Статистика" VerticalAlignment="Center" FontSize="18"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
         </StackPanel>
 
     </Grid>

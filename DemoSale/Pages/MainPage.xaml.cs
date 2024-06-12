@@ -1,8 +1,7 @@
 ﻿using DemoSale.Pages;
-using System.Drawing;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media.Animation;
 
 namespace DemoSale
 {
@@ -11,16 +10,20 @@ namespace DemoSale
     /// </summary>
     public partial class MainPage : Page
     {
-        UIElementCollection btns;
+        List<Button> btns = new();
         public MainPage()
         {
             InitializeComponent();
-            Init();
+            InitStaticFields();
         }
 
-        private void Init()
+        private void InitStaticFields()
         {
-            btns = spMain.Children;
+            foreach (Button item in spMain.Children)
+            {
+                btns.Add(item);
+            }
+            btns.Add(btnStatistic);
 
             switch (FrameClass.role)
             {
@@ -33,7 +36,7 @@ namespace DemoSale
                     break;
 
                 case 2:
-
+                    MakeVisibleSection("стат");
                     break;
 
                 case 3:
@@ -46,12 +49,10 @@ namespace DemoSale
         {
             foreach (Button child in btns)
             {
-#pragma warning disable CS8602 // Разыменование вероятной пустой ссылки.
                 if (child.Content.ToString().ToLower().Contains(name))
                 {
                     child.IsEnabled = true;
                 }
-#pragma warning restore CS8602 // Разыменование вероятной пустой ссылки.
             }
         }
 
@@ -89,13 +90,6 @@ namespace DemoSale
 
         }
 
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            FrameClass.mainFrame.Navigate(new LoginPage());
-            //System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
-            //Application.Current.Shutdown();
-        }
-
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
 
@@ -104,6 +98,26 @@ namespace DemoSale
         private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void tnStatistic_Click(object sender, RoutedEventArgs e)
+        {
+            FrameClass.mainFrame.Navigate(new StatisticMainPage());
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            var a = MessageBox.Show("Выполнить выход из учетной записи?", "Вы уверены?", 
+                MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if(a==MessageBoxResult.Yes) FrameClass.mainFrame.Navigate(new LoginPage());
+            //System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+            //Application.Current.Shutdown();
+        }
+
+        private void MenuItem_Click_AddItem(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("В данной области не предусмотрено добавление элементов!", 
+                "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
     }
 }

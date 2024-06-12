@@ -26,7 +26,6 @@ namespace DemoSale.DataBaseCore
         protected override void OnConfiguring(DbContextOptionsBuilder ob)
         {
             ob.UseSqlite("DataSource=autocenter.db");
-
         }
     }
 }

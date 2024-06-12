@@ -219,7 +219,7 @@
 
             <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5">
                 <Button x:Name="btnSave" Content="💾" FontSize="20" Margin="0 0 15 0" ToolTip="Сохранить изменения" Click="Button_Click_1"/>
-                <Button x:Name="btnClose" Content=" x " FontSize="20" Background="Transparent" Click="Button_Click"/>
+                <Button x:Name="btnClose" Content=" x " FontSize="20" Background="Transparent" Click="btnClose_Click"/>
             </StackPanel>
         </Grid>
     </ScrollViewer>

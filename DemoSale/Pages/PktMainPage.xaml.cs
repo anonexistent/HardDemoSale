@@ -51,10 +51,7 @@ namespace DemoSale
 
         private void ButtonAddClick(object sender, RoutedEventArgs e)
         {
-#pragma warning disable CS8602 // Разыменование вероятной пустой ссылки.
             FrameClass.mainFrame.Navigate(new PktAddEditPage());
-#pragma warning restore CS8602 // Разыменование вероятной пустой ссылки.
-            //FrameClass.mainFrame.Navigate(new PktPage());
         }
 
         private void Button_Click_1_del(object sender, RoutedEventArgs e)
@@ -63,7 +60,8 @@ namespace DemoSale
 
             if(selectedItem!=null)
             {
-                var a = MessageBox.Show($"Удалить элемент №{selectedItem.pktId} ?", "Удаление", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                var a = MessageBox.Show($"Удалить элемент №{selectedItem.pktId} ?", "Удаление", 
+                    MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if(a==MessageBoxResult.Yes)
                 {
                     db.Pkt.Remove(selectedItem);
@@ -91,7 +89,7 @@ namespace DemoSale
         {
             try
             {
-                //#region json schema
+                #region json schema
 
                 //var schema = JsonSchema.FromType<List<Pkt>>();
                 //var schemaJson = schema.ToJson();
@@ -101,16 +99,15 @@ namespace DemoSale
                 //tempWriter.Write(schemaJson);
                 //tempWriter.Close();
 
-                //#endregion
-
                 //string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "testData.json");
                 //var reader = new StreamReader(path);
                 //string s = reader.ReadToEnd();
-                //reader.Close();
-
+                //reader.Close();                
                 //pktList = JsonConvert.DeserializeObject<ObservableCollection<Pkt>>(s);
 
-                dgMain.ItemsSource = FrameClass.db.Pkt.ToList();
+                #endregion
+
+                dgMain.ItemsSource = db.Pkt.ToList();
             }
             catch (Exception ex)
             {
@@ -159,11 +156,11 @@ namespace DemoSale
 
         public static void UpdateJson()
         {
-            string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "testData.json");
-            string newJson = JsonConvert.SerializeObject(pktList, Formatting.Indented);
-            var x = new StreamWriter(path);
-            x.Write(newJson);
-            x.Close();
+            //string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "testData.json");
+            //string newJson = JsonConvert.SerializeObject(pktList, Formatting.Indented);
+            //var x = new StreamWriter(path);
+            //x.Write(newJson);
+            //x.Close();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
