@@ -6,16 +6,17 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:DemoSale"
       mc:Ignorable="d" 
-      d:DesignHeight="1450" d:DesignWidth="800"
+      d:DesignHeight="1800" d:DesignWidth="1200"
       Title="WarrantyRecordPage" Loaded="Page_Loaded">
 
     <Page.Resources>
         <local:ValueToCheckBoxConverter x:Key="ValueToCheckBoxConverter" />
+        <local:TechnicalMaintenanceConverter x:Key="TechnicalMaintenanceConverter" />
     </Page.Resources>
     
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
             <RowDefinition Height="5*"/>
             <RowDefinition Height="5*"/>
             <RowDefinition Height="5*"/>
@@ -37,14 +38,20 @@
         </Menu>-->
 
         <Button Content="↩" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10" FontSize="20" Background="Black" Foreground="White" Click="ButtonBackClick"/>
+        <TextBlock Grid.ColumnSpan="2" Text="Гарантийный учет" HorizontalAlignment="Center" 
+                   VerticalAlignment="Center" FontSize="38" FontWeight="Bold" Background="#FFFF7F00" Padding="30 10"/>
 
-        <ListBox x:Name="lbMain" Grid.Row="1" Grid.RowSpan="5" Margin="3" ItemsSource="{Binding generalList}" ScrollViewer.VerticalScrollBarVisibility="Visible" SelectionChanged="lbMain_SelectionChanged">
+        <ListBox x:Name="lbMain" Grid.Row="1" Grid.RowSpan="5" Margin="3" ScrollViewer.VerticalScrollBarVisibility="Visible" SelectionChanged="lbMain_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Margin="3" Background="Plum">
-                        <TextBlock Text="{Binding dateShipment}"/>
-                        <TextBlock Text="{Binding seller}" FontSize="26"/>
-                        <TextBlock Text="{Binding positionName}" FontSize="20"/>
+                        <DockPanel >
+                            <TextBlock DockPanel.Dock="Left" Text="{Binding pktParent.specification}"/>
+                            <TextBlock DockPanel.Dock="Right" HorizontalAlignment="Right"
+                                       FontSize="16" Text="{Binding .,Converter={StaticResource TechnicalMaintenanceConverter}}"/>
+                        </DockPanel>
+                        <TextBlock Text="{Binding pktParent.seller}" FontSize="26"/>
+                        <TextBlock Text="{Binding pktParent.positionName}" FontSize="20"/>
 
                     </StackPanel>
                 </DataTemplate>
@@ -61,7 +68,7 @@
                 </Grid.RowDefinitions>
 
                 <StackPanel Grid.RowSpan="3" DataContext="{Binding ElementName=lbMain, Path=SelectedItem}">
-                    <GroupBox Margin="10" >
+                    <GroupBox Margin="10" DataContext="{Binding Path=pktParent}">
                         <GroupBox.Header>
                             <StackPanel Orientation="Horizontal">
                                 <Image Width="{Binding ActualHeight, ElementName=textBlock, Mode=OneWay}" Source="/Resources/icons8-education-100.png" MaxHeight="50"/>
@@ -72,12 +79,14 @@
                         <StackPanel>
                             <TextBlock Text="Дата акта п/п"/>
                             <DatePicker Text="{Binding dateShipment}"/>
-                            <TextBlock Text="Дата отписки"/>
-                            <DatePicker Text="{Binding dateUnsubscribe}"/>
-                            <TextBlock Text="УПД"/>
-                            <TextBox Text="{Binding unTransDocNumber}"/>
+                            <!--<TextBlock Text="Дата отписки"/>
+                            <DatePicker Text="{Binding dateUnsubscribe}"/>-->
+                            <TextBlock Text="Название"/>
+                            <TextBox Text="{Binding seller}"/>
+                            <TextBlock Text="Район" LineStackingStrategy="MaxHeight"/>
+                            <TextBox Text="{Binding region}"/>
                             <TextBlock Text="Способ оплаты"/>
-                            <ComboBox IsEditable="True" SelectedItem="{Binding paymentMethod}"/>
+                            <ComboBox IsEditable="True" Text="{Binding paymentMethod}"/>
 
                         </StackPanel>
 
@@ -92,31 +101,40 @@
                         </GroupBox.Header>
 
                         <StackPanel>
+                            <StackPanel>
+                                <TextBlock Text="Поставщик"/>
+                                <ComboBox IsEditable="True" Text="{Binding pktParent.dealer}"/>
+                                <TextBlock Text="Модель"/>
+                                <TextBox Text="{Binding pktParent.positionName}"/>
 
-                            <TextBlock Text="Поставщик"/>
-                            <ComboBox SelectedValue="{Binding dealer}"/>
-                            <TextBlock Text="Модель"/>
-                            <TextBox Text="{Binding positionName}"/>
-                            <TextBlock Text="Кол-во"/>
-                            <TextBox Text="{Binding count}" HorizontalAlignment="Left" MinWidth="50" TextAlignment="Center"/>
-                            <TextBlock Text="VIN"/>
-                            <TextBox Text="{Binding vin}"/>
-                            <TextBlock Text="Двигатель"/>
-                            <TextBox Text="{Binding engine}"/>
-                            <TextBlock Text="Контрагент"/>
-                            <TextBox Text="{Binding seller}"/>
-                            <TextBlock Text="Район" LineStackingStrategy="MaxHeight"/>
-                            <TextBox Text="{Binding region}"/>
-                            <TextBlock Text="Менеджер"/>
-                            <ComboBox IsEditable="True" SelectedValue="{Binding manager}"/>
-                            <TextBlock Text="Фактический адрес" />
-                            <TextBox Text="{Binding regionDeFacto}"/>
-                            <TextBlock Text="Контакты"/>
-                            <TextBox Text="{Binding engTecWorker}"/>
-                            <TextBlock Text="№ договора СО"/>
-                            <TextBox Text="{Binding serviceContract}"/>
-                            <TextBlock Text="Год выпуска"/>
-                            <ComboBox x:Name="cbYearsRelease" SelectedItem="{Binding dateRelease}"/>
+                                <TextBlock Text="Менеджер"/>
+                                <TextBox Text="{Binding pktParent.sellerAgent}"/>
+                                
+                            </StackPanel>
+                            <Separator Margin="15"/>
+                            <StackPanel>
+                                <TextBlock Text="VIN"/>
+                                <TextBox x:Name="tbVin" Text="{Binding warSub.vin}"/>
+                                <TextBlock Text="Двигатель"/>
+                                <TextBox x:Name="tbEngine" Text="{Binding warSub.engine}"/>
+                                <TextBlock Text="ЭПТ"/>
+                                <TextBox x:Name="tbEvp" Text="{Binding warSub.evp}"/>
+                                <TextBlock Text="Год выпуска"/>
+                                <ComboBox x:Name="cbYearsRelease" SelectedItem="{Binding warSub.dateRelease}"/>
+                                <TextBlock Text="Фактический адрес" />
+                                <TextBox x:Name="tbFact" Text="{Binding warContract.regionDeFacto}"/>
+                                <TextBlock Text="Контакты"/>
+                                <TextBox x:Name="tbEngTech" Text="{Binding warContract.engTecWorker}"/>
+                                <StackPanel Orientation="Horizontal" Margin="0 5">
+                                    <TextBlock Text="№ договора СО"/>
+                                    <TextBlock Text="от" Margin="10 0"/>
+                                    <TextBox IsReadOnly="True" MinWidth="100" x:Name="tbContractDate" Text="{Binding warContract.dateServiceContract}"/>
+                                </StackPanel>
+                                <TextBox x:Name="tbContract" IsReadOnly="True" FontSize="14" Text="{Binding warContract.serviceContract}"/>
+
+                                <Button x:Name="btnSaveTechChanges" Content="✏️ Записать" FontSize="14" Margin="20 10" Click="btnSaveTechChanges_Click">
+                                </Button>
+                            </StackPanel>                            
                         </StackPanel>
 
                     </GroupBox>
@@ -129,7 +147,7 @@
                             </StackPanel>
                         </GroupBox.Header>
 
-                        <StackPanel>
+                        <StackPanel x:Name="spWarTechMainte">
                             <TextBlock Text="ТО"/>
                             <StackPanel x:Name="checksTo" Orientation="Horizontal">
                                 <CheckBox IsChecked="{Binding technicalMaintenance, Converter={StaticResource ValueToCheckBoxConverter}, ConverterParameter=30}" x:Name="check0" Content="30"/>
@@ -152,7 +170,7 @@
         </ScrollViewer>
 
 
-        <Button Grid.Column="1" Grid.Row="1" Margin="50" Content="r" FontSize="30" Click="Button_Click_3" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+        <!--<Button Grid.Column="1" Grid.Row="1" Margin="50" Content="r" FontSize="30" Click="Button_Click_3" HorizontalAlignment="Right" VerticalAlignment="Top"/>-->
 
     </Grid>
 </Page>

@@ -1,4 +1,6 @@
 ﻿using DemoSale.Data;
+using DemoSale.DataBaseCore;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using NJsonSchema;
 using System;
@@ -55,11 +57,9 @@ namespace DemoSale
             set { _generalList = value; }
         }
 
-#pragma warning disable CS8618 // Поле, не допускающее значения NULL, должно содержать значение, отличное от NULL, при выходе из конструктора. Возможно, стоит объявить поле как допускающее значения NULL.
-#pragma warning disable CS8618 // Поле, не допускающее значения NULL, должно содержать значение, отличное от NULL, при выходе из конструктора. Возможно, стоит объявить поле как допускающее значения NULL.
+        ApplicationContext db = new();
+
         public WarrantyRecordPage()
-#pragma warning restore CS8618 // Поле, не допускающее значения NULL, должно содержать значение, отличное от NULL, при выходе из конструктора. Возможно, стоит объявить поле как допускающее значения NULL.
-#pragma warning restore CS8618 // Поле, не допускающее значения NULL, должно содержать значение, отличное от NULL, при выходе из конструктора. Возможно, стоит объявить поле как допускающее значения NULL.
         {
 
             InitializeComponent();
@@ -75,14 +75,7 @@ namespace DemoSale
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            var a = FrameClass.db;
-
-            foreach (var item in FrameClass.db.WarrantyRecord.ToList())
-            {
-                generalList.Add(item);
-            }
-
-            lbMain.ItemsSource = generalList;
+            lbMain.ItemsSource = db.WarrantyRecord.Include(x=>x.pktParent).Include(a=>a.warContract).Include(o=>o.warSub).ToList();
         }
 
         private void InitData()
@@ -121,7 +114,7 @@ namespace DemoSale
             };
 
             var tempContractId = ((WarrantyRecord)((ListBox)sender).SelectedItem).contractId;
-            var tempContract = FrameClass.db.WarrantyContract.Where(x => 
+            var tempContract = db.WarrantyContract.Where(x => 
             x.serviceContract == tempContractId).FirstOrDefault();
 
             switch (tempContract.technicalMaintenance)
@@ -159,6 +152,7 @@ namespace DemoSale
             return isSselection;
         }
 
+        //  old button 'R'
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             #region json schema +bd work
@@ -205,20 +199,17 @@ namespace DemoSale
 
         private void ButtonBackClick(object sender, RoutedEventArgs e)
         {
-#pragma warning disable CS8602 // Разыменование вероятной пустой ссылки.
             FrameClass.mainFrame.Navigate(new MainPage());
-#pragma warning restore CS8602 // Разыменование вероятной пустой ссылки.
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-#pragma warning disable CS8602 // Разыменование вероятной пустой ссылки.
             FrameClass.mainFrame.Navigate(new WarrantyRecordPageAdd());
-#pragma warning restore CS8602 // Разыменование вероятной пустой ссылки.
         }
 
         private void lbMain_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            spWarTechMainte.DataContext = ((WarrantyRecord)((ListBox)sender).SelectedItem).warContract;
             GettechnicalMaintenanceInfo(sender);
         }
 
@@ -257,6 +248,35 @@ namespace DemoSale
         private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             var a = MessageBox.Show($"Подтвердите снятие с гарантийного учета:\nдата:{((DatePicker)sender).SelectedDate}\nпричина: []", "Подтверждение", MessageBoxButton.YesNo);
+        }
+
+        private void btnSaveTechChanges_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedRecord = (WarrantyRecord)lbMain.SelectedItem;
+
+            if(string.IsNullOrEmpty(tbContract.Text) |
+                string.IsNullOrEmpty(tbEngine.Text) |
+                string.IsNullOrEmpty(tbEngTech.Text) |
+                string.IsNullOrEmpty(tbEvp.Text) |
+                string.IsNullOrEmpty(tbFact.Text) |
+                string.IsNullOrEmpty(tbVin.Text) )
+            {
+                MessageBox.Show("Есть незполненные поля", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+
+            //selectedRecord.warSub.vin = tbVin.Text;
+            selectedRecord.warSub.engine = tbEngine.Text;
+            selectedRecord.warSub.evp = tbEvp.Text;
+            selectedRecord.warSub.dateRelease = int.Parse(cbYearsRelease.SelectedValue.ToString());
+
+            selectedRecord.warContract.engTecWorker = tbEngTech.Text;
+            selectedRecord.warContract.regionDeFacto = tbFact.Text;
+
+            db.Update(selectedRecord);
+            db.SaveChanges();
+
+            MessageBox.Show("Изменения были приняты", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }

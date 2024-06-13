@@ -3,6 +3,7 @@ using System;
 using DemoSale.DataBaseCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DemoSale.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20240612184009_editWarRecord")]
+    partial class editWarRecord
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.18");
@@ -125,7 +128,7 @@ namespace DemoSale.Migrations
 
                     b.HasKey("pktId");
 
-                    b.ToTable("Pkt", (string)null);
+                    b.ToTable("Pkt");
                 });
 
             modelBuilder.Entity("DemoSale.Data.WarrantyRecord", b =>
@@ -155,7 +158,7 @@ namespace DemoSale.Migrations
 
                     b.HasIndex("warContractserviceContract");
 
-                    b.ToTable("WarrantyRecord", (string)null);
+                    b.ToTable("WarrantyRecord");
                 });
 
             modelBuilder.Entity("DemoSale.DataBaseCore.Dealer", b =>
@@ -165,7 +168,7 @@ namespace DemoSale.Migrations
 
                     b.HasKey("dealerName");
 
-                    b.ToTable("Dealer", (string)null);
+                    b.ToTable("Dealer");
                 });
 
             modelBuilder.Entity("DemoSale.DataBaseCore.FinanceReport", b =>
@@ -222,7 +225,7 @@ namespace DemoSale.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("FinanceReport", (string)null);
+                    b.ToTable("FinanceReport");
                 });
 
             modelBuilder.Entity("DemoSale.DataBaseCore.PaymentMethod", b =>
@@ -241,7 +244,7 @@ namespace DemoSale.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("PaymentMethod", (string)null);
+                    b.ToTable("PaymentMethod");
                 });
 
             modelBuilder.Entity("DemoSale.DataBaseCore.PositionType", b =>
@@ -251,7 +254,7 @@ namespace DemoSale.Migrations
 
                     b.HasKey("positionName");
 
-                    b.ToTable("PositionType", (string)null);
+                    b.ToTable("PositionType");
                 });
 
             modelBuilder.Entity("DemoSale.DataBaseCore.Specification", b =>
@@ -270,7 +273,7 @@ namespace DemoSale.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Specification", (string)null);
+                    b.ToTable("Specification");
                 });
 
             modelBuilder.Entity("DemoSale.DataBaseCore.TatarstanAnnualReport", b =>
@@ -311,7 +314,7 @@ namespace DemoSale.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("TatarstanReport", (string)null);
+                    b.ToTable("TatarstanReport");
                 });
 
             modelBuilder.Entity("DemoSale.DataBaseCore.WarrantyContract", b =>
@@ -336,7 +339,7 @@ namespace DemoSale.Migrations
 
                     b.HasKey("serviceContract");
 
-                    b.ToTable("WarrantyContract", (string)null);
+                    b.ToTable("WarrantyContract");
                 });
 
             modelBuilder.Entity("DemoSale.DataBaseCore.WarrantySubject", b =>
@@ -358,7 +361,7 @@ namespace DemoSale.Migrations
 
                     b.HasKey("vin");
 
-                    b.ToTable("WarrantySubject", (string)null);
+                    b.ToTable("WarrantySubject");
                 });
 
             modelBuilder.Entity("DemoSale.Data.WarrantyRecord", b =>

@@ -1,5 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DemoSale.DataBaseCore;
+using Microsoft.EntityFrameworkCore;
 using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DemoSale.Data
 {
@@ -8,17 +11,21 @@ namespace DemoSale.Data
     {
         private Guid? _warrantyId = Guid.NewGuid();
 
-        private DateOnly? _dateShipment;
-        private DateOnly? _dateUnsubscribe;
+        //private DateOnly? _dateShipment;
+        //private DateOnly? _dateUnsubscribe;
         //	№УПД
         /*
 		 * 01УТ-000006
 		 */
         private string? _unTransDocNumber;
 
-        private uint _pktParentId;
+        private uint _pktId;
 
-        public Pkt pktParent { get; set; }
+        public virtual Pkt pktParent { get; set; }
+        [ForeignKey("contractId")]
+        public virtual WarrantyContract warContract { get; set; }
+        [ForeignKey("subjectVin")]
+        public virtual WarrantySubject warSub { get; set; }
 
         private string? _subjectVin;
 
@@ -36,49 +43,17 @@ namespace DemoSale.Data
 
         #region ctors
 
-#pragma warning disable CS8618 // Поле, не допускающее значения NULL, должно содержать значение, отличное от NULL, при выходе из конструктора. Возможно, стоит объявить поле как допускающее значения NULL.
         public WarrantyRecord()
-#pragma warning restore CS8618 // Поле, не допускающее значения NULL, должно содержать значение, отличное от NULL, при выходе из конструктора. Возможно, стоит объявить поле как допускающее значения NULL.
         {
 
         }
 
-#pragma warning disable CS8618 // Поле, не допускающее значения NULL, должно содержать значение, отличное от NULL, при выходе из конструктора. Возможно, стоит объявить поле как допускающее значения NULL.
         public WarrantyRecord(string contractId, string subjectVin, uint pktId)
-#pragma warning restore CS8618 // Поле, не допускающее значения NULL, должно содержать значение, отличное от NULL, при выходе из конструктора. Возможно, стоит объявить поле как допускающее значения NULL.
         {
             this.contractId = contractId;
             this.subjectVin = subjectVin;
-            this.pktParentId = pktId;
+            this.pktId = pktId;
         }
-
-        //public WarrantyRecord(WarrantyContract contractId, WarrantySubject subjectVin, Pkt pktParentId, DateOnly dateShipment, 
-        //    DateOnly dateUnsubscribe, string unTransDocNumber)
-        //{
-        //    this.pktParentId = pktParentId.pktId;
-        //    this.contractId = contractId.serviceContract;
-        //    this.subjectVin = subjectVin.vin;
-
-        //    this.dateShipment = dateShipment;
-        //    this.dateUnsubscribe = dateUnsubscribe;
-        //    this.unTransDocNumber = unTransDocNumber;
-        //    //this.paymentMethod = paymentMethod;
-        //    //this.dealer = dealer;
-        //    //this.positionName = positionName;
-        //    ////this.count = count;
-        //    ////this.vin = vin;
-        //    ////this.engine = engine;
-        //    //this.seller = seller;
-        //    //this.region = region;
-        //    //this.manager = manager;
-        //    //this.regionDeFacto = regionDeFacto;
-        //    //this.engTecWorker = engTecWorker;
-        //    //this.serviceContract = serviceContract;
-        //    //this.dateServiceContract = dateServiceContract;
-        //    ////this.dateRelease = dateRelease;
-        //    //this.technicalMaintenance = technicalMaintenance;
-        //    //this.dateEndWarranty = dateEndWarranty;
-        //}
 
         #endregion
 
@@ -131,25 +106,25 @@ namespace DemoSale.Data
             set { _unTransDocNumber = value; }
         }
 
-        public DateOnly? dateUnsubscribe
-        {
-            get { return _dateUnsubscribe; }
-            set { _dateUnsubscribe = value; }
-        }
+        //public DateOnly? dateUnsubscribe
+        //{
+        //    get { return _dateUnsubscribe; }
+        //    set { _dateUnsubscribe = value; }
+        //}
 
-        public DateOnly? dateShipment
-        {
-            get { return _dateShipment; }
-            set { _dateShipment = value; }
-        }
+        //public DateOnly? dateShipment
+        //{
+        //    get { return _dateShipment; }
+        //    set { _dateShipment = value; }
+        //}
         public Guid? warrantyId
         {
             get { return _warrantyId; }
         }
-        public uint pktParentId
+        public uint pktId
         {
-            get { return _pktParentId; }
-            set { _pktParentId = value; }
+            get { return _pktId; }
+            set { _pktId = value; }
         }
 
         #endregion

@@ -148,7 +148,7 @@ namespace DemoSale
             #region addOtherRecords
 
             WarrantySubject tempWarSub = new() { positionName = currentPosition.positionName.ToString() };
-            WarrantyContract tempWarCon = new() { serviceContract = "01УТ-01" + (new Random().Next(0, ushort.MaxValue)).ToString() };
+            WarrantyContract tempWarCon = new() { serviceContract = "01УТ-01" + (new Random().Next(0, ushort.MaxValue)).ToString(), technicalMaintenance = 0 };
 
             db.WarrantySubject.Add(tempWarSub);
             db.WarrantyContract.Add(tempWarCon);

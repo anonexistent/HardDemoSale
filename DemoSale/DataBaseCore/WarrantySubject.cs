@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace DemoSale.DataBaseCore
 {
     public class WarrantySubject
     {
+        //public uint id { get; set; }
         private string? _vin = Guid.NewGuid().ToString();
         //	Модель, номер двигателя
         /*

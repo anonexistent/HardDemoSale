@@ -28,11 +28,23 @@
                 </StackPanel>
             </Button.Content>
         </Button>
-                        
-        <lvc:CartesianChart Grid.Row="2" Grid.ColumnSpan="3" Margin="20 10" Series="{Binding x}"/>
-        <StackPanel Grid.Column="1" Grid.RowSpan="2" Orientation="Horizontal" Grid.ColumnSpan="2">
-            <lvc:PieChart Grid.Column="1" Series="{Binding a}" MinWidth="250" MinHeight="250" Margin="0"/>
-            <lvc:PieChart Grid.Column="2" Series="{Binding b}" MinWidth="250" Margin="30 0"/>
+
+        <lvc:CartesianChart x:Name="ccCount" Grid.Row="2" Grid.ColumnSpan="3">
+
+            <lvc:CartesianChart.ChartLegend>
+                <lvc:DefaultLegend />
+            </lvc:CartesianChart.ChartLegend>
+        </lvc:CartesianChart>
+        
+        <StackPanel Grid.Column="1" Grid.RowSpan="2" Grid.ColumnSpan="2" Orientation="Horizontal">
+            <StackPanel>
+                <TextBlock Text="За месяц:" Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"/>
+                <lvc:PieChart x:Name="pcMonth" Grid.Column="1" MinWidth="250" MinHeight="250" Margin="0" FontSize="16" LegendLocation="Bottom"/>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Text="За квартал:" Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"/>
+                <lvc:PieChart x:Name="pcQuarter" Grid.Column="2" MinWidth="250" Margin="30 0" LegendLocation="Bottom"/>
+            </StackPanel>
         </StackPanel>
 
 
