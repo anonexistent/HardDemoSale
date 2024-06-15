@@ -1,3 +1,9 @@
 # DemoSale!
-![](https://github-production-user-asset-6210df.s3.amazonaws.com/90211791/311545952-d2db5213-92e6-4ea0-b2d5-fc44859c0655.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240310T214313Z&X-Amz-Expires=300&X-Amz-Signature=ba6186527ba9f98f8a9f9c9da85bdbfb0f728fd7ec855e580df833b1edbbdd53&X-Amz-SignedHeaders=host&actor_id=90211791&key_id=0&repo_id=770085210)
-[previewHardDemoSale1](https://github.com/anonexistent/HardDemoSale/assets/90211791/d2db5213-92e6-4ea0-b2d5-fc44859c0655)
+
+<div>
+  <img src="https://private-user-images.githubusercontent.com/90211791/340035175-665165d3-82d8-4478-9023-553139e9c5b5.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTg0ODY1NTEsIm5iZiI6MTcxODQ4NjI1MSwicGF0aCI6Ii85MDIxMTc5MS8zNDAwMzUxNzUtNjY1MTY1ZDMtODJkOC00NDc4LTkwMjMtNTUzMTM5ZTljNWI1LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDA2MTUlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwNjE1VDIxMTczMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTVjYzU5M2Q0ZjYzYTcyMDQzNDc0YjRmZWRhZjJmZjExODJiOTY4YTE3ZWNiMjBlOGI5NzNmZGU5MWVmOTI5NTMmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.ko_ZHhMqdHFOppjQMek-lNnH5aXQXSlgYfEOtcA-DFQ" title="Screenshot" alt="Screenshot" />&nbsp;
+  <h3>🛠️ Languages and Tools :</h3>
+  
+  <img src="https://github.com/devicons/devicon/blob/master/icons/csharp/csharp-plain.svg" title="cSharp" alt="cSharp" width="40" height="40"/>&nbsp;
+  <img src="https://github.com/devicons/devicon/blob/master/icons/sqlite/sqlite-original.svg" title="sqlite" alt="sqlite" width="40" height="40"/>&nbsp;
+</div>
