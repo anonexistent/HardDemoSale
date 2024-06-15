@@ -278,5 +278,11 @@ namespace DemoSale
 
             MessageBox.Show("Изменения были приняты", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
         }
+
+        private void btnSaveDate_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Изменения не были внесены", "Отмена", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+        }
     }
 }

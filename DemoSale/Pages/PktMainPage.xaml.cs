@@ -176,7 +176,75 @@ namespace DemoSale
                 return;
             }
 
+        }
 
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var curList = db.Pkt.ToList();
+            List<Pkt> searchList = new List<Pkt>();
+            foreach (var item in db.Pkt.ToList())
+            {
+                if (item.GetRawString().Contains(tbSearch.Text.ToLower())) searchList.Add(item);
+            }
+            dgMain.ItemsSource = searchList;
+        }
+
+        private void dpMin_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (dpMin.SelectedDate == null)
+            {
+                dgMain.ItemsSource = db.Pkt.ToList();
+                return;
+            }
+            var curList = db.Pkt.ToList();
+            List<Pkt> searchList = new List<Pkt>();
+            var minDate = dpMin.SelectedDate.Value.Date;
+            foreach (var item in curList)
+            {
+                if (DateTime.Parse(item.dateShipment.ToString()) >= minDate) searchList.Add(item);
+                if (DateTime.Parse(item.dateEntry.ToString()) >= minDate) searchList.Add(item);
+                if (DateTime.Parse(item.deliveryDate.ToString()) >= minDate) searchList.Add(item);
+            }
+            dgMain.ItemsSource = searchList;
+        }
+
+        private void dpMax_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            MakeMaxDate();
+        }
+
+        void MakeMinDate()
+        {
+            MakeMinDate();
+        }
+
+        void MakeMaxDate()
+        {
+            if (dpMax.SelectedDate == null)
+            {
+                dgMain.ItemsSource = db.Pkt.ToList();
+                return;
+            }
+            var curList = db.Pkt.ToList();
+            List<Pkt> searchList = new List<Pkt>();
+            var maxDate = dpMax.SelectedDate.Value.Date;
+            foreach (var item in curList)
+            {
+                if (DateTime.Parse(item.dateShipment.ToString()) <= maxDate) searchList.Add(item);
+                if (DateTime.Parse(item.dateEntry.ToString()) <= maxDate) searchList.Add(item);
+                if (DateTime.Parse(item.deliveryDate.ToString()) <= maxDate) searchList.Add(item);
+            }
+            dgMain.ItemsSource = searchList;
+        }
+
+        private void btnResetMinDate_Click(object sender, RoutedEventArgs e)
+        {
+            dpMin.SelectedDate = null;
+        }
+
+        private void btnResetMaxDate_Click(object sender, RoutedEventArgs e)
+        {
+            dpMax.SelectedDate = null;
         }
     }
 }

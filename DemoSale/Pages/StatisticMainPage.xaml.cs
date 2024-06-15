@@ -42,13 +42,26 @@ namespace DemoSale.Pages
 
         private void InitStaticFields()
         {
+            var nowQuarter = DateTime.Now.AddMonths(-3);
+            var convertedDate = DateOnly.Parse(nowQuarter.ToShortDateString());
+
+            var tempValues = db.Pkt.Where(x => x.deliveryDate < convertedDate).GroupBy(x => x.dateShipment).Select(x => new { x.Key, Count = x.Count() }).ToList();
+
+            var tempLines = new LineSeries
+            {
+                Title = tempValues.First().Key.ToString(),
+                Values = new ChartValues<double> { }
+            };
+
+            foreach (var item in tempValues)
+            {
+
+                tempLines.Values.Add(double.Parse(item.Count.ToString()));
+            }
+
             SeriesCollection = new SeriesCollection
             {
-                new LineSeries
-                {
-                    Title = "Первый список",
-                    Values = new ChartValues<double> { 3, 5, 7, 9, 11, 13, 15, 17, 19, 21 }
-                }
+                tempLines
             };
 
             Labels = new List<string>
@@ -62,7 +75,6 @@ namespace DemoSale.Pages
 
             PcMonthInit();
             PcQuarterInit();
-
 
         }
 
@@ -85,9 +97,14 @@ namespace DemoSale.Pages
             pcMonth.Series = SeriesCollection;
         }
 
-        private void PcMonthInit()
+        void PcMonthInit()
         {
-            var salesData = db.Pkt.GroupBy(x => x.sellerAgent).Select(x=>new { x.Key, Count = x.Count() }).ToList();
+            var fakeRation = Math.Round(new Random().NextDouble() * 10, 1);
+
+            var nowQuarter = DateTime.Now.AddMonths(-3);
+            var convertedDate = DateOnly.Parse(nowQuarter.ToShortDateString());
+            var salesData = db.Pkt.Where(x => x.deliveryDate < convertedDate).GroupBy(x => x.sellerAgent)
+                .Select(x => new { x.Key, Count = x.Count()*fakeRation }).ToList();
 
             SeriesCollection = new SeriesCollection();
             foreach (var data in salesData)
@@ -95,11 +112,28 @@ namespace DemoSale.Pages
                 SeriesCollection.Add(new PieSeries
                 {
                     Title = data.Key,
-                    Values = new ChartValues<int> { data.Count },
+                    Values = new ChartValues<int> { (int)data.Count },
                     DataLabels = true
                 });
             }
-            pcMonth.Series= SeriesCollection;
+            pcQuarter.Series = SeriesCollection;
+        }
+
+        private void old_PcMonthInit()
+        {
+            //var salesData = db.Pkt.GroupBy(x => x.sellerAgent).Select(x=>new { x.Key, Count = x.Count() }).ToList();
+
+            //SeriesCollection = new SeriesCollection();
+            //foreach (var data in salesData)
+            //{
+            //    SeriesCollection.Add(new PieSeries
+            //    {
+            //        Title = data.Key,
+            //        Values = new ChartValues<int> { data.Count },
+            //        DataLabels = true
+            //    });
+            //}
+            //pcMonth.Series= SeriesCollection;
         }
 
         private void btnGoBack_Click(object sender, RoutedEventArgs e)

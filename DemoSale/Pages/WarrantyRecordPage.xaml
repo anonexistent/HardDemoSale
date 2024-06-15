@@ -77,16 +77,16 @@
                         </GroupBox.Header>
 
                         <StackPanel>
-                            <TextBlock Text="Дата акта п/п"/>
-                            <DatePicker Text="{Binding dateShipment}"/>
+                            <TextBlock IsEnabled="False" Text="Дата акта п/п"/>
+                            <DatePicker IsEnabled="False" Text="{Binding dateShipment}"/>
                             <!--<TextBlock Text="Дата отписки"/>
                             <DatePicker Text="{Binding dateUnsubscribe}"/>-->
                             <TextBlock Text="Название"/>
-                            <TextBox Text="{Binding seller}"/>
-                            <TextBlock Text="Район" LineStackingStrategy="MaxHeight"/>
-                            <TextBox Text="{Binding region}"/>
+                            <TextBox IsEnabled="False" Text="{Binding seller}"/>
+                            <TextBlock IsEnabled="False" Text="Район" LineStackingStrategy="MaxHeight"/>
+                            <TextBox IsEnabled="False" Text="{Binding region}"/>
                             <TextBlock Text="Способ оплаты"/>
-                            <ComboBox IsEditable="True" Text="{Binding paymentMethod}"/>
+                            <ComboBox IsEditable="False" Text="{Binding paymentMethod}"/>
 
                         </StackPanel>
 
@@ -159,6 +159,7 @@
 
                             <TextBlock Text="Дата снятия с учета"/>
                             <DatePicker SelectedDateChanged="DatePicker_SelectedDateChanged"/>
+                            <Button x:Name="btnSaveDate" Content="✏️ Записать" FontSize="14" Margin="20 10" Click="btnSaveDate_Click"/>
                         </StackPanel>
 
                     </GroupBox>

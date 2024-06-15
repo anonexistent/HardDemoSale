@@ -29,6 +29,8 @@
             </Button.Content>
         </Button>
 
+        <TextBlock Text="Статистика по количеству:" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.ColumnSpan="3" FontSize="24"/>
+
         <lvc:CartesianChart x:Name="ccCount" Grid.Row="2" Grid.ColumnSpan="3">
 
             <lvc:CartesianChart.ChartLegend>
@@ -43,7 +45,7 @@
             </StackPanel>
             <StackPanel>
                 <TextBlock Text="За квартал:" Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"/>
-                <lvc:PieChart x:Name="pcQuarter" Grid.Column="2" MinWidth="250" Margin="30 0" LegendLocation="Bottom"/>
+                <lvc:PieChart x:Name="pcQuarter" Grid.Column="2" MinWidth="250" MinHeight="250" Margin="30 0" FontSize="16" LegendLocation="Bottom"/>
             </StackPanel>
         </StackPanel>
 

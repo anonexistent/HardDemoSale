@@ -1,6 +1,7 @@
 ﻿using DemoSale.DataBaseCore;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Reflection;
 
 namespace DemoSale.Data
 {
@@ -50,6 +51,20 @@ namespace DemoSale.Data
         private string _dopPositionDescription = "н/д";
         private DateOnly _deliveryDate = new DateOnly(2020, 1, 1);
         private double _forCalculation;
+
+        public string GetRawString()
+        {
+            string result = string.Empty;
+
+            var props = this.GetType().GetProperties();
+
+            foreach (PropertyInfo item in props)
+            {
+                result += item.GetValue(this).ToString().ToLower();
+            }
+
+            return result;
+        }
 
         #region ctors
 

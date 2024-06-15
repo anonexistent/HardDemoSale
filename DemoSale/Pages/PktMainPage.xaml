@@ -23,7 +23,7 @@
 
         <Button Content="↩" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10" FontSize="20" Background="Black" Foreground="White" Click="ButtonBackClick"/>
 
-        <TextBlock Text='П К Т' Margin="50 0 0 0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" TextWrapping="Wrap" FontWeight="Black">
+        <TextBlock Text='Продажи' Margin="50 0 0 0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" TextWrapping="Wrap" FontWeight="SemiBold">
             <TextBlock.Effect>
                 <DropShadowEffect BlurRadius="10" ShadowDepth="1" RenderingBias="Quality"/>
             </TextBlock.Effect>
@@ -41,11 +41,13 @@
         <StackPanel Grid.Row="1" Grid.ColumnSpan="3" VerticalAlignment="Center" Background="#FF8A8A8A">
             <StackPanel Orientation="Horizontal" Margin="30 20" Background="#FFE2E2E2">
                 <TextBlock Text="Записи с" VerticalAlignment="Center" FontSize="16" FontWeight="Bold" Margin="15 0"/>
-                <DatePicker VerticalAlignment="Center" FontSize="18"/>
+                <DatePicker x:Name="dpMin" VerticalAlignment="Center" FontSize="18" SelectedDateChanged="dpMin_SelectedDateChanged"/>
+                <Button x:Name="btnResetMinDate" Margin="5 0" HorizontalAlignment="Center" VerticalAlignment="Center" Content="x" Background="Transparent" FontSize="14" Click="btnResetMinDate_Click"/>
                 <TextBlock Text="по" VerticalAlignment="Center" FontSize="16" FontWeight="Bold" Margin="15 0"/>
-                <DatePicker VerticalAlignment="Center" FontSize="18"/>
+                <DatePicker x:Name="dpMax" VerticalAlignment="Center" FontSize="18" SelectedDateChanged="dpMax_SelectedDateChanged"/>
+                <Button x:Name="btnResetMaxDate" Margin="5 0" HorizontalAlignment="Center" VerticalAlignment="Center" Content="x" Background="Transparent" FontSize="14" Click="btnResetMaxDate_Click"/>
                 <TextBlock Text="Поиск" VerticalAlignment="Center" FontSize="18" FontWeight="Bold" Margin="20 0"/>
-                <TextBox MinWidth="150" FontSize="16" Margin="10"/>
+                <TextBox x:Name="tbSearch" MinWidth="150" FontSize="16" Margin="10" VerticalAlignment="Center" TextChanged="TextBox_TextChanged"/>
                 <Button Content="🔎" FontSize="24" FontWeight="Black" Background="Lime" Foreground="Black" Margin="-1 10"/>
             </StackPanel>
 
